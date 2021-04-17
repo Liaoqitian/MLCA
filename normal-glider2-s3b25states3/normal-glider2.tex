@@ -1,0 +1,104 @@
+\documentclass{standalone}
+\usepackage{xcolor,stackengine,pgffor}
+\def\block#1{\kern-\fboxrule\fboxsep=0pt\fbox{\color{#1}\rule{1ex}{1ex}}}
+\def\wh{\block{white}}
+\setstackgap{S}{-\fboxrule}
+\setstackEOL{\\}
+
+\makeatletter
+\def\definegrid[#1,#2]{%
+  \def\grows{#1}%
+  \def\gcols{#2}%
+  \foreach\i in {1,...,#1}%
+  {%
+    \foreach\j in {1,...,#2}%
+    {%
+      \expandafter\gdef\csname grid[\i,\j]\endcsname{\wh}%
+    }%
+  }%
+\ignorespaces}
+
+\newcommand\drawgrid{%
+  \def\stackbuild{}%
+  \foreach\i in {1,...,\grows}%
+  {%
+    \ifnum\i=1\else\g@addto@macro\stackbuild{\\}\fi%
+    \foreach\j in {1,...,\gcols}%
+    {%
+      \expandafter\g@addto@macro\expandafter\stackbuild\expandafter{%
+        \csname grid[\i,\j]\endcsname}%
+    }%
+  }%
+  \kern\fboxrule%
+  \expandafter\Shortstack\expandafter{\stackbuild}%
+}
+
+\def\setgrid[#1,#2]#3{\expandafter\gdef\csname grid[#1,#2]\endcsname{\block{#3}}%
+  \ignorespaces}
+\makeatother
+\begin{document}
+
+
+\definegrid[6,7]
+
+\setgrid[2,3]{gray}
+\setgrid[3,5]{gray}
+\setgrid[4,5]{gray}
+
+\setgrid[2,4]{black}
+\setgrid[4,4]{black}
+\setgrid[4,6]{black}
+
+\drawgrid
+
+\definegrid[6,7]
+
+\setgrid[2,4]{gray}
+\setgrid[4,4]{gray}
+\setgrid[4,6]{gray}
+
+\setgrid[3,3]{black}
+\setgrid[3,4]{black}
+\setgrid[5,5]{black}
+
+\drawgrid
+
+\definegrid[6,7]
+
+\setgrid[3,3]{gray}
+\setgrid[3,4]{gray}
+\setgrid[5,5]{gray}
+
+\setgrid[2,3]{black}
+\setgrid[4,3]{black}
+\setgrid[4,5]{black}
+
+\drawgrid
+
+\definegrid[6,7]
+
+\setgrid[2,3]{gray}
+\setgrid[4,3]{gray}
+\setgrid[4,5]{gray}
+
+\setgrid[3,2]{black}
+\setgrid[4,4]{black}
+\setgrid[5,4]{black}
+
+\drawgrid
+
+\definegrid[6,7]
+
+\setgrid[3,2]{gray}
+\setgrid[4,4]{gray}
+\setgrid[5,4]{gray}
+
+\setgrid[3,3]{black}
+\setgrid[5,3]{black}
+\setgrid[5,5]{black}
+
+\drawgrid
+
+
+
+\end{document} 
