@@ -1,0 +1,27 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related Work}{}% 2
+\BOOKMARK [1][-]{section.3}{Methodology}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Dataset Generation}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Sequence Training with RNN}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Data Preprocessing, Feature Extraction, and training with CNN}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.4}{Entropy Analysis}{section.3}% 7
+\BOOKMARK [1][-]{section.4}{Glider Activities}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Gliders in three-state cellular automata}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Glider Collision Behaviors in three-state cellular automata}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.3}{Other interesting discoveries}{section.4}% 11
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 12
+\BOOKMARK [2][-]{subsection.5.1}{Experiment Summary}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.2}{Future Work}{section.5}% 14
+\BOOKMARK [1][-]{section.6}{Appendix}{}% 15
+\BOOKMARK [2][-]{subsection.6.1}{Cellular Automata Generation Algorithm}{section.6}% 16
+\BOOKMARK [2][-]{subsection.6.2}{The 35 Selected Interesting Rules}{section.6}% 17
+\BOOKMARK [2][-]{subsection.6.3}{Frame Extraction}{section.6}% 18
+\BOOKMARK [2][-]{subsection.6.4}{RNN model structure}{section.6}% 19
+\BOOKMARK [2][-]{subsection.6.5}{Image Stitching Function}{section.6}% 20
+\BOOKMARK [2][-]{subsection.6.6}{Image Feature Extraction with NASNet-Large}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.7}{Image Feature Extraction with Image Pixels}{section.6}% 22
+\BOOKMARK [2][-]{subsection.6.8}{Convolutional Neural Network Implementation}{section.6}% 23
+\BOOKMARK [2][-]{subsection.6.9}{Image Cross-Entropy Computation}{section.6}% 24
+\BOOKMARK [2][-]{subsection.6.10}{Maximum Memory Capacity Prediction}{section.6}% 25
+\BOOKMARK [2][-]{subsection.6.11}{Glider Image and GIF generation}{section.6}% 26
+\BOOKMARK [2][-]{subsection.6.12}{Initial configuration of the gliders}{section.6}% 27
