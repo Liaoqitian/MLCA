@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\usepackage{hyperref, amsmath, graphicx, sectsty, amssymb, lipsum, titlesec, romannum, enumitem, mathtools, setspace, tabularx, listings}
+\usepackage{hyperref, amsmath, graphicx, sectsty, amssymb, lipsum, titlesec, romannum, enumitem, mathtools, setspace, tabularx, listings, array}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{ebgaramond}
@@ -31,10 +31,9 @@
 \titleformat*{\paragraph}{\large\bfseries}
 \titleformat*{\subparagraph}{\large\bfseries}
 
-\titlespacing{\section}{0pt}{0pt}{-\parskip}
+\titlespacing{\section}{0pt}{0\baselineskip}{0\baselineskip}
 \titlespacing{\subsection}{0pt}{0\baselineskip}{0\baselineskip}
 \titlespacing{\subsubsection}{0pt}{\parskip}{-\parskip}
-
 
 \usepackage[left=2cm, right=2cm, top=2cm]{geometry}
 \setlength\parindent{0pt}
@@ -91,7 +90,6 @@
 }
 
 \lstset{style=mystyle}
-
 
 \pagenumbering{roman}
 \begin{document}
@@ -1632,14 +1630,20 @@ def generate(neighborhood,max_state,survive_arr,born_arr):
         return 0
 \end{lstlisting}
 
+\subsection{Frame Extraction}
+\begin{lstlisting}[language = Python]
+def frame_extraction(file_path):
+    frames_list = []
+    for x in range(80, 120):
+        image = cv2.imread(file_path+str(x)+".png", cv2.IMREAD_GRAYSCALE)
+        image = cv2.resize(image, (IMG_SIZE, IMG_SIZE))
+        frames_list.append(image)
+\end{lstlisting}
+
 \subsection{The 35 Selected Interesting Rules}
-\begin{tabular}{ | m{2cm} | m{2cm} | m{2cm}|} 
+\begin{tabular}{| m{1.5cm} | m{1.5cm}| m{1.5cm}|}
 \hline
 Survival Rules & Death Rules & Number of States\\
-\hline 
-2, 4, 5 & 3, 6, 8 & 2\\
-\hline
-2, 3, 6, 7 & 3, 4, 5, 7	& 5 \\
 \hline
 3, 4, 5 & 2, 4 & 25 \\ 
 \hline
@@ -1671,25 +1675,53 @@ Survival Rules & Death Rules & Number of States\\
 \hline
 3, 4, 5 & 3, 4, 6, 7, 8 & 5 \\
 \hline
-3, 4, 6, 7 & 2, 5 & 6 \\
-\hline 
 \end{tabular}
 \quad
-\begin{tabular}{ccc}
+\begin{tabular}{| m{1.5cm} | m{1.5cm} | m{1.5cm}|}
 \hline
-d&e&f\\
+Survival Rules & Death Rules & Number of States\\
+\hline 
+2, 4, 5 & 3, 6, 8 & 2\\
+\hline
+2, 3, 6, 7 & 3, 4, 5, 7	& 5 \\
+\hline 
+3, 4, 6, 7 & 2, 5 & 6 \\
+\hline
+6 & 2	 & 3 \\ 
+\hline
+1, 2, 5 & 3, 6 & 2 \\
+\hline
+3, 4, 6, 7 & 2 & 4 \\
+\hline
+N/A & 2 & 3 \\
+\hline 
+2 & 2 & 8 \\ 
+\hline
+2, 3 & 2 & 8 \\ 
+\hline
+2, 3 & 3 & 2 \\
+\hline
+2, 3 & 3, 6 & 2 \\
+\hline
+2, 3, 8 & 3, 6, 8 & 2 \\
+\hline
+2, 3, 8 & 3, 5, 7 & 2 \\
+\hline
+2, 5, 6 & 2, 4, 5 & 5 \\
+\hline
+3, 4, 5 & 2 & 4 \\
+\hline
+4, 5, 6, 7 & 2, 3, 5, 8 & 5 \\ 
+\hline
+3 & 2, 5 & 3 \\
+\hline
+0 & 2, 6 & 4 \\
+\hline
+0, 4, 7, 8 & 2, 3, 5, 6 & 5 \\
+\hline
+3, 4, 5 & 2, 6 & 5 \\
 \hline
 \end{tabular}
-
-\subsection{Frame Extraction}
-\begin{lstlisting}[language = Python]
-def frame_extraction(file_path):
-    frames_list = []
-    for x in range(80, 120):
-        image = cv2.imread(file_path+str(x)+".png", cv2.IMREAD_GRAYSCALE)
-        image = cv2.resize(image, (IMG_SIZE, IMG_SIZE))
-        frames_list.append(image)
-\end{lstlisting}
 
 \subsection{RNN model structure}
 \begin{lstlisting}[language = Python]
@@ -1900,7 +1932,924 @@ with imageio.get_writer('mygif.gif', mode='I', duration = 0.5) as writer:
 \end{lstlisting}
 
 \subsection{Initial configuration of the gliders}
-Here contains a list of initial configurations and the corresponding parameters of the gliders mentioned in this paper. One can pass these as parameters into the function in 6.11 to reproduce the images and gif. 
+This section contains a list of initial configurations and the corresponding parameters of the gliders mentioned in this paper. One can pass these as parameters into the function in 6.11 to reproduce the images and gif. 
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [6]
+born_arr = [2,4,6]
+number_states = 3
+period = 2
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0, 0, 0],
+    [0, 0, 2, 2, 0, 0, 2, 1, 1, 0, 0, 1, 1, 2, 0, 0, 0, 0],
+    [0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0],
+    [0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 2, 1, 1, 2, 0, 0, 0],
+    [0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 1, 0, 0, 1, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 2, 2, 0, 0, 0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0],
+    [0, 0, 1, 1, 0, 0, 0, 0, 2, 1, 1, 0, 0, 1, 1, 2, 0, 0],
+    [0, 2, 0, 0, 2, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 1, 2, 0],
+    [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 2, 1, 1, 0, 0, 1, 1, 2, 0, 0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 2, 1, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],    
+    [0, 2, 2, 0, 0, 0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0, 0],
+    [0, 1, 1, 0, 0, 0, 0, 2, 1, 1, 0, 0, 1, 1, 2, 0, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 0, 1, 2, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  
+    [0, 0, 2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 0],
+    [0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 2, 1, 1, 0, 0, 0],
+    [0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 1, 0, 0, 2, 0, 0],
+    [0, 1, 2, 0, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  
+    [0, 0, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 2, 2, 0, 0, 0],
+    [0, 0, 1, 1, 2, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0],
+    [0, 2, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+    [0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] 
+]
+\end{lstlisting}
+\noindent\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4]
+born_arr = [2]
+number_states = 3
+period = 3
+data = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 1, 1, 0],
+    [0, 0, 2, 0, 0, 0],
+    [0, 2, 1, 2, 0, 0],
+    [0, 1, 0, 1, 0, 0],
+    [0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [6]
+born_arr = [2,4,6]
+number_states = 3
+period = 5
+data = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 2, 2, 0, 0], 
+    [0, 2, 1, 1, 2, 0], 
+    [0, 1, 0, 0, 1, 0], 
+    [0, 0, 2, 0, 0, 0], 
+    [0, 0, 1, 0, 0, 0], 
+    [0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}
 
+\noindent\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4]
+born_arr = [2]
+number_states = 3
+period = 3
+data = [
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 2, 2, 0],
+    [0, 0, 1, 1, 0],
+    [0, 2, 0, 0, 0],
+    [0, 1, 2, 0, 0],
+    [0, 0, 1, 2, 0],
+    [0, 2, 0, 1, 0],
+    [0, 1, 2, 0, 0],
+    [0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4]
+born_arr = [2]
+number_states = 3
+period = 3
+data = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 1, 1, 0],
+    [0, 0, 2, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0],
+    [0, 2, 0, 2, 0, 0],
+    [0, 1, 0, 1, 2, 0],
+    [0, 0, 1, 0, 1, 0],
+    [0, 2, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}
 
+\noindent\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4]
+born_arr = [2]
+number_states = 3
+period = 3
+data = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 2, 0, 2, 0, 0],
+    [0, 2, 1, 2, 1, 2, 0],
+    [0, 1, 0, 2, 0, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4]
+born_arr = [2]
+number_states = 3
+period = 3
+data = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 1, 1, 0],
+    [0, 0, 2, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0],
+    [0, 2, 0, 2, 0, 0],
+    [0, 1, 2, 1, 0, 0],
+    [0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 0, 0],
+    [0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}
+
+\noindent\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4]
+born_arr = [2]
+number_states = 3
+period = 3
+data = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 2, 0],
+    [0, 0, 2, 1, 1, 0],
+    [0, 0, 1, 0, 0, 0],
+    [0, 2, 0, 2, 0, 0],
+    [0, 1, 2, 1, 0, 0],
+    [0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 0, 0],
+    [0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4]
+born_arr = [2]
+number_states = 3
+period = 3
+data = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0],
+    [0, 2, 1, 2, 0, 0, 0],
+    [0, 1, 0, 1, 0, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+]
+
+\end{lstlisting}
+\end{minipage}
+
+\noindent\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4]
+born_arr = [2]
+number_states = 3
+period = 3
+data = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 1, 1, 0],
+    [0, 0, 2, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0],
+    [0, 2, 0, 0, 0, 0],
+    [0, 1, 2, 0, 0, 0],
+    [0, 0, 1, 2, 0, 0],
+    [0, 2, 0, 1, 0, 0],
+    [0, 1, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4]
+born_arr = [2]
+number_states = 3
+period = 3
+data = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0],
+    [0, 2, 0, 2, 0, 0, 0],
+    [0, 1, 0, 1, 2, 0, 0],
+    [0, 0, 1, 0, 1, 0, 0],
+    [0, 2, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}
+
+\noindent\begin{minipage}{.5\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4]
+born_arr = [2]
+number_states = 3
+period = 3 
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 2, 0, 2, 0, 0, 0],
+    [0, 2, 1, 2, 1, 2, 0, 0],
+    [0, 1, 0, 2, 0, 1, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0]
+]
+
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4]
+born_arr = [2]
+number_states = 3
+period = 3
+data = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0],
+    [0, 2, 0, 2, 0, 0, 0],
+    [0, 1, 2, 1, 0, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 0, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}
+
+\noindent\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4,6]
+born_arr = [2]
+number_states = 3
+period = 5
+data = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 2, 1, 0, 0, 0],
+    [0, 2, 1, 0, 2, 0, 0],
+    [0, 1, 0, 2, 1, 0, 0],
+    [0, 0, 2, 2, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+]
+
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4,6]
+born_arr = [2]
+number_states = 3
+period = 5
+data = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 2, 1, 2, 0, 0],
+    [0, 2, 1, 0, 1, 0, 0],
+    [0, 1, 0, 2, 0, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}
+
+\noindent\begin{minipage}{.50\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4,6]
+born_arr = [2]
+number_states = 3
+period = 5
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 2, 1, 2, 0, 0],
+    [0, 0, 2, 1, 0, 1, 0, 0],
+    [0, 2, 1, 0, 2, 0, 0, 0],
+    [0, 1, 0, 2, 0, 0, 0, 0],
+    [0, 0, 2, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4,6]
+born_arr = [2]
+number_states = 3
+period = 5
+data = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 2, 0, 2, 0, 0],
+    [0, 0, 1, 2, 1, 0, 0],
+    [0, 2, 0, 2, 0, 2, 0],
+    [0, 1, 0, 0, 0, 1, 0],
+    [0, 0, 2, 0, 2, 0, 0],
+    [0, 0, 1, 2, 1, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}
+
+\noindent\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4,6]
+born_arr = [2]
+number_states = 3
+period = 5
+data = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 2, 1, 0, 0, 0],
+    [0, 0, 1, 0, 2, 0, 0],
+    [0, 2, 0, 2, 1, 2, 0],
+    [0, 1, 2, 2, 0, 1, 0],
+    [0, 0, 1, 0, 2, 0, 0],
+    [0, 2, 1, 0, 1, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}{.5\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4,6]
+born_arr = [2]
+number_states = 3
+period = 5
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 2, 1, 0, 0, 0],
+    [0, 0, 2, 1, 0, 2, 0, 0],
+    [0, 2, 1, 0, 0, 1, 0, 0],
+    [0, 1, 0, 2, 1, 0, 0, 0],
+    [0, 0, 2, 1, 1, 2, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 1, 0, 1, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0]
+]
+
+\end{lstlisting}
+\end{minipage}
+
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4,6]
+born_arr = [2]
+number_states = 3
+period = 9
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 2, 1, 2, 0, 0],
+    [0, 0, 0, 2, 1, 0, 1, 0, 0],
+    [0, 0, 2, 1, 0, 2, 0, 0, 0],
+    [0, 2, 1, 0, 2, 0, 0, 0, 0],
+    [0, 1, 0, 2, 1, 0, 0, 0, 0],
+    [0, 0, 2, 2, 0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+
+\end{lstlisting}
+
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4,6]
+born_arr = [2]
+number_states = 3
+period = 9
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 2, 1, 0, 0, 0],
+    [0, 0, 0, 0, 2, 1, 0, 0, 0, 0],
+    [0, 0, 0, 2, 1, 0, 2, 0, 0, 0],
+    [0, 0, 2, 1, 0, 2, 1, 0, 0, 0],
+    [0, 2, 1, 0, 2, 2, 0, 0, 0, 0],
+    [0, 1, 0, 2, 1, 0, 0, 0, 0, 0],
+    [0, 0, 2, 2, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4,6]
+born_arr = [2]
+number_states = 3
+period = 5
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 2, 0, 0, 0, 0],
+    [0, 0, 0, 1, 1, 0, 0, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0, 0, 0],
+    [0, 2, 0, 2, 0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 2, 0, 0, 0, 0],
+    [0, 0, 1, 0, 1, 0, 0, 0, 0],
+    [0, 2, 1, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 2, 0, 0],
+    [0, 0, 0, 0, 2, 0, 1, 2, 0],
+    [0, 0, 0, 0, 1, 2, 0, 1, 0],
+    [0, 0, 0, 0, 0, 2, 2, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4,6]
+born_arr = [2]
+number_states = 3
+period = 5
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 2, 1, 2, 1, 2, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0, 2, 0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 2, 1, 2, 0, 0, 0, 0, 0, 2, 1, 2, 0, 0],
+    [0, 2, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0],
+    [0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 1, 0],
+    [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4,6]
+born_arr = [2]
+number_states = 3
+period = 5
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 2, 1, 0, 0, 0],
+    [0, 0, 2, 1, 0, 2, 0, 0],
+    [0, 2, 1, 0, 0, 1, 0, 0],
+    [0, 1, 0, 2, 1, 0, 2, 0],
+    [0, 0, 2, 2, 0, 2, 1, 0],
+    [0, 0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [6]
+born_arr = [2]
+number_states = 3
+period = 9
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 2, 2, 0, 0, 0, 0, 0],
+    [0, 1, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 2, 1, 2, 0, 0, 0],
+    [0, 0, 1, 0, 1, 2, 0, 0],
+    [0, 2, 0, 2, 0, 1, 2, 0],
+    [0, 1, 2, 2, 2, 0, 1, 0],
+    [0, 0, 1, 0, 1, 0, 0, 0],
+    [0, 2, 1, 0, 1, 1, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0, 0],
+    [0, 0, 2, 1, 1, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [6]
+born_arr = [2,4,6]
+number_states = 3
+period = 9
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+
+\noindent\begin{minipage}{.45\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [6]
+born_arr = [2,4,6]
+number_states = 3
+period = 5
+data = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 2, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0],
+    [0, 0, 0, 2, 1, 2, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}{.5\textwidth}
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4, 6]
+born_arr = [2]
+number_states = 3
+period = 4
+data = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 2, 0, 2, 1, 0],
+    [0, 1, 2, 0, 2, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}
+
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4, 6]
+born_arr = [2]
+number_states = 3
+period = 4
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 2, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 2, 0, 0, 0, 0],
+    [0, 0, 0, 1, 2, 0, 2, 2, 0],
+    [0, 0, 0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+
+\end{lstlisting}
+
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [4, 6]
+born_arr = [2]
+number_states = 3
+period = 8
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 0, 0, 1, 0, 0, 2, 0, 2, 0],
+    [0, 0, 0, 2, 2, 0, 1, 1, 0, 0],
+    [0, 1, 0, 1, 0, 0, 2, 0, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [3, 4, 5]
+born_arr = [2]
+number_states = 4
+period = 5
+data = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 3, 3, 0, 0],
+    [0, 0, 3, 3, 0, 0],
+    [0, 3, 2, 2, 3, 0], 
+    [0, 0, 3, 3, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [3]
+born_arr = [2]
+number_states = 4
+period = 12
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 2, 0, 0, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 2, 3, 0, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+\end{lstlisting}
+
+\subsubsection{}
+\begin{lstlisting}[language = Python]
+survival_arr = [3]
+born_arr = [2]
+number_states = 4
+period = 7
+data = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 1, 3, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+
+\end{lstlisting}
+
+\newpage
+\section{Bibliography}
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item Spaceship (cellular automaton). (2021, April 23). In Wikipedia. https://en.\linebreak
+wikipedia.org/wiki/Spaceship\_(cellular\_automaton)
+\item Rake (cellular automaton). (2021, January 13). In Wikipedia. https://en.\linebreak
+wikipedia.org/wiki/Rake\_(cellular\_automaton)
+\item Speed of light (cellular automaton). (2020, April 12). In Wikipedia. https://en.\linebreak
+wikipedia.org/wiki/Speed\_of\_light\_(cellular\_automaton)
+\item Wolfram Stephan (2002) A New Kind of Science. Wolfram Media, Champaign Il
+\item Bays C. (2009) Gliders in Cellular Automata. In: Meyers R. (eds) Encyclopedia of Complexity and Systems Science. Springer, New York, NY. 
+https://doi.\linebreak
+org/10.1007/978-0-387-30440-3\_249
+\item The Game of Life. (2021, April 21). In Wikipedia. 
+https://en.wikipedia.org/wiki\linebreak
+/The\_Game\_of\_Life
+\item Cellular automaton. (2021, April 26). In Wikipedia. 
+https://en.wikipedia.org\linebreak
+/wiki/Cellular\_automaton
+\item Rule 30. (2021, January 13). In Wikipedia. 
+https://en.wikipedia.org/wiki/Rule\_30
+\item Glider (Conway’s Life). (2021, April 20). In Wikipedia. 
+https://en.wikipedia.org/\linebreak
+wiki/Glider\_(Conway’s\_Life)
+\item Wuensche A. (2002) Finding Gliders in Cellular Automata. In: Adamatzky A. (eds) Collision-Based Computing. Springer, London. 
+https://doi.org/10.1007\linebreak
+/978-14471-0129-1\_13
+\item Xingjian Shi, Zhourong Chen, Hao Wang, Dit-Yan Yeung, Wai-Kin Wong, Wang-chun Woo. (2015) Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting. arXiv:1506.04214 [cs.CV]
+\item Bays C. (2009) Gliders in Cellular Automata. In: Meyers R. (eds) Encyclopedia of Complexity and Systems Science. Springer, New York, NY. https://doi.org
+\linebreak/10.1007/978 0 387 30440 3\_249
+\item Cellular Automata Lexicon http://psoup.math.wisc.edu/mcell/rullex\_gene.html
+\item David J.Eck. Department of Mathematics and Computer Science, Hobart and William Smith Colleges. Introduction to The Edge of Chaos http://math.\linebreak
+hws.edu/xJava/CA/EdgeOfChaos.html
+\item Christopher Olah. (5.17.2015) Understanding LSTM Networks. https://colah.\linebreak
+github.io/posts/2015-08-Understanding-LSTMs/
+
+\end{enumerate}
 \end{document}

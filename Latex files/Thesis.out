@@ -14,8 +14,8 @@
 \BOOKMARK [2][-]{subsection.5.2}{Future Work}{section.5}% 14
 \BOOKMARK [1][-]{section.6}{Appendix}{}% 15
 \BOOKMARK [2][-]{subsection.6.1}{Cellular Automata Generation Algorithm}{section.6}% 16
-\BOOKMARK [2][-]{subsection.6.2}{The 35 Selected Interesting Rules}{section.6}% 17
-\BOOKMARK [2][-]{subsection.6.3}{Frame Extraction}{section.6}% 18
+\BOOKMARK [2][-]{subsection.6.2}{Frame Extraction}{section.6}% 17
+\BOOKMARK [2][-]{subsection.6.3}{The 35 Selected Interesting Rules}{section.6}% 18
 \BOOKMARK [2][-]{subsection.6.4}{RNN model structure}{section.6}% 19
 \BOOKMARK [2][-]{subsection.6.5}{Image Stitching Function}{section.6}% 20
 \BOOKMARK [2][-]{subsection.6.6}{Image Feature Extraction with NASNet-Large}{section.6}% 21
@@ -25,3 +25,37 @@
 \BOOKMARK [2][-]{subsection.6.10}{Maximum Memory Capacity Prediction}{section.6}% 25
 \BOOKMARK [2][-]{subsection.6.11}{Glider Image and GIF generation}{section.6}% 26
 \BOOKMARK [2][-]{subsection.6.12}{Initial configuration of the gliders}{section.6}% 27
+\BOOKMARK [3][-]{subsubsection.6.12.1}{}{subsection.6.12}% 28
+\BOOKMARK [3][-]{subsubsection.6.12.2}{}{subsection.6.12}% 29
+\BOOKMARK [3][-]{subsubsection.6.12.3}{}{subsection.6.12}% 30
+\BOOKMARK [3][-]{subsubsection.6.12.4}{}{subsection.6.12}% 31
+\BOOKMARK [3][-]{subsubsection.6.12.5}{}{subsection.6.12}% 32
+\BOOKMARK [3][-]{subsubsection.6.12.6}{}{subsection.6.12}% 33
+\BOOKMARK [3][-]{subsubsection.6.12.7}{}{subsection.6.12}% 34
+\BOOKMARK [3][-]{subsubsection.6.12.8}{}{subsection.6.12}% 35
+\BOOKMARK [3][-]{subsubsection.6.12.9}{}{subsection.6.12}% 36
+\BOOKMARK [3][-]{subsubsection.6.12.10}{}{subsection.6.12}% 37
+\BOOKMARK [3][-]{subsubsection.6.12.11}{}{subsection.6.12}% 38
+\BOOKMARK [3][-]{subsubsection.6.12.12}{}{subsection.6.12}% 39
+\BOOKMARK [3][-]{subsubsection.6.12.13}{}{subsection.6.12}% 40
+\BOOKMARK [3][-]{subsubsection.6.12.14}{}{subsection.6.12}% 41
+\BOOKMARK [3][-]{subsubsection.6.12.15}{}{subsection.6.12}% 42
+\BOOKMARK [3][-]{subsubsection.6.12.16}{}{subsection.6.12}% 43
+\BOOKMARK [3][-]{subsubsection.6.12.17}{}{subsection.6.12}% 44
+\BOOKMARK [3][-]{subsubsection.6.12.18}{}{subsection.6.12}% 45
+\BOOKMARK [3][-]{subsubsection.6.12.19}{}{subsection.6.12}% 46
+\BOOKMARK [3][-]{subsubsection.6.12.20}{}{subsection.6.12}% 47
+\BOOKMARK [3][-]{subsubsection.6.12.21}{}{subsection.6.12}% 48
+\BOOKMARK [3][-]{subsubsection.6.12.22}{}{subsection.6.12}% 49
+\BOOKMARK [3][-]{subsubsection.6.12.23}{}{subsection.6.12}% 50
+\BOOKMARK [3][-]{subsubsection.6.12.24}{}{subsection.6.12}% 51
+\BOOKMARK [3][-]{subsubsection.6.12.25}{}{subsection.6.12}% 52
+\BOOKMARK [3][-]{subsubsection.6.12.26}{}{subsection.6.12}% 53
+\BOOKMARK [3][-]{subsubsection.6.12.27}{}{subsection.6.12}% 54
+\BOOKMARK [3][-]{subsubsection.6.12.28}{}{subsection.6.12}% 55
+\BOOKMARK [3][-]{subsubsection.6.12.29}{}{subsection.6.12}% 56
+\BOOKMARK [3][-]{subsubsection.6.12.30}{}{subsection.6.12}% 57
+\BOOKMARK [3][-]{subsubsection.6.12.31}{}{subsection.6.12}% 58
+\BOOKMARK [3][-]{subsubsection.6.12.32}{}{subsection.6.12}% 59
+\BOOKMARK [3][-]{subsubsection.6.12.33}{}{subsection.6.12}% 60
+\BOOKMARK [1][-]{section.7}{Bibliography}{}% 61
