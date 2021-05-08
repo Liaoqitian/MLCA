@@ -43,6 +43,7 @@
 \geometry{a4paper, margin=1.5in}
 \renewcommand{\baselinestretch}{1.5}
 \usepackage[nottoc,numbib]{tocbibind}
+
 % Set up figure captions 
 \captionsetup[figure]{
     width=0.8\linewidth, 
@@ -65,6 +66,7 @@
 \renewcommand{\thesubfigure}{\arabic{subfigure}}
 \setlength{\belowcaptionskip}{-10pt}
 
+% Set up code blocks
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -91,12 +93,15 @@
 
 \lstset{style=mystyle}
 
+% set up table of contents
+%\renewcommand\cftsecfont{\large\bfseries}
+%\renewcommand\cftsubsecfont{\large}
+
 \setlength\cftparskip{-2pt}
 \setlength\cftbeforesecskip{1pt}
 \setlength\cftaftertoctitleskip{2pt}
 
-% set up abstract
-\renewcommand{\abstractnamefont}{\normalfont\Large\bfseries}
+
 
 \pagenumbering{roman}
 \begin{document}
@@ -157,8 +162,8 @@ Since there are two possible states in the Game of Life, the live cells satisfyi
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=\linewidth]{Section1/3}
-\caption{Transitional state diagram of the Game of Life.}
-\label[Transitional state diagram of the Game of Life]{fig:Transitional state diagram of the Game of Life}
+\caption[Transitional state diagram of the Game of Life]{Transitional state diagram of the Game of Life.}
+\label{fig:Transitional state diagram of the Game of Life}
 \end{figure}
 
 Cellular automata become much more complicated and interesting when there are more than two possible states. In this case, apart from the live (i.e, healthy) and dead cells, there are also transitional dying cells (i.e., sick cells) in between and we are free to implement new rules to define how these sick cells interact with the other. In the rest of the paper, healthy and live cells refer to the same thing and are thus used interchangeably. These newly added rules, combined with the survival and born rules, constitute a new set of evolution rules. 
@@ -1992,7 +1997,7 @@ with imageio.get_writer('mygif.gif', mode='I', duration = 0.5) as writer:
 \subsection{Initial configuration of the gliders}
 \label{subsection:Initial configuration of the gliders}
 This section contains a list of initial configurations and the corresponding parameters of the gliders mentioned in this paper. One can pass these as parameters into the function in 6.11 to reproduce the images and gif. 
-\subsubsection{Figure ~\ref{fig:one-period gliders}}
+\subsubsection{Code for figure ~\ref{fig:one-period gliders}}
 \label{subsubsection:one-period gliders}
 \begin{lstlisting}[language = Python]
 survival_arr = [6]
@@ -2058,7 +2063,7 @@ data = [
 ]
 \end{lstlisting}
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:counter example}}
+\subsubsection{Code for figure ~\ref{fig:counter example}}
 \label{subsubsection:counter example}
 \begin{lstlisting}[language = Python]
 survival_arr = [6]
@@ -2082,7 +2087,7 @@ data = [
 \end{minipage}
 \hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:two-period gliders}}
+\subsubsection{Code for figure ~\ref{fig:two-period gliders}}
 \label{subsubsection:two-period gliders(1/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
@@ -2105,7 +2110,7 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:two-period gliders}}
+\subsubsection{Code for figure ~\ref{fig:two-period gliders}}
 \label{subsubsection:two-period gliders(2/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
@@ -2128,7 +2133,7 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:two-period gliders}}
+\subsubsection{Code for figure ~\ref{fig:two-period gliders}}
 \label{subsubsection:two-period gliders(3/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
@@ -2153,7 +2158,7 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:two-period gliders}}
+\subsubsection{Code for figure ~\ref{fig:two-period gliders}}
 \label{subsubsection:two-period gliders(4/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
@@ -2176,7 +2181,7 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:two-period gliders}}
+\subsubsection{Code for figure ~\ref{fig:two-period gliders}}
 \label{subsubsection:two-period gliders(5/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
@@ -2203,7 +2208,7 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:almost same two-period glider}}
+\subsubsection{Code for figure ~\ref{fig:almost same two-period glider}}
 \label{subsubsection:almost same two-period glider}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
@@ -2228,7 +2233,7 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:extended two-period gliders} (1/5)}
+\subsubsection{Code for figure ~\ref{fig:extended two-period gliders} (1/5)}
 \label{subsubsection:extended two-period gliders(1/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
@@ -2254,7 +2259,7 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:extended two-period gliders} (2/5)}
+\subsubsection{Code for figure ~\ref{fig:extended two-period gliders} (2/5)}
 \label{subsubsection:extended two-period gliders(2/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
@@ -2279,7 +2284,7 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:extended two-period gliders} (3/5)}
+\subsubsection{Code for figure ~\ref{fig:extended two-period gliders} (3/5)}
 \label{subsubsection:extended two-period gliders(3/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
@@ -2306,7 +2311,7 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.5\textwidth}
-\subsubsection{Figure ~\ref{fig:extended two-period gliders} (4/5)}
+\subsubsection{Code for figure ~\ref{fig:extended two-period gliders} (4/5)}
 \label{subsubsection:extended two-period gliders(4/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
@@ -2332,7 +2337,7 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:extended two-period gliders} (5/5)}
+\subsubsection{Code for figure ~\ref{fig:extended two-period gliders} (5/5)}
 \label{subsubsection:extended two-period gliders(5/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
@@ -2362,7 +2367,7 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:four-period gliders} (1/6)}
+\subsubsection{Code for figure ~\ref{fig:four-period gliders} (1/6)}
 \label{subsubsection:four-period gliders(1/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
@@ -2389,7 +2394,7 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:four-period gliders} (2/6)}
+\subsubsection{Code for figure ~\ref{fig:four-period gliders} (2/6)}
 \label{subsubsection:four-period gliders(2/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
@@ -2416,7 +2421,7 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.50\textwidth}
-\subsubsection{Figure ~\ref{fig:four-period gliders} (3/6)}
+\subsubsection{Code for figure ~\ref{fig:four-period gliders} (3/6)}
 \label{subsubsection:four-period gliders(3/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
@@ -2442,7 +2447,7 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:four-period gliders} (4/6)}
+\subsubsection{Code for figure ~\ref{fig:four-period gliders} (4/6)}
 \label{subsubsection:four-period gliders(4/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
@@ -2473,7 +2478,7 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:four-period gliders} (5/6)}
+\subsubsection{Code for figure ~\ref{fig:four-period gliders} (5/6)}
 \label{subsubsection:four-period gliders(5/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
@@ -2501,7 +2506,7 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.5\textwidth}
-\subsubsection{Figure ~\ref{fig:four-period gliders} (6/6)}
+\subsubsection{Code for figure ~\ref{fig:four-period gliders} (6/6)}
 \label{subsubsection:four-period gliders(6/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
@@ -2536,7 +2541,7 @@ data = [
 \end{lstlisting}
 \end{minipage}
 
-\subsubsection{Figure ~\ref{fig:eight-period gliders} (1/2)}
+\subsubsection{Code for figure ~\ref{fig:eight-period gliders} (1/2)}
 \label{subsubsection:eight-period gliders (1/2)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
@@ -2568,7 +2573,7 @@ data = [
 
 \end{lstlisting}
 
-\subsubsection{Figure ~\ref{fig:eight-period gliders} (2/2)}
+\subsubsection{Code for figure ~\ref{fig:eight-period gliders} (2/2)}
 \label{subsubsection:eight-period gliders (2/2)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
@@ -2600,7 +2605,7 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Figure ~\ref{fig:frankenstein gliders} (1/2)}
+\subsubsection{Code for figure ~\ref{fig:frankenstein gliders} (1/2)}
 \label{subsubsection:frankenstein glider one}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
@@ -2631,7 +2636,7 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Figure ~\ref{fig:frankenstein gliders} (2/2)}
+\subsubsection{Code for figure ~\ref{fig:frankenstein gliders} (2/2)}
 \label{subsubsection:frankenstein glider two}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
@@ -2663,7 +2668,7 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Figure ~\ref{fig:four-period rake}}
+\subsubsection{Code for figure ~\ref{fig:four-period rake}}
 \label{subsubsection:four-period rake}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
@@ -2691,7 +2696,7 @@ data = [
     [0, 0, 0, 0, 0, 0, 0, 0]
 ]
 \end{lstlisting}
-\subsubsection{Figure ~\ref{fig:eight-period rake one}}
+\subsubsection{Code for figure ~\ref{fig:eight-period rake one}}
 \label{subsubsection:eight-period rake one}
 \begin{lstlisting}[language = Python]
 survival_arr = [6]
@@ -2723,7 +2728,7 @@ data = [
     [0, 0, 0, 0, 0, 0, 0, 0]
 ]
 \end{lstlisting}
-\subsubsection{Figure ~\ref{fig:eight-period rake two}}
+\subsubsection{Code for figure ~\ref{fig:eight-period rake two}}
 \label{subsubsection:eight-period rake two}
 \begin{lstlisting}[language = Python]
 survival_arr = [6]
@@ -2754,7 +2759,7 @@ data = [
 \end{lstlisting}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:the new life}}
+\subsubsection{Code for figure ~\ref{fig:the new life}}
 \label{subsubsection:the new life}
 \begin{lstlisting}[language = Python]
 survival_arr = [6]
@@ -2772,7 +2777,7 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.5\textwidth}
-\subsubsection{Figure ~\ref{fig:glider all dead}}
+\subsubsection{Code for figure ~\ref{fig:glider all dead}}
 \label{subsubsection:glider all dead}
 \begin{lstlisting}[language = Python]
 survival_arr = [4, 6]
@@ -2790,7 +2795,7 @@ data = [
 \end{lstlisting}
 \end{minipage}
 
-\subsubsection{Figure ~\ref{fig:murder glider one}}
+\subsubsection{Code for figure ~\ref{fig:murder glider one}}
 \label{subsubsection:murder glider one}
 \begin{lstlisting}[language = Python]
 survival_arr = [4, 6]
@@ -2811,7 +2816,7 @@ data = [
 
 \end{lstlisting}
 
-\subsubsection{Figure ~\ref{fig:murder glider two}}
+\subsubsection{Code for figure ~\ref{fig:murder glider two}}
 \label{subsubsection:murder glider two}
 \begin{lstlisting}[language = Python]
 survival_arr = [4, 6]
@@ -2836,7 +2841,7 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Figure ~\ref{fig:rocket}}
+\subsubsection{Code for figure ~\ref{fig:rocket}}
 \label{subsubsection:rocket}
 \begin{lstlisting}[language = Python]
 survival_arr = [3, 4, 5]
@@ -2861,7 +2866,7 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Figure ~\ref{fig:combined glider}}
+\subsubsection{Code for figure ~\ref{fig:combined glider}}
 \label{subsubsection:combined glider}
 \begin{lstlisting}[language = Python]
 survival_arr = [3]
@@ -2881,7 +2886,7 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Figure ~\ref{fig:murder glider}}
+\subsubsection{Code for figure ~\ref{fig:murder glider}}
 \label{subsubsection:murder glider}
 \begin{lstlisting}[language = Python]
 survival_arr = [3]

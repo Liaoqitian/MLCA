@@ -1,0 +1,65 @@
+\BOOKMARK [1][-]{Doc-Start}{Abstract}{}% 1
+\BOOKMARK [1][-]{Doc-Start}{Acknowledgement}{}% 2
+\BOOKMARK [1][-]{section*.1}{List of Figures}{}% 3
+\BOOKMARK [1][-]{section*.2}{List of Tables}{}% 4
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 5
+\BOOKMARK [1][-]{section.2}{Related Work}{}% 6
+\BOOKMARK [1][-]{section.3}{Methodology}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Dataset Generation}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{Sequence Training with RNN}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{Data Preprocessing, Feature Extraction, Training with CNN}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.4}{Entropy Analysis}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{Glider Activities}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{Gliders in three-state cellular automata}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.2}{Glider Collision Behaviors in three-state cellular automata}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.3}{Other interesting discoveries}{section.4}% 15
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 16
+\BOOKMARK [2][-]{subsection.5.1}{Experiment Summary}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.2}{Future Work}{section.5}% 18
+\BOOKMARK [1][-]{section.6}{Appendix}{}% 19
+\BOOKMARK [2][-]{subsection.6.1}{Cellular Automata Generation Algorithm}{section.6}% 20
+\BOOKMARK [2][-]{subsection.6.2}{Frame Extraction}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.3}{The 35 Selected Interesting Rules}{section.6}% 22
+\BOOKMARK [2][-]{subsection.6.4}{Recurrent Neural Network Implementation}{section.6}% 23
+\BOOKMARK [2][-]{subsection.6.5}{Image Stitching Function}{section.6}% 24
+\BOOKMARK [2][-]{subsection.6.6}{Image Feature Extraction with NASNet-Large}{section.6}% 25
+\BOOKMARK [2][-]{subsection.6.7}{Image Feature Extraction with Image Pixels}{section.6}% 26
+\BOOKMARK [2][-]{subsection.6.8}{Convolutional Neural Network Implementation}{section.6}% 27
+\BOOKMARK [2][-]{subsection.6.9}{Image Cross-Entropy Computation}{section.6}% 28
+\BOOKMARK [2][-]{subsection.6.10}{Maximum Memory Capacity Prediction}{section.6}% 29
+\BOOKMARK [2][-]{subsection.6.11}{Glider Image and GIF generation}{section.6}% 30
+\BOOKMARK [2][-]{subsection.6.12}{Initial configuration of the gliders}{section.6}% 31
+\BOOKMARK [3][-]{subsubsection.6.12.1}{Code for figure \0404.1}{subsection.6.12}% 32
+\BOOKMARK [3][-]{subsubsection.6.12.2}{Code for figure \0404.2}{subsection.6.12}% 33
+\BOOKMARK [3][-]{subsubsection.6.12.3}{Code for figure \0404.3}{subsection.6.12}% 34
+\BOOKMARK [3][-]{subsubsection.6.12.4}{Code for figure \0404.3}{subsection.6.12}% 35
+\BOOKMARK [3][-]{subsubsection.6.12.5}{Code for figure \0404.3}{subsection.6.12}% 36
+\BOOKMARK [3][-]{subsubsection.6.12.6}{Code for figure \0404.3}{subsection.6.12}% 37
+\BOOKMARK [3][-]{subsubsection.6.12.7}{Code for figure \0404.3}{subsection.6.12}% 38
+\BOOKMARK [3][-]{subsubsection.6.12.8}{Code for figure \0404.5}{subsection.6.12}% 39
+\BOOKMARK [3][-]{subsubsection.6.12.9}{Code for figure \0404.6 \(1/5\)}{subsection.6.12}% 40
+\BOOKMARK [3][-]{subsubsection.6.12.10}{Code for figure \0404.6 \(2/5\)}{subsection.6.12}% 41
+\BOOKMARK [3][-]{subsubsection.6.12.11}{Code for figure \0404.6 \(3/5\)}{subsection.6.12}% 42
+\BOOKMARK [3][-]{subsubsection.6.12.12}{Code for figure \0404.6 \(4/5\)}{subsection.6.12}% 43
+\BOOKMARK [3][-]{subsubsection.6.12.13}{Code for figure \0404.6 \(5/5\)}{subsection.6.12}% 44
+\BOOKMARK [3][-]{subsubsection.6.12.14}{Code for figure \0404.7 \(1/6\)}{subsection.6.12}% 45
+\BOOKMARK [3][-]{subsubsection.6.12.15}{Code for figure \0404.7 \(2/6\)}{subsection.6.12}% 46
+\BOOKMARK [3][-]{subsubsection.6.12.16}{Code for figure \0404.7 \(3/6\)}{subsection.6.12}% 47
+\BOOKMARK [3][-]{subsubsection.6.12.17}{Code for figure \0404.7 \(4/6\)}{subsection.6.12}% 48
+\BOOKMARK [3][-]{subsubsection.6.12.18}{Code for figure \0404.7 \(5/6\)}{subsection.6.12}% 49
+\BOOKMARK [3][-]{subsubsection.6.12.19}{Code for figure \0404.7 \(6/6\)}{subsection.6.12}% 50
+\BOOKMARK [3][-]{subsubsection.6.12.20}{Code for figure \0404.9 \(1/2\)}{subsection.6.12}% 51
+\BOOKMARK [3][-]{subsubsection.6.12.21}{Code for figure \0404.9 \(2/2\)}{subsection.6.12}% 52
+\BOOKMARK [3][-]{subsubsection.6.12.22}{Code for figure \0404.11 \(1/2\)}{subsection.6.12}% 53
+\BOOKMARK [3][-]{subsubsection.6.12.23}{Code for figure \0404.11 \(2/2\)}{subsection.6.12}% 54
+\BOOKMARK [3][-]{subsubsection.6.12.24}{Code for figure \0404.12}{subsection.6.12}% 55
+\BOOKMARK [3][-]{subsubsection.6.12.25}{Code for figure \0404.13}{subsection.6.12}% 56
+\BOOKMARK [3][-]{subsubsection.6.12.26}{Code for figure \0404.14}{subsection.6.12}% 57
+\BOOKMARK [3][-]{subsubsection.6.12.27}{Code for figure \0404.15}{subsection.6.12}% 58
+\BOOKMARK [3][-]{subsubsection.6.12.28}{Code for figure \0404.16}{subsection.6.12}% 59
+\BOOKMARK [3][-]{subsubsection.6.12.29}{Code for figure \0404.17}{subsection.6.12}% 60
+\BOOKMARK [3][-]{subsubsection.6.12.30}{Code for figure \0404.18}{subsection.6.12}% 61
+\BOOKMARK [3][-]{subsubsection.6.12.31}{Code for figure \0404.19}{subsection.6.12}% 62
+\BOOKMARK [3][-]{subsubsection.6.12.32}{Code for figure \0404.20}{subsection.6.12}% 63
+\BOOKMARK [3][-]{subsubsection.6.12.33}{Code for figure \0404.21}{subsection.6.12}% 64
+\BOOKMARK [1][-]{section.7}{References}{}% 65
