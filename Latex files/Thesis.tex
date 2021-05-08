@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\usepackage{hyperref, amsmath, graphicx, sectsty, amssymb, lipsum, titlesec, romannum, enumitem, mathtools, setspace, tabularx, listings, array}
+\usepackage{hyperref, amsmath, graphicx, sectsty, amssymb, lipsum, titlesec, romannum, enumitem, mathtools, setspace, tabularx, listings, array, tocloft, abstract}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{ebgaramond}
@@ -42,7 +42,7 @@
 
 \geometry{a4paper, margin=1.5in}
 \renewcommand{\baselinestretch}{1.5}
-
+\usepackage[nottoc,numbib]{tocbibind}
 % Set up figure captions 
 \captionsetup[figure]{
     width=0.8\linewidth, 
@@ -91,14 +91,19 @@
 
 \lstset{style=mystyle}
 
+\setlength\cftparskip{-2pt}
+\setlength\cftbeforesecskip{1pt}
+\setlength\cftaftertoctitleskip{2pt}
+
+% set up abstract
+\renewcommand{\abstractnamefont}{\normalfont\Large\bfseries}
+
 \pagenumbering{roman}
 \begin{document}
 
 \thispagestyle{plain}
-\begin{center}
-\Large
-\textbf{Abstract}
-\end{center}
+\section*{\centering Abstract}
+\addcontentsline{toc}{section}{Abstract}
 Cellular automata is a collection of colored cells on a grid that evolves according to a set of neighborhood rules. The rules, which consists of a born rule, a survive rule, and the number of possible states, are applied iteratively for as many times steps as desired to generate new grid configurations. There are many possible configurations and this paper specifically explores cellular automata using Moore neighborhood in the deterministic model of “Instant birth, gradual death, no recovery”, meaning that sick cells are not able to recover and have to move one step closer to death at each generation. 
 
 A challenge that two-dimensional cellular automata face is a huge parameter search space to generate patterns within. The number of total possible combinations of parameters in the rules can easily exceed billion. In this paper, we define the rules that generate gliders as interesting, not other rules that can be subjectively labeled as interesting, such as intricate still life and oscillating patterns. Existing research has not discovered a clear pattern among rules which generate gliders (oscillating translators that move across the grid). 
@@ -107,19 +112,24 @@ Manually searching for the interesting rules would be unrealistic as users may h
 
 \newpage
 \thispagestyle{plain}
-\begin{center}
-\Large
-\textbf{Acknowledgements}
-\end{center}
+\section*{\centering Acknowledgement}
+\addcontentsline{toc}{section}{Acknowledgement}
+%\textbf{Acknowledgements}
+
+
 Throughout my years at UC Berkeley, I met many amazing friends, peers, and mentors, all of whom have contributed to my accomplishments and progress. It is very important for me to recognize all the people who have helped me during my graduate studies and the completion of this paper. First I would like to thank my faculty advisor, professor Dan Garcia, the best mentor I could ask for, who graciously accepted me to his research team in my undergraduate years and constantly motivated me to be the best scholar I could. He has always been enthusiastic about my work and gave me tremendous support and encouragement. As a busy person, he always made time for me whenever I needed discussion or feedback, and his comments enlightened me in many ways when writing this paper. I am also grateful to my technical advisor and mentor in the field of machine learning, professor Gerald Friedland, for the opportunities he has given me and the invaluable guidance during the weekly meetings. I would also like to thank, Randy Fan, who gave me the inspiration to write about the topic. Parts of this report were adapted from an unpublished class project report Randy and I worked on during our graduate years. This paper would not have been possible without his contributions. To my girlfriend, Yanran Chen, who supported me in every way possible during the pandemic. My life would have been mundane without her immeasurable love and constant company. Lastly, I am forever grateful to my parents, Faqiang Liao and Lei Qu: their love, support, and encouragement are the foundation upon which all my past and future achievements are built.     
 
+\newpage
+\listoffigures
+\newpage
+\listoftables
 \newpage
 \tableofcontents
 
 \newpage
 \section{Introduction}
 \pagenumbering{arabic}
-A cellular automaton is a collection of cells on a grid of a specified shape that evolves through discrete time steps according to a set of rules \cite{Cellular automaton}. The grid can be in any finite number of dimensions, and the evolution rules usually consist of constraints on the current state of the cell and the states of the cells in the neighborhood. The most common neighborhood configurations are von Neumann neighborhood and Moore neighborhood in Figure~\ref{fig:Neighborhood}, which includes the surrounding four and eight cells respectively. Cellular automata have attracted much attention among scientists and they have been regarded by Stephen Wolfram as the “new kind of science” \cite{A new kind of Science}. What makes cellular automata so special is that we normally restrict ourselves to systems whose behavior we can readily understand and predict, because otherwise we cannot be sure that the system will do what we want. However, unlike the carefully engineered machinery, everything in nature is fundamentally made of particles flowing in space with arbitrary rules. Cellular automaton, like nature, operates under no such constraints of predictability or controllability. Applying a simple cellular automaton rule to a simple initial configuration can lead to a result that shows an immense level of complexity. The most fascinating aspect of it is that it seems to involve generating something from nothing, a practice that humans are simply not used to. Therefore, because of the resemblance between cellular automata and nature, it is natural think of their dynamics as a micro-world where the cells constitute their own ecosystems. 
+A cellular automaton is a collection of cells on a grid of a specified shape that evolves through discrete time steps according to a set of rules \cite{Cellular automaton}. The grid can be in any finite number of dimensions, and the evolution rules usually consist of constraints on the current state of the cell and the states of the cells in the neighborhood. The most common neighborhood configurations are von Neumann neighborhood and Moore neighborhood in Figure~\ref{fig:Neighborhood configuration}, which includes the surrounding four and eight cells respectively. Cellular automata have attracted much attention among scientists and they have been regarded by Stephen Wolfram as the “new kind of science” \cite{A new kind of Science}. What makes cellular automata so special is that we normally restrict ourselves to systems whose behavior we can readily understand and predict, because otherwise we cannot be sure that the system will do what we want. However, unlike the carefully engineered machinery, everything in nature is fundamentally made of particles flowing in space with arbitrary rules. Cellular automaton, like nature, operates under no such constraints of predictability or controllability. Applying a simple cellular automaton rule to a simple initial configuration can lead to a result that shows an immense level of complexity. The most fascinating aspect of it is that it seems to involve generating something from nothing, a practice that humans are simply not used to. Therefore, because of the resemblance between cellular automata and nature, it is natural think of their dynamics as a micro-world where the cells constitute their own ecosystems. 
 
 The arguably most famous cellular automaton is John Conway’s the Game of Life \cite{The Game of Life} that was initially revealed to the public in a 1970 Scientific American article. The Game of Life is a two-dimensional cellular automaton with two possible states, live and dead, using Moore neighborhood and the following set of rules: 
 \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
@@ -137,18 +147,18 @@ The arguably most famous cellular automaton is John Conway’s the Game of Life 
      \centering
      \includegraphics[width=.6\linewidth]{Section1/2}
    \end{subfigure}
-   \caption{(Left) Neumann Neighborhood includes the surrounding four cells of a center cell. (Right) Moore Neighborhood includes the surrounding eight cells of the center cell.}
+   \caption[Neighborhood configuration]{(Left) Neumann Neighborhood includes the surrounding four cells of a center cell. (Right) Moore Neighborhood includes the surrounding eight cells of the center cell.}
    \vspace{-1.5em}
-   \label{fig:Neighborhood}
+   \label{fig:Neighborhood configuration}
 \end{figure}
 
-Since there are two possible states in the Game of Life, the live cells satisfying the survival rule and the dead cells satisfying the born rule will be alive in the next generation, and the remaining cells will all be dead. The probability of surviving and being born is $\frac{2}{9}$ and $\frac{1}{9}$ respectively. The evolution rule is often visualized using cellular automaton state transition diagrams, where each vertex on the graph represents one of the states and is joined to the vertex representing the state reached after one step in the evolution. The probability of that transition, if available, will be highlighted on the edge. Figure ~\ref{fig:GOL diagram} shows the transitional state diagram of the Game of Life. 
+Since there are two possible states in the Game of Life, the live cells satisfying the survival rule and the dead cells satisfying the born rule will be alive in the next generation, and the remaining cells will all be dead. The probability of surviving and being born is $\frac{2}{9}$ and $\frac{1}{9}$ respectively. The evolution rule is often visualized using cellular automaton state transition diagrams, where each vertex on the graph represents one of the states and is joined to the vertex representing the state reached after one step in the evolution. The probability of that transition, if available, will be highlighted on the edge. Figure ~\ref{fig:Transitional state diagram of the Game of Life} shows the transitional state diagram of the Game of Life. 
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=\linewidth]{Section1/3}
 \caption{Transitional state diagram of the Game of Life.}
-\label{fig:GOL diagram}
+\label[Transitional state diagram of the Game of Life]{fig:Transitional state diagram of the Game of Life}
 \end{figure}
 
 Cellular automata become much more complicated and interesting when there are more than two possible states. In this case, apart from the live (i.e, healthy) and dead cells, there are also transitional dying cells (i.e., sick cells) in between and we are free to implement new rules to define how these sick cells interact with the other. In the rest of the paper, healthy and live cells refer to the same thing and are thus used interchangeably. These newly added rules, combined with the survival and born rules, constitute a new set of evolution rules. 
@@ -273,7 +283,7 @@ The most famous glider found by Conway is the first one in Figure ~\ref{fig:GOL 
      \subcaption{}
    \end{subfigure}
    {\LARGE$\xrightarrow{}$}
-\caption{Gliders generated by the Game of Life “2,3/3/2” rule. The top is the original glider first found by Conway. The rest are the light-weight, mid-weight and heavy-weight spaceships respectively. All four gliders have a period of four. The light-weight, mid-weight and heavy-weight spaceship have a speed of $c/2$, as it takes four generations for a given state to be translated by two cells. }
+\caption[Gliders in the Game of Life]{Gliders generated by the Game of Life “2,3/3/2” rule. The top is the original glider first found by Conway. The rest are the light-weight, mid-weight and heavy-weight spaceships respectively. All four gliders have a period of four. The light-weight, mid-weight and heavy-weight spaceship have a speed of $c/2$, as it takes four generations for a given state to be translated by two cells. }
 \label{fig:GOL examples}
 \vspace{-1.5em}
 \end{figure}
@@ -299,7 +309,7 @@ The most famous glider found by Conway is the first one in Figure ~\ref{fig:GOL 
      \includegraphics[width=\linewidth]{Section1/8.4}
      \subcaption{}
    \end{subfigure}
-   \caption{Four examples of discovered glider patterns with different rules. (Top Left) Brian’s Brain with rule “/2/3”. (Top Right) Burst with rule “0,2,3,5,6,7,8/3,4,6,8/9”. (Bottom Left) Brain6 with rule “6/2,4,6/3”. (Bottom Right) Star Wars with rule “3,4,5/2/4”.}
+   \caption[Examples of famous gliders]{Four examples of discovered glider patterns with different rules. (Top Left) Brian’s Brain with rule “/2/3”. (Top Right) Burst with rule “0,2,3,5,6,7,8/3,4,6,8/9”. (Bottom Left) Brain6 with rule “6/2,4,6/3”. (Bottom Right) Star Wars with rule “3,4,5/2/4”.}
    \label{fig:famous gliders}
    \vspace{-1.5em}
 \end{figure}
@@ -309,7 +319,7 @@ The gliders in Figure ~\ref{fig:famous gliders} belong to the category of outer 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{Section1/9}
-\caption{"Instant birth, gradual death, no recovery” Model. Healthy cells can get sick. Sick cells are not able to recover, and they will be one step closer to death at each step. Dead cells cannot be born sick.}
+\caption["Instant birth, gradual death, no recovery” Model]{"Instant birth, gradual death, no recovery” Model. Healthy cells can get sick. Sick cells are not able to recover, and they will be one step closer to death at each step. Dead cells cannot be born sick.}
 \label{fig:IGN model}
 \vspace{-1.5em}
 \end{figure}
@@ -342,7 +352,7 @@ The hype for cellular automata reached its peak when another great scientist Ste
  
 \begin{figure}[H]
 \includegraphics[width=\linewidth]{Section2/1}
-\caption{Wolfram’s Rule 30}
+\caption[Wolfram's Rule 30]{Wolfram’s Rule 30}
 \vspace{-1.5em}
 \label{fig:Rule 30}
 \end{figure}
@@ -375,7 +385,7 @@ Because of the limited number of rules that we classified, we decided to apply d
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\linewidth]{Section3/1}
-\caption{Frame 107 of a boring rule “1,5,8/2/7” with a random initial configuration. }
+\caption[Example of a generated frame]{Frame 107 of a boring rule “1,5,8/2/7” with a random initial configuration. }
 \vspace{-1.5em}
 \label{fig:generated frame example}
 \end{figure}
@@ -412,7 +422,7 @@ In the previous approach, we used RNN, specifically LSTM to train the models, wh
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.3\linewidth]{Section3/2}
-\caption{Example of sequence of frames in the stitched image if nine of them are included.}
+\caption[Stitched square grid]{Example of sequence of frames in the stitched image if nine of them are included.}
 \vspace{-1.5em}
 \label{fig:stitched square grid}
 \end{figure}
@@ -427,7 +437,7 @@ Another challenge we faced was to decide which frames should be included in the 
      \centering
      \includegraphics[width=\linewidth]{Section3/3.2}
    \end{subfigure}
-   \caption{Examples of stitched up images. (Left) Nine frames are stitched together, which are generated by a boring rule “6/0,5,6,9”. All frames are noise. (Right) Sixteen frames are stitched together, which are generated interesting rule “2/2/8”. By comparing the frames in the top left and the bottom right corner, we could see the pattern translating to the right, which indicates a glider.}
+   \caption[Examples of stitched images]{Examples of stitched up images. (Left) Nine frames are stitched together, which are generated by a boring rule “6/0,5,6,9”. All frames are noise. (Right) Sixteen frames are stitched together, which are generated interesting rule “2/2/8”. By comparing the frames in the top left and the bottom right corner, we could see the pattern translating to the right, which indicates a glider.}
    \vspace{-1.5em}
    \label{fig:stitched image examples}
 \end{figure}
@@ -472,9 +482,21 @@ output layer & 1 node, sigmoid activation \\
 \end{table}
 
 \subsection{Entropy Analysis}
-Due to the random nature of cellular automata patterns, entropy is an adequate metric to compute since it is likely that there is correlation between the label (boring and interesting) and the statistical measure of randomness in the images. We used cross-entropy as the default entropy function. We iterated through all the stitched frames and computed their entropies using the cross-entropy algorithm, then plotted the entropy values of the boring and interesting images in Figure 3.6. 
-  
-FIGURE 3.6: Entropy distribution of different patterns.
+Due to the random nature of cellular automata patterns, entropy is an adequate metric to compute since it is likely that there is correlation between the label (boring and interesting) and the statistical measure of randomness in the images. We used cross-entropy as the default entropy function. We iterated through all the stitched frames and computed their entropies using the cross-entropy algorithm, then plotted the entropy values of the boring and interesting images in Figure ~\ref{fig:entropy distribution}. 
+\begin{figure}[H]
+\begin{subfigure}{0.5 \textwidth}
+\centering
+\includegraphics[width=\linewidth]{Section3/4.1}
+\end{subfigure}
+\begin{subfigure}{0.5 \textwidth}
+\centering
+\includegraphics[width=\linewidth]{Section3/4.2}
+\end{subfigure}
+\caption[Entropy distribution of patterns]{Entropy distribution of different patterns.}
+\label{fig:entropy distribution}
+\vspace{-1.5em}
+\end{figure}
+
 Boring images had entropy values that spread roughly evenly from 0.0 to 3.5, with a small gap between 0.5 and 0.75. There are many which had entropy values close to 0.0, which is reasonable because they would likely correspond to patterns which die out. On the other hand, interesting images have entropy values concentrated in the 0.0 to 2.0 range, especially between 0.5 and 0.75. This is intuitively true because interesting images have less noise and entropy compared to boring images on average. It should be noted the minimum entropy for boring images was 0.0 while the minimum entropy for boring images was 0.0318. This is because frames that had no live cells were always labeled as boring. The entropy values suggest adding features identifying if the image entropy is above 2.0 or equals to exactly 0 may be beneficial for the model accuracy. 
 
 \newpage
@@ -498,7 +520,7 @@ However, one caveat is that there are some patterns, like the one shown in ~\ref
      \centering
      \includegraphics[width=\linewidth]{Section4/1.1}
    \end{subfigure}
-   \caption{All one-period members with zero, one, or two supplemental blocks of the glider family that appears in rules “4,6/2/3”, “2,4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. Code is provided in ~\ref{subsubsection:one-period gliders}.}
+   \caption[One-period gliders]{All one-period members with zero, one, or two supplemental blocks of the glider family that appears in rules “4,6/2/3”, “2,4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. Code is provided in ~\ref{subsubsection:one-period gliders}.}
    \label{fig:one-period gliders}
    \vspace{-1.5em}
 \end{figure}
@@ -527,7 +549,7 @@ However, one caveat is that there are some patterns, like the one shown in ~\ref
      \centering
      \includegraphics[width=\linewidth]{Section4/2.4}
    \end{subfigure}
-   \caption{A pattern that is not a glider in rules “4,6/2/3”, “(2)4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3” despite consisting of the leading block and three supplemental blocks. However, it does transform into another two-period glider in four steps. Code is provided in ~\ref{subsubsection:counter example}.}
+   \caption[A non-glider that looks like one]{A pattern that is not a glider in rules “4,6/2/3”, “(2)4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3” despite consisting of the leading block and three supplemental blocks. However, it does transform into another two-period glider in four steps. Code is provided in ~\ref{subsubsection:counter example}.}
    \label{fig:counter example}
    \vspace{-1.5em}
 \end{figure}
@@ -624,7 +646,7 @@ We also found many family members with period of two. Their structures are more 
    \end{subfigure}
       {\LARGE$\xrightarrow{}$}
    \setcounter{subfigure}{0}
-   \caption{The five basic two-period members of the glider family that exist for rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. For simplicity, they are referred to as “two-period glider A, B, C, D, and E” respectively. Code is provided in ~\ref{subsubsection:two-period gliders(1/5)}, ~\ref{subsubsection:two-period gliders(2/5)}, ~\ref{subsubsection:two-period gliders(3/5)}, ~\ref{subsubsection:two-period gliders(4/5)}, and ~\ref{subsubsection:two-period gliders(5/5)}.}
+   \caption[Two-period gliders]{The five basic two-period members of the glider family that exist for rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. For simplicity, they are referred to as “two-period glider A, B, C, D, and E” respectively. Code is provided in ~\ref{subsubsection:two-period gliders(1/5)}, ~\ref{subsubsection:two-period gliders(2/5)}, ~\ref{subsubsection:two-period gliders(3/5)}, ~\ref{subsubsection:two-period gliders(4/5)}, and ~\ref{subsubsection:two-period gliders(5/5)}.}
    \label{fig:two-period gliders}
    \vspace{-1.5em}
 \end{figure}
@@ -657,7 +679,7 @@ We also found many family members with period of two. Their structures are more 
    \end{subfigure}
       \newline
    \setcounter{subfigure}{0}
-   \caption{The five basic tagalongs of two-period gliders.}
+   \caption[Tagalongs of the two-period gliders]{The five basic tagalongs of two-period gliders.}
    \label{fig:tagalongs of two-period gliders}
 \end{figure}
 
@@ -679,7 +701,7 @@ We also found many family members with period of two. Their structures are more 
    \end{subfigure}
    {\LARGE$\xrightarrow{}$}
    \setcounter{subfigure}{0}
-   \caption{The glider that is almost the same as “two-period glider E” except its tagalong is moved relatively towards right by one unit. Code is provided in ~\ref{subsubsection:almost same two-period glider}.}
+   \caption[Similar two-period glider]{The glider that is almost the same as “two-period glider E” except its tagalong is moved relatively towards right by one unit. Code is provided in ~\ref{subsubsection:almost same two-period glider}.}
    \label{fig:almost same two-period glider}
    \vspace{-1.5em}
 \end{figure}
@@ -774,8 +796,8 @@ We also found many family members with period of two. Their structures are more 
    \end{subfigure}
       {\LARGE$\xrightarrow{}$}
    \setcounter{subfigure}{0}
-   \caption{Examples of extended two-period members of the glider family that exist for rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. Their tagalongs are the same as the five basic forms in Figure 4.4 except there is an additional supplemental block connecting them to the leading block. Other extended members have more connecting supplemental blocks. Code is provided in ~\ref{subsubsection:extended two-period members(1/5)}, ~\ref{subsubsection:extended two-period members(2/5)}, ~\ref{subsubsection:extended two-period members(3/5)}, ~\ref{subsubsection:extended two-period members(4/5)}, and ~\ref{subsubsection:extended two-period members(5/5)}. }
-   \label{fig:extended two-period members}
+   \caption[Extended two-period gliders]{Examples of extended two-period members of the glider family that exist for rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. Their tagalongs are the same as the five basic forms in Figure 4.4 except there is an additional supplemental block connecting them to the leading block. Other extended members have more connecting supplemental blocks. Code is provided in ~\ref{subsubsection:extended two-period gliders(1/5)}, ~\ref{subsubsection:extended two-period gliders(2/5)}, ~\ref{subsubsection:extended two-period gliders(3/5)}, ~\ref{subsubsection:extended two-period gliders(4/5)}, and ~\ref{subsubsection:extended two-period gliders(5/5)}. }
+   \label{fig:extended two-period gliders}
    \vspace{-1.5em}
 \end{figure}
 
@@ -932,7 +954,7 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
       \newline
    \setcounter{subfigure}{0}
    
-   \caption{The six basic four-period members of the glider family. All these gliders exist for rules “4,6/2/3”, “3,6/2,6/3”, “5,6/2,6/3”, except the last two ones which do not exist for rules “4,6/2,4/3” and “4,6/2,4/3”. For simplicity, they are referred to as “four-period glider A, B, C, D, and E” respectively. Code is provided in 6.12.14, 6.12.15, 6.12.16, 6.12.17, 6.12.18, and 6.12.19. }
+   \caption[Four-period gliders]{The six basic four-period members of the glider family. All these gliders exist for rules “4,6/2/3”, “3,6/2,6/3”, “5,6/2,6/3”, except the last two ones which do not exist for rules “4,6/2,4/3” and “4,6/2,4/3”. For simplicity, they are referred to as “four-period glider A, B, C, D, and E” respectively. Code is provided in ~\ref{subsubsection:four-period gliders(1/6)}, ~\ref{subsubsection:four-period gliders(2/6)}, ~\ref{subsubsection:four-period gliders(3/6)}, ~\ref{subsubsection:four-period gliders(4/6)}, ~\ref{subsubsection:four-period gliders(5/6)}, and ~\ref{subsubsection:four-period gliders(6/6)}.}
    \label{fig:four-period gliders}
    \vspace{-1.5em}
 \end{figure}
@@ -965,7 +987,7 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
    \end{subfigure}
       \newline
    \setcounter{subfigure}{0}
-\caption{The basic tagalongs of the five four-period gliders.}
+\caption[Tagalongs of four-period gliders]{The basic tagalongs of the five four-period gliders.}
 \label{fig:tagalongs of four-period gliders}
 \end{figure}
 
@@ -1071,7 +1093,7 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
      \subcaption{}
    \end{subfigure}
    \setcounter{subfigure}{0}
-   \caption{Two eight-period members of the glider family that exists for rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. For simplicity, they will be referred to as “eight-period glider A” and “eight-period glider B”. They resemble “four-period glider C” and “four-period glider A” respectively. They both emit a maximum of ten units’ exhaust.  Code is provided in 6.12.20, and 6.12.21. }
+   \caption[Eight-period gliders]{Two eight-period members of the glider family that exists for rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. For simplicity, they will be referred to as “eight-period glider A” and “eight-period glider B”. They resemble “four-period glider C” and “four-period glider A” respectively. They both emit a maximum of ten units’ exhaust.  Code is provided in ~\ref{subsubsection:eight-period gliders (1/2)}, and ~\ref{subsubsection:eight-period gliders (2/2)}. }
    \label{fig:eight-period gliders}
    \vspace{-1.5em}
 \end{figure}
@@ -1089,7 +1111,7 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
      \includegraphics[angle=270,width=\linewidth]{Section4/24.1}
      \subcaption{}
 	\end{subfigure}
-\caption{The basic tagalongs of the two eight-period gliders.}
+\caption[tagalongs of eight-period gliders]{The basic tagalongs of the two eight-period gliders.}
 \label{fig:tagalongs of eight-period gliders}
 \end{figure}
 
@@ -1152,7 +1174,7 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
      \subcaption{}
    \end{subfigure}
    \setcounter{subfigure}{0}
-\caption{Two Frankenstein gliders with two and three tails that exists for rules “4,6/2/3”, “3,6/2,6/3”, “5,6/2,6/3”. Both have periods of four. The top combines “two-period glider C” and “four-period glider A”. The bottom combines “two-period glider A” and two “four-period glider B” s. Code is provided in 6.12.22, and 6.12.23. }
+\caption[Frankenstein gliders]{Two Frankenstein gliders with two and three tails that exists for rules “4,6/2/3”, “3,6/2,6/3”, “5,6/2,6/3”. Both have periods of four. The top combines “two-period glider C” and “four-period glider A”. The bottom combines “two-period glider A” and two “four-period glider B” s. Code is provided in ~\ref{subsubsection:frankenstein glider one}, and ~\ref{subsubsection:frankenstein glider two}.}
 \label{fig:frankenstein gliders}
 \end{figure}
 
@@ -1188,9 +1210,9 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
      \subcaption{}
    \end{subfigure}
    \setcounter{subfigure}{0}
-\caption{A four-period rake that exists for rules “4,6/2/3”, “3,6/2,6/3”, “5,6/2,6/3”. For simplicity, it will be referred to as “rake A”. It generates a leading block every four steps. Code is provided in 6.12.24. }
+\caption[A four-period rake]{A four-period rake that exists for rules “4,6/2/3”, “3,6/2,6/3”, “5,6/2,6/3”. For simplicity, it will be referred to as “rake A”. It generates a leading block every four steps. Code is provided in ~\ref{subsubsection:four-period rake}. }
 \label{fig:four-period rake}
-   \vspace{-1.5em}
+\vspace{-1.5em}
 \end{figure}
 
 \begin{figure}[H]
@@ -1243,8 +1265,7 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
      \includegraphics[width=\linewidth]{Section4/28.8}
      \subcaption{}
    \end{subfigure}
-
-\caption{An eight-period rake that exists for rules “6/2/3”, “4,6/2/3”, “5,6/2,6/3”. For simplicity, it will be referred to as “rake B”. It generates a one-period family member with one supplemental block every eight steps. Code is provided in 6.12.25. }
+\caption[An eight-period rake]{An eight-period rake that exists for rules “6/2/3”, “4,6/2/3”, “5,6/2,6/3”. For simplicity, it will be referred to as “rake B”. It generates a one-period family member with one supplemental block every eight steps. Code is provided in ~\ref{subsubsection:eight-period rake one}.}
 \label{fig:eight-period rake one}
 \end{figure}
 
@@ -1301,8 +1322,7 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
      \subcaption{}
    \end{subfigure}
    \setcounter{subfigure}{0}
-
-   \caption{An eight-period rake that exists for rule “6/2,4,6/3”. For simplicity, it will be referred to as “rake C”. It generates a one-period member with two supplemental blocks every eight steps. Code is provided in 6.12.26. }
+   \caption[Another eight-period rake]{An eight-period rake that exists for rule “6/2,4,6/3”. For simplicity, it will be referred to as “rake C”. It generates a one-period member with two supplemental blocks every eight steps. Code is provided in ~\ref{subsubsection:eight-period rake two}.}
    \label{fig:eight-period rake two}
    \vspace{-1.5em}
 \end{figure}
@@ -1334,8 +1354,7 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
      	\includegraphics[width=\linewidth]{Section4/30.4}
      	\subcaption{}
    \end{subfigure}
-
-   \caption{The new Life with three states that exists for rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”, and “3/2, 5/3”. It moves diagonally with a speed of $c/4$. Code is provided in 6.12.27.}
+   \caption[The new Life]{The new Life with three states that exists for rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”, and “3/2, 5/3”. It moves diagonally with a speed of $c/4$. Code is provided in ~\ref{subsubsection:the new life}.}
    \label{fig:the new life}
       \vspace{-1.5em}
 \end{figure}
@@ -1369,7 +1388,7 @@ Generally, it is very difficult to predict the outcome when two gliders collide 
      	\includegraphics[width=\linewidth]{Section4/31.3}
      	\subcaption{}
    	\end{subfigure}
-   \caption{Two leading blocks in rule “4,6/2/3” collide with each other head on and are both destroyed in three steps, leaving the grid completely empty. Code is provided in 6.12.28. }
+   \caption[Destroyed gliders in collision]{Two leading blocks in rule “4,6/2/3” collide with each other head on and are both destroyed in three steps, leaving the grid completely empty. Code is provided in ~\ref{subsubsection:glider all dead}. }
    \label{fig:glider all dead}
 \end{figure}
 
@@ -1394,7 +1413,7 @@ Generally, it is very difficult to predict the outcome when two gliders collide 
      	\includegraphics[width=\linewidth]{Section4/32.3}
      	\subcaption{}
    	\end{subfigure}
-   \caption{Example of a “Murdered Glider” that appears in rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. Two identical 1-period members of the glider family with one supplemental block collide with each other, and only the bottom one survived the clash. Code is provided in 6.12.29. }
+   \caption[Example of a "murdered glider"]{Example of a “murdered glider” that appears in rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. Two identical 1-period members of the glider family with one supplemental block collide with each other, and only the bottom one survived the clash. Code is provided in ~\ref{subsubsection:murder glider one}. }
    \label{fig:murder glider one}
 \end{figure}
 
@@ -1419,7 +1438,7 @@ Generally, it is very difficult to predict the outcome when two gliders collide 
      	\includegraphics[width=\linewidth]{Section4/33.3}
      	\subcaption{}
    	\end{subfigure}
-   \caption{Example of a “Murdered Glider” that appears in rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. A fundamental block glider collides with a New Game of Life glider. The fundamental block is murdered in three steps. Code is provided in 6.12.30. }
+   \caption[Another example of a "murdered glider"]{Example of a “Murdered Glider” that appears in rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. A fundamental block glider collides with a New Game of Life glider. The fundamental block is murdered in three steps. Code is provided in ~\ref{subsubsection:murder glider two}. }
    \label{fig:murder glider two}
 \end{figure}
 %sanity check
@@ -1456,7 +1475,7 @@ As the number of states increases, the complexity of the gliders increases corre
      	\includegraphics[width=\linewidth]{Section4/34.4}
      	\subcaption{}
    	\end{subfigure}
-   \caption{A rake that appears in rule “3,4,5/2/4”. It has a period of two and a speed of $c$. It generates a stream of one-period gliders, one every two steps. Code is provided in 6.12.31. }
+   \caption[A rocket glider]{A rake that appears in rule “3,4,5/2/4”. It has a period of two and a speed of $c$. It generates a stream of one-period gliders, one every two steps. Code is provided in ~\ref{subsubsection:rocket}.}
    \label{fig:rocket}
       \vspace{-1.5em}
 \end{figure}
@@ -1517,7 +1536,7 @@ We have also identified similar interactions between gliders when they collide. 
      	\includegraphics[width=\linewidth]{Section4/35.11}
      	\subcaption{}
    	\end{subfigure}
-   \caption{Example of an “Combined Glider” that appears in rule “3/2/4”. Code is provided in 6.12.32.}
+   \caption[Example of a "combined glider"]{Example of a “combined glider” that appears in rule “3/2/4”. Code is provided in ~\ref{subsubsection:combined glider}.}
    \label{fig:combined glider}
 \end{figure}
 
@@ -1552,7 +1571,7 @@ We have also identified similar interactions between gliders when they collide. 
      	\subcaption{}
    	\end{subfigure}
 	{\LARGE$\rightarrow{}$}
-   \caption{Example of a “Murdered Glider” that appears in rule “3/2/4”. The bottom left glider murders the top right one in six steps. Code is provided in 6.12.33.}
+   \caption[Example of a "murdered glider"]{Example of a “murdered glider” that appears in rule “3/2/4”. The bottom left glider murders the top right one in six steps. Code is provided in ~\ref{subsubsection:murder glider}.}
    \label{fig:murder glider}
 \end{figure}
 
@@ -1563,7 +1582,7 @@ Despite the large amount of effort and study that has been put into cellular aut
 
 We created the data generation algorithm to compute the state of each cell at every step. After collecting the known interesting and boring rules from lexicons, we applied data augmentation to create a sufficiently large training and testing set by rerunning the rules with different initial configurations. Each of the outcomes is recorded using the python package CellPyLib as a sequence of grayscale frames. The first several generations are ignored because they depend highly on the initial configuration and therefore do not reflect the final stable pattern accurately. With many possible ways to play with the dataset, this paper introduces RNN, CNN, feature extraction, and entropy analysis. 
 
-The RNN approach resembles a video classification task. Each pattern is represented by its corresponding sequence of frames and each sequence is treated as one single instance. We performed hyperparameter tuning and eventually decided to use ConvLSTM2D, which leads to the best accuracy. CNN on the other hand is the best at classifying images. Therefore, we had to stitch some of the frames together into one congregated image in advance. Each of the stitched images is considered as an instance. Different selections of frames that are included in the image have been tested. However, since this is an uncononical approach, we wanted to find out the learnability of our dataset using Brainome.ai. To achieved this, we performed feature extraction using a pre-trained NASNet-Large CNN Model that is trained on a million images from the ImageNet database. For each of the instances, the machine learner extracts 1000 features and put them in an organized CSV file. However, the results shown by Brainome.ai was suboptimal. Therefore, we eventually used the image pixels directly as features and this time, Brainome.ai showed us much promising results. This gave us sufficient confidence to proceed with model training. 
+The RNN approach resembles a video classification task. Each pattern is represented by its corresponding sequence of frames and each sequence is treated as one single instance. We performed hyperparameter tuning and eventually decided to use ConvLSTM2D, which leads to the best accuracy. CNN on the other hand is the best at classifying images. Therefore, we had to stitch some of the frames together into one congregated image in advance. Each of the stitched images is considered as an instance. Different selections of frames that are included in the image have been tested. However, since this is an uncanonical approach, we wanted to find out the learnability of our dataset using Brainome.ai. To achieved this, we performed feature extraction using a pre-trained NASNet-Large CNN Model that is trained on a million images from the ImageNet database. For each of the instances, the machine learner extracts 1000 features and put them in an organized CSV file. However, the results shown by Brainome.ai was suboptimal. Therefore, we eventually used the image pixels directly as features and this time, Brainome.ai showed us much promising results. This gave us sufficient confidence to proceed with model training. 
 
 After the models are properly trained with extensive hyperparameter tuning, we used them to classify rules with three states and random survial and born rules, and find gliders in those that are classified as interesting. We discovered a handful of new interesting rules, and found an entire family of gliders, the new Life, and several rakes. 
 
@@ -1627,7 +1646,7 @@ Automatic detection of interesting cellular automata is a project that has not y
 \includegraphics[width=1\linewidth]{Section5/10}
 \subcaption{“Instant birth, any-level sicker, stay sick, gradual recovery” Model. Live cells can get sick. Sick cells can recover as they can get one step closer to life at each step. They can also get sicker to any worse levels including death at each step. They can also stay the same. Dead cells cannot be born sick.}
 \end{subfigure}
-\caption{Examples of possible cellular automaton state transition diagrams ranked from the simplest to the most complicated. The vertices labeled with “s” represent the sick states.}
+\caption[Possible cellular automata state transitional diagrams]{Examples of possible cellular automaton state transition diagrams ranked from the simplest to the most complicated. The vertices labeled with “s” represent the sick states.}
 \label{fig:transitional diagrams}
 \end{figure}
 
@@ -2209,8 +2228,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:extended two-period members}}
-\label{subsubsection:extended two-period members(1/5)}
+\subsubsection{Figure ~\ref{fig:extended two-period gliders} (1/5)}
+\label{subsubsection:extended two-period gliders(1/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2235,8 +2254,8 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:extended two-period members}}
-\label{subsubsection:extended two-period members(2/5)}
+\subsubsection{Figure ~\ref{fig:extended two-period gliders} (2/5)}
+\label{subsubsection:extended two-period gliders(2/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2260,8 +2279,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:extended two-period members}}
-\label{subsubsection:extended two-period members(3/5)}
+\subsubsection{Figure ~\ref{fig:extended two-period gliders} (3/5)}
+\label{subsubsection:extended two-period gliders(3/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2287,8 +2306,8 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.5\textwidth}
-\subsubsection{Figure ~\ref{fig:extended two-period members}}
-\label{subsubsection:extended two-period members(4/5)}
+\subsubsection{Figure ~\ref{fig:extended two-period gliders} (4/5)}
+\label{subsubsection:extended two-period gliders(4/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2313,8 +2332,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Figure ~\ref{fig:extended two-period members}}
-\label{subsubsection:extended two-period members(5/5)}
+\subsubsection{Figure ~\ref{fig:extended two-period gliders} (5/5)}
+\label{subsubsection:extended two-period gliders(5/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2343,7 +2362,8 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:four-period gliders} (1/6)}
+\label{subsubsection:four-period gliders(1/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -2369,7 +2389,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:four-period gliders} (2/6)}
+\label{subsubsection:four-period gliders(2/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -2395,7 +2416,8 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.50\textwidth}
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:four-period gliders} (3/6)}
+\label{subsubsection:four-period gliders(3/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -2420,7 +2442,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:four-period gliders} (4/6)}
+\label{subsubsection:four-period gliders(4/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -2450,7 +2473,8 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:four-period gliders} (5/6)}
+\label{subsubsection:four-period gliders(5/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -2477,7 +2501,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.5\textwidth}
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:four-period gliders} (6/6)}
+\label{subsubsection:four-period gliders(6/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -2511,7 +2536,8 @@ data = [
 \end{lstlisting}
 \end{minipage}
 
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:eight-period gliders} (1/2)}
+\label{subsubsection:eight-period gliders (1/2)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -2542,7 +2568,8 @@ data = [
 
 \end{lstlisting}
 
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:eight-period gliders} (2/2)}
+\label{subsubsection:eight-period gliders (2/2)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -2573,7 +2600,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:frankenstein gliders} (1/2)}
+\label{subsubsection:frankenstein glider one}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -2603,7 +2631,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:frankenstein gliders} (2/2)}
+\label{subsubsection:frankenstein glider two}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -2634,7 +2663,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:four-period rake}}
+\label{subsubsection:four-period rake}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -2661,7 +2691,8 @@ data = [
     [0, 0, 0, 0, 0, 0, 0, 0]
 ]
 \end{lstlisting}
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:eight-period rake one}}
+\label{subsubsection:eight-period rake one}
 \begin{lstlisting}[language = Python]
 survival_arr = [6]
 born_arr = [2]
@@ -2692,7 +2723,8 @@ data = [
     [0, 0, 0, 0, 0, 0, 0, 0]
 ]
 \end{lstlisting}
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:eight-period rake two}}
+\label{subsubsection:eight-period rake two}
 \begin{lstlisting}[language = Python]
 survival_arr = [6]
 born_arr = [2,4,6]
@@ -2722,7 +2754,8 @@ data = [
 \end{lstlisting}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:the new life}}
+\label{subsubsection:the new life}
 \begin{lstlisting}[language = Python]
 survival_arr = [6]
 born_arr = [2,4,6]
@@ -2739,7 +2772,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.5\textwidth}
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:glider all dead}}
+\label{subsubsection:glider all dead}
 \begin{lstlisting}[language = Python]
 survival_arr = [4, 6]
 born_arr = [2]
@@ -2756,7 +2790,8 @@ data = [
 \end{lstlisting}
 \end{minipage}
 
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:murder glider one}}
+\label{subsubsection:murder glider one}
 \begin{lstlisting}[language = Python]
 survival_arr = [4, 6]
 born_arr = [2]
@@ -2776,7 +2811,8 @@ data = [
 
 \end{lstlisting}
 
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:murder glider two}}
+\label{subsubsection:murder glider two}
 \begin{lstlisting}[language = Python]
 survival_arr = [4, 6]
 born_arr = [2]
@@ -2800,7 +2836,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:rocket}}
+\label{subsubsection:rocket}
 \begin{lstlisting}[language = Python]
 survival_arr = [3, 4, 5]
 born_arr = [2]
@@ -2824,7 +2861,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:combined glider}}
+\label{subsubsection:combined glider}
 \begin{lstlisting}[language = Python]
 survival_arr = [3]
 born_arr = [2]
@@ -2843,7 +2881,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{}
+\subsubsection{Figure ~\ref{fig:murder glider}}
+\label{subsubsection:murder glider}
 \begin{lstlisting}[language = Python]
 survival_arr = [3]
 born_arr = [2]
@@ -2871,7 +2910,7 @@ data = [
 
 \newpage
 
-\addcontentsline{toc}{chapter}{Bibliography}
+%\addcontentsline{toc}{chapter}{Bibliography}
 \begin{thebibliography}{9}
 \bibitem{A new kind of Science} 
 Wolfram Stephan.
