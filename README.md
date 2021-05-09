@@ -1,4 +1,4 @@
-# Automatic Detection of Interesting Cellular Automata 
+# Automatic Detection of Cellular Automata containing gliders
 
 Project Proposal: https://docs.google.com/document/d/1W9Okl6FagUjE5KHXleISY4QuIS9L3nS07TFt2cFl274/edit
 
