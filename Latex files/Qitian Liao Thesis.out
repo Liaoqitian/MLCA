@@ -9,7 +9,7 @@
 \BOOKMARK [2][-]{subsection.3.2}{Sequence Training with RNN}{section.3}% 9
 \BOOKMARK [2][-]{subsection.3.3}{Data Preprocessing, Feature Extraction, Training with CNN}{section.3}% 10
 \BOOKMARK [2][-]{subsection.3.4}{Entropy Analysis}{section.3}% 11
-\BOOKMARK [1][-]{section.4}{Glider Activities}{}% 12
+\BOOKMARK [1][-]{section.4}{Glider Discoveries}{}% 12
 \BOOKMARK [2][-]{subsection.4.1}{Gliders in three-state cellular automata}{section.4}% 13
 \BOOKMARK [2][-]{subsection.4.2}{Glider Collision Behaviors in three-state cellular automata}{section.4}% 14
 \BOOKMARK [2][-]{subsection.4.3}{Other interesting discoveries}{section.4}% 15
@@ -46,12 +46,12 @@
 \BOOKMARK [3][-]{subsubsection.8.12.15}{Code for figure \0404.6 \(3/5\)}{subsection.8.12}% 46
 \BOOKMARK [3][-]{subsubsection.8.12.16}{Code for figure \0404.6 \(4/5\)}{subsection.8.12}% 47
 \BOOKMARK [3][-]{subsubsection.8.12.17}{Code for figure \0404.6 \(5/5\)}{subsection.8.12}% 48
-\BOOKMARK [3][-]{subsubsection.8.12.18}{Code for figure \0404.7 \(1/6\)}{subsection.8.12}% 49
-\BOOKMARK [3][-]{subsubsection.8.12.19}{Code for figure \0404.7 \(2/6\)}{subsection.8.12}% 50
-\BOOKMARK [3][-]{subsubsection.8.12.20}{Code for figure \0404.7 \(3/6\)}{subsection.8.12}% 51
-\BOOKMARK [3][-]{subsubsection.8.12.21}{Code for figure \0404.7 \(4/6\)}{subsection.8.12}% 52
-\BOOKMARK [3][-]{subsubsection.8.12.22}{Code for figure \0404.7 \(5/6\)}{subsection.8.12}% 53
-\BOOKMARK [3][-]{subsubsection.8.12.23}{Code for figure \0404.7 \(6/6\)}{subsection.8.12}% 54
+\BOOKMARK [3][-]{subsubsection.8.12.18}{Code for figure \0404.8 \(1/6\)}{subsection.8.12}% 49
+\BOOKMARK [3][-]{subsubsection.8.12.19}{Code for figure \0404.8 \(2/6\)}{subsection.8.12}% 50
+\BOOKMARK [3][-]{subsubsection.8.12.20}{Code for figure \0404.8 \(3/6\)}{subsection.8.12}% 51
+\BOOKMARK [3][-]{subsubsection.8.12.21}{Code for figure \0404.8 \(4/6\)}{subsection.8.12}% 52
+\BOOKMARK [3][-]{subsubsection.8.12.22}{Code for figure \0404.8 \(5/6\)}{subsection.8.12}% 53
+\BOOKMARK [3][-]{subsubsection.8.12.23}{Code for figure \0404.8 \(6/6\)}{subsection.8.12}% 54
 \BOOKMARK [3][-]{subsubsection.8.12.24}{Code for figure \0404.9 \(1/2\)}{subsection.8.12}% 55
 \BOOKMARK [3][-]{subsubsection.8.12.25}{Code for figure \0404.9 \(2/2\)}{subsection.8.12}% 56
 \BOOKMARK [3][-]{subsubsection.8.12.26}{Code for figure \0404.11 \(1/2\)}{subsection.8.12}% 57

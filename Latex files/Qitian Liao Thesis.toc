@@ -3,67 +3,67 @@
 \contentsline {section}{List of Figures}{iii}{section*.1}%
 \contentsline {section}{List of Tables}{v}{section*.2}%
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
-\contentsline {section}{\numberline {2}Related Work}{9}{section.2}%
-\contentsline {section}{\numberline {3}Methodology}{13}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Dataset Generation}{13}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Sequence Training with RNN}{15}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Data Preprocessing, Feature Extraction, Training with CNN}{17}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Entropy Analysis}{20}{subsection.3.4}%
-\contentsline {section}{\numberline {4}Glider Activities}{22}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Gliders in three-state cellular automata}{22}{subsection.4.1}%
+\contentsline {section}{\numberline {2}Related Work}{10}{section.2}%
+\contentsline {section}{\numberline {3}Methodology}{14}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Dataset Generation}{14}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Sequence Training with RNN}{16}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Data Preprocessing, Feature Extraction, Training with CNN}{18}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Entropy Analysis}{21}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Glider Discoveries}{23}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Gliders in three-state cellular automata}{23}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Glider Collision Behaviors in three-state cellular automata}{37}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Other interesting discoveries}{39}{subsection.4.3}%
 \contentsline {section}{\numberline {5}Conclusion}{43}{section.5}%
 \contentsline {section}{\numberline {6}Future Work}{45}{section.6}%
 \contentsline {section}{\numberline {7}References}{51}{section.7}%
-\contentsline {section}{\numberline {8}Appendix}{53}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Cellular Automata Generation Algorithm}{53}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}The 35 Selected Interesting Rules}{54}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Frame Extraction}{55}{subsection.8.3}%
-\contentsline {subsection}{\numberline {8.4}Recurrent Neural Network Implementation}{55}{subsection.8.4}%
-\contentsline {subsection}{\numberline {8.5}Image Stitching Function}{55}{subsection.8.5}%
-\contentsline {subsection}{\numberline {8.6}Image Feature Extraction with NASNet-Large}{56}{subsection.8.6}%
-\contentsline {subsection}{\numberline {8.7}Image Feature Extraction with Image Pixels}{56}{subsection.8.7}%
-\contentsline {subsection}{\numberline {8.8}Convolutional Neural Network Implementation}{57}{subsection.8.8}%
-\contentsline {subsection}{\numberline {8.9}Image Cross-Entropy Computation}{57}{subsection.8.9}%
-\contentsline {subsection}{\numberline {8.10}Maximum Memory Capacity Prediction}{58}{subsection.8.10}%
-\contentsline {subsection}{\numberline {8.11}Glider Image and GIF generation}{58}{subsection.8.11}%
-\contentsline {subsection}{\numberline {8.12}Initial configuration of the gliders}{60}{subsection.8.12}%
-\contentsline {subsubsection}{\numberline {8.12.1}Code for figure \nobreakspace {}\ref {fig:GOL examples}, the Game of Life}{60}{subsubsection.8.12.1}%
-\contentsline {subsubsection}{\numberline {8.12.2}Code for figure \nobreakspace {}\ref {fig:GOL examples}, the lightweight spaceship}{60}{subsubsection.8.12.2}%
-\contentsline {subsubsection}{\numberline {8.12.3}Code for figure \nobreakspace {}\ref {fig:GOL examples}, the midweight spacehip}{61}{subsubsection.8.12.3}%
-\contentsline {subsubsection}{\numberline {8.12.4}Code for figure \nobreakspace {}\ref {fig:GOL examples}, the heavyweight spaceship}{61}{subsubsection.8.12.4}%
-\contentsline {subsubsection}{\numberline {8.12.5}Code for figure \nobreakspace {}\ref {fig:one-period gliders}}{61}{subsubsection.8.12.5}%
-\contentsline {subsubsection}{\numberline {8.12.6}Code for figure \nobreakspace {}\ref {fig:counter example}}{63}{subsubsection.8.12.6}%
-\contentsline {subsubsection}{\numberline {8.12.7}Code for figure \nobreakspace {}\ref {fig:two-period gliders}}{63}{subsubsection.8.12.7}%
-\contentsline {subsubsection}{\numberline {8.12.8}Code for figure \nobreakspace {}\ref {fig:two-period gliders}}{63}{subsubsection.8.12.8}%
-\contentsline {subsubsection}{\numberline {8.12.9}Code for figure \nobreakspace {}\ref {fig:two-period gliders}}{63}{subsubsection.8.12.9}%
-\contentsline {subsubsection}{\numberline {8.12.10}Code for figure \nobreakspace {}\ref {fig:two-period gliders}}{64}{subsubsection.8.12.10}%
-\contentsline {subsubsection}{\numberline {8.12.11}Code for figure \nobreakspace {}\ref {fig:two-period gliders}}{64}{subsubsection.8.12.11}%
-\contentsline {subsubsection}{\numberline {8.12.12}Code for figure \nobreakspace {}\ref {fig:almost same two-period glider}}{64}{subsubsection.8.12.12}%
-\contentsline {subsubsection}{\numberline {8.12.13}Code for figure \nobreakspace {}\ref {fig:extended two-period gliders} (1/5)}{64}{subsubsection.8.12.13}%
-\contentsline {subsubsection}{\numberline {8.12.14}Code for figure \nobreakspace {}\ref {fig:extended two-period gliders} (2/5)}{65}{subsubsection.8.12.14}%
-\contentsline {subsubsection}{\numberline {8.12.15}Code for figure \nobreakspace {}\ref {fig:extended two-period gliders} (3/5)}{65}{subsubsection.8.12.15}%
-\contentsline {subsubsection}{\numberline {8.12.16}Code for figure \nobreakspace {}\ref {fig:extended two-period gliders} (4/5)}{65}{subsubsection.8.12.16}%
-\contentsline {subsubsection}{\numberline {8.12.17}Code for figure \nobreakspace {}\ref {fig:extended two-period gliders} (5/5)}{65}{subsubsection.8.12.17}%
-\contentsline {subsubsection}{\numberline {8.12.18}Code for figure \nobreakspace {}\ref {fig:four-period gliders} (1/6)}{66}{subsubsection.8.12.18}%
-\contentsline {subsubsection}{\numberline {8.12.19}Code for figure \nobreakspace {}\ref {fig:four-period gliders} (2/6)}{66}{subsubsection.8.12.19}%
-\contentsline {subsubsection}{\numberline {8.12.20}Code for figure \nobreakspace {}\ref {fig:four-period gliders} (3/6)}{66}{subsubsection.8.12.20}%
-\contentsline {subsubsection}{\numberline {8.12.21}Code for figure \nobreakspace {}\ref {fig:four-period gliders} (4/6)}{66}{subsubsection.8.12.21}%
-\contentsline {subsubsection}{\numberline {8.12.22}Code for figure \nobreakspace {}\ref {fig:four-period gliders} (5/6)}{67}{subsubsection.8.12.22}%
-\contentsline {subsubsection}{\numberline {8.12.23}Code for figure \nobreakspace {}\ref {fig:four-period gliders} (6/6)}{67}{subsubsection.8.12.23}%
-\contentsline {subsubsection}{\numberline {8.12.24}Code for figure \nobreakspace {}\ref {fig:eight-period gliders} (1/2)}{67}{subsubsection.8.12.24}%
-\contentsline {subsubsection}{\numberline {8.12.25}Code for figure \nobreakspace {}\ref {fig:eight-period gliders} (2/2)}{68}{subsubsection.8.12.25}%
-\contentsline {subsubsection}{\numberline {8.12.26}Code for figure \nobreakspace {}\ref {fig:Frankenstein gliders} (1/2)}{68}{subsubsection.8.12.26}%
-\contentsline {subsubsection}{\numberline {8.12.27}Code for figure \nobreakspace {}\ref {fig:Frankenstein gliders} (2/2)}{69}{subsubsection.8.12.27}%
-\contentsline {subsubsection}{\numberline {8.12.28}Code for figure \nobreakspace {}\ref {fig:four-period rake}}{69}{subsubsection.8.12.28}%
-\contentsline {subsubsection}{\numberline {8.12.29}Code for figure \nobreakspace {}\ref {fig:eight-period rake one}}{70}{subsubsection.8.12.29}%
-\contentsline {subsubsection}{\numberline {8.12.30}Code for figure \nobreakspace {}\ref {fig:eight-period rake two}}{71}{subsubsection.8.12.30}%
-\contentsline {subsubsection}{\numberline {8.12.31}Code for figure \nobreakspace {}\ref {fig:the new life}}{71}{subsubsection.8.12.31}%
-\contentsline {subsubsection}{\numberline {8.12.32}Code for figure \nobreakspace {}\ref {fig:glider all dead}}{71}{subsubsection.8.12.32}%
-\contentsline {subsubsection}{\numberline {8.12.33}Code for figure \nobreakspace {}\ref {fig:two GOL}}{71}{subsubsection.8.12.33}%
-\contentsline {subsubsection}{\numberline {8.12.34}Code for figure \nobreakspace {}\ref {fig:murder glider one}}{72}{subsubsection.8.12.34}%
-\contentsline {subsubsection}{\numberline {8.12.35}Code for figure \nobreakspace {}\ref {fig:murder glider two}}{72}{subsubsection.8.12.35}%
-\contentsline {subsubsection}{\numberline {8.12.36}Code for figure \nobreakspace {}\ref {fig:rocket}}{73}{subsubsection.8.12.36}%
-\contentsline {subsubsection}{\numberline {8.12.37}Code for figure \nobreakspace {}\ref {fig:combined glider}}{73}{subsubsection.8.12.37}%
-\contentsline {subsubsection}{\numberline {8.12.38}Code for figure \nobreakspace {}\ref {fig:murder glider}}{74}{subsubsection.8.12.38}%
+\contentsline {section}{\numberline {8}Appendix}{54}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Cellular Automata Generation Algorithm}{54}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}The 35 Selected Interesting Rules}{55}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Frame Extraction}{56}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Recurrent Neural Network Implementation}{56}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Image Stitching Function}{56}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Image Feature Extraction with NASNet-Large}{57}{subsection.8.6}%
+\contentsline {subsection}{\numberline {8.7}Image Feature Extraction with Image Pixels}{58}{subsection.8.7}%
+\contentsline {subsection}{\numberline {8.8}Convolutional Neural Network Implementation}{58}{subsection.8.8}%
+\contentsline {subsection}{\numberline {8.9}Image Cross-Entropy Computation}{59}{subsection.8.9}%
+\contentsline {subsection}{\numberline {8.10}Maximum Memory Capacity Prediction}{59}{subsection.8.10}%
+\contentsline {subsection}{\numberline {8.11}Glider Image and GIF generation}{60}{subsection.8.11}%
+\contentsline {subsection}{\numberline {8.12}Initial configuration of the gliders}{62}{subsection.8.12}%
+\contentsline {subsubsection}{\numberline {8.12.1}Code for figure \nobreakspace {}\ref {fig:GOL examples}, the Game of Life}{62}{subsubsection.8.12.1}%
+\contentsline {subsubsection}{\numberline {8.12.2}Code for figure \nobreakspace {}\ref {fig:GOL examples}, the lightweight spaceship}{62}{subsubsection.8.12.2}%
+\contentsline {subsubsection}{\numberline {8.12.3}Code for figure \nobreakspace {}\ref {fig:GOL examples}, the midweight spacehip}{63}{subsubsection.8.12.3}%
+\contentsline {subsubsection}{\numberline {8.12.4}Code for figure \nobreakspace {}\ref {fig:GOL examples}, the heavyweight spaceship}{63}{subsubsection.8.12.4}%
+\contentsline {subsubsection}{\numberline {8.12.5}Code for figure \nobreakspace {}\ref {fig:one-period gliders}}{63}{subsubsection.8.12.5}%
+\contentsline {subsubsection}{\numberline {8.12.6}Code for figure \nobreakspace {}\ref {fig:counter example}}{65}{subsubsection.8.12.6}%
+\contentsline {subsubsection}{\numberline {8.12.7}Code for figure \nobreakspace {}\ref {fig:two-period gliders}}{65}{subsubsection.8.12.7}%
+\contentsline {subsubsection}{\numberline {8.12.8}Code for figure \nobreakspace {}\ref {fig:two-period gliders}}{65}{subsubsection.8.12.8}%
+\contentsline {subsubsection}{\numberline {8.12.9}Code for figure \nobreakspace {}\ref {fig:two-period gliders}}{65}{subsubsection.8.12.9}%
+\contentsline {subsubsection}{\numberline {8.12.10}Code for figure \nobreakspace {}\ref {fig:two-period gliders}}{66}{subsubsection.8.12.10}%
+\contentsline {subsubsection}{\numberline {8.12.11}Code for figure \nobreakspace {}\ref {fig:two-period gliders}}{66}{subsubsection.8.12.11}%
+\contentsline {subsubsection}{\numberline {8.12.12}Code for figure \nobreakspace {}\ref {fig:almost same two-period glider}}{66}{subsubsection.8.12.12}%
+\contentsline {subsubsection}{\numberline {8.12.13}Code for figure \nobreakspace {}\ref {fig:extended two-period gliders} (1/5)}{66}{subsubsection.8.12.13}%
+\contentsline {subsubsection}{\numberline {8.12.14}Code for figure \nobreakspace {}\ref {fig:extended two-period gliders} (2/5)}{67}{subsubsection.8.12.14}%
+\contentsline {subsubsection}{\numberline {8.12.15}Code for figure \nobreakspace {}\ref {fig:extended two-period gliders} (3/5)}{67}{subsubsection.8.12.15}%
+\contentsline {subsubsection}{\numberline {8.12.16}Code for figure \nobreakspace {}\ref {fig:extended two-period gliders} (4/5)}{67}{subsubsection.8.12.16}%
+\contentsline {subsubsection}{\numberline {8.12.17}Code for figure \nobreakspace {}\ref {fig:extended two-period gliders} (5/5)}{67}{subsubsection.8.12.17}%
+\contentsline {subsubsection}{\numberline {8.12.18}Code for figure \nobreakspace {}\ref {fig:four-period gliders} (1/6)}{68}{subsubsection.8.12.18}%
+\contentsline {subsubsection}{\numberline {8.12.19}Code for figure \nobreakspace {}\ref {fig:four-period gliders} (2/6)}{68}{subsubsection.8.12.19}%
+\contentsline {subsubsection}{\numberline {8.12.20}Code for figure \nobreakspace {}\ref {fig:four-period gliders} (3/6)}{68}{subsubsection.8.12.20}%
+\contentsline {subsubsection}{\numberline {8.12.21}Code for figure \nobreakspace {}\ref {fig:four-period gliders} (4/6)}{68}{subsubsection.8.12.21}%
+\contentsline {subsubsection}{\numberline {8.12.22}Code for figure \nobreakspace {}\ref {fig:four-period gliders} (5/6)}{69}{subsubsection.8.12.22}%
+\contentsline {subsubsection}{\numberline {8.12.23}Code for figure \nobreakspace {}\ref {fig:four-period gliders} (6/6)}{69}{subsubsection.8.12.23}%
+\contentsline {subsubsection}{\numberline {8.12.24}Code for figure \nobreakspace {}\ref {fig:eight-period gliders} (1/2)}{69}{subsubsection.8.12.24}%
+\contentsline {subsubsection}{\numberline {8.12.25}Code for figure \nobreakspace {}\ref {fig:eight-period gliders} (2/2)}{70}{subsubsection.8.12.25}%
+\contentsline {subsubsection}{\numberline {8.12.26}Code for figure \nobreakspace {}\ref {fig:Frankenstein gliders} (1/2)}{70}{subsubsection.8.12.26}%
+\contentsline {subsubsection}{\numberline {8.12.27}Code for figure \nobreakspace {}\ref {fig:Frankenstein gliders} (2/2)}{71}{subsubsection.8.12.27}%
+\contentsline {subsubsection}{\numberline {8.12.28}Code for figure \nobreakspace {}\ref {fig:four-period rake}}{71}{subsubsection.8.12.28}%
+\contentsline {subsubsection}{\numberline {8.12.29}Code for figure \nobreakspace {}\ref {fig:eight-period rake one}}{72}{subsubsection.8.12.29}%
+\contentsline {subsubsection}{\numberline {8.12.30}Code for figure \nobreakspace {}\ref {fig:eight-period rake two}}{73}{subsubsection.8.12.30}%
+\contentsline {subsubsection}{\numberline {8.12.31}Code for figure \nobreakspace {}\ref {fig:the new life}}{73}{subsubsection.8.12.31}%
+\contentsline {subsubsection}{\numberline {8.12.32}Code for figure \nobreakspace {}\ref {fig:glider all dead}}{73}{subsubsection.8.12.32}%
+\contentsline {subsubsection}{\numberline {8.12.33}Code for figure \nobreakspace {}\ref {fig:two GOL}}{73}{subsubsection.8.12.33}%
+\contentsline {subsubsection}{\numberline {8.12.34}Code for figure \nobreakspace {}\ref {fig:murder glider one}}{74}{subsubsection.8.12.34}%
+\contentsline {subsubsection}{\numberline {8.12.35}Code for figure \nobreakspace {}\ref {fig:murder glider two}}{74}{subsubsection.8.12.35}%
+\contentsline {subsubsection}{\numberline {8.12.36}Code for figure \nobreakspace {}\ref {fig:rocket}}{75}{subsubsection.8.12.36}%
+\contentsline {subsubsection}{\numberline {8.12.37}Code for figure \nobreakspace {}\ref {fig:combined glider}}{75}{subsubsection.8.12.37}%
+\contentsline {subsubsection}{\numberline {8.12.38}Code for figure \nobreakspace {}\ref {fig:murder glider}}{76}{subsubsection.8.12.38}%
