@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  13 MAY 2021 23:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  14 MAY 2021 15:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -476,6 +476,11 @@ Package: subcaption 2020/01/22 v1.3d Sub-captions (AR)
 \c@subfigure=\count288
 \c@subtable=\count289
 )
+(/usr/local/texlive/2020/texmf-dist/tex/latex/changepage/changepage.sty
+Package: changepage 2009/10/20 v1.0c check page and change page layout
+\c@cp@cntr=\count290
+\cp@tempcnt=\count291
+)
 (/usr/local/texlive/2020/texmf-dist/tex/latex/ebgaramond/ebgaramond.sty
 Package: ebgaramond 2020/02/27 (Bob Tennent and autoinst) Style file for EB Gar
 amond fonts.
@@ -494,7 +499,7 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 \XKV@toks=\toks26
 \XKV@tempa@toks=\toks27
 )
-\XKV@depth=\count290
+\XKV@depth=\count292
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/local/texlive/2020/texmf-dist/tex/latex/base/textcomp.sty
@@ -568,14 +573,14 @@ ode.tex
 \pgf@yd=\dimen195
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count291
-\c@pgf@countb=\count292
-\c@pgf@countc=\count293
-\c@pgf@countd=\count294
+\c@pgf@counta=\count293
+\c@pgf@countb=\count294
+\c@pgf@countc=\count295
+\c@pgf@countd=\count296
 \t@pgf@toka=\toks32
 \t@pgf@tokb=\toks33
 \t@pgf@tokc=\toks34
-\pgf@sys@id@count=\count295
+\pgf@sys@id@count=\count297
 
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2020/01/08 v3.1.5b (3.1.5b)
@@ -593,8 +598,8 @@ File: pgfsys-common-pdf.def 2020/01/08 v3.1.5b (3.1.5b)
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
 code.tex
 File: pgfsyssoftpath.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgfsyssoftpath@smallbuffer@items=\count296
-\pgfsyssoftpath@bigbuffer@items=\count297
+\pgfsyssoftpath@smallbuffer@items=\count298
+\pgfsyssoftpath@bigbuffer@items=\count299
 )
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
 code.tex
@@ -623,7 +628,7 @@ Package: pgfcore 2020/01/08 v3.1.5b (3.1.5b)
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen196
-\pgfmath@count=\count298
+\pgfmath@count=\count300
 \pgfmath@box=\box56
 \pgfmath@toks=\toks35
 \pgfmath@stack@operand=\toks36
@@ -648,7 +653,7 @@ code.tex)
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
 erarithmetics.code.tex)))
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count299
+\c@pgfmathroundto@lastzeros=\count301
 )) (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
 de.tex
@@ -686,7 +691,7 @@ File: pgfcorescopes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgfpic=\box57
 \pgf@hbox=\box58
 \pgf@layerbox@main=\box59
-\pgf@picture@serial@count=\count300
+\pgf@picture@serial@count=\count302
 )
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
 ate.code.tex
@@ -721,8 +726,8 @@ File: pgfcorearrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 e.tex
 File: pgfcoreshade.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgf@max=\dimen276
-\pgf@sys@shading@range@num=\count301
-\pgf@shadingcount=\count302
+\pgf@sys@shading@range@num=\count303
+\pgf@shadingcount=\count304
 )
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
 e.tex
@@ -789,7 +794,7 @@ Package: tikz 2020/01/08 v3.1.5b (3.1.5b)
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
 dlers.code.tex
 File: pgflibraryplothandlers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgf@plot@mark@count=\count303
+\pgf@plot@mark@count=\count305
 \pgfplotmarksize=\dimen281
 )
 \tikz@lastx=\dimen282
@@ -804,19 +809,19 @@ File: pgflibraryplothandlers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \tikz@figbox@bg=\box63
 \tikz@tempbox=\box64
 \tikz@tempbox@bg=\box65
-\tikztreelevel=\count304
-\tikznumberofchildren=\count305
-\tikznumberofcurrentchild=\count306
-\tikz@fig@count=\count307
+\tikztreelevel=\count306
+\tikznumberofchildren=\count307
+\tikznumberofcurrentchild=\count308
+\tikz@fig@count=\count309
 
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
 e.tex
 File: pgfmodulematrix.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgfmatrixcurrentrow=\count308
-\pgfmatrixcurrentcolumn=\count309
-\pgf@matrix@numberofcolumns=\count310
+\pgfmatrixcurrentrow=\count310
+\pgfmatrixcurrentcolumn=\count311
+\pgf@matrix@numberofcolumns=\count312
 )
-\tikz@expandcount=\count311
+\tikz@expandcount=\count313
 
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
@@ -862,25 +867,26 @@ File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
-\c@checkoddpage=\count312
+\c@checkoddpage=\count314
+LaTeX Info: Redefining \checkoddpage on input line 45.
 )
 (/usr/local/texlive/2020/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box67
-\sift@deathcycles=\count313
+\sift@deathcycles=\count315
 \@vwid@loff=\dimen302
 \@vwid@roff=\dimen303
 ))
 (/usr/local/texlive/2020/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count314
+\etb@tempcnta=\count316
 )
 (/usr/local/texlive/2020/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2013/03/29 ver 4.1
 )
 (/usr/local/texlive/2020/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count315
+\c@float@type=\count317
 \float@exts=\toks40
 \float@box=\box68
 \@float@everytoks=\toks41
@@ -894,9 +900,9 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
 (/usr/local/texlive/2020/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count316
-\Gm@cntv=\count317
-\c@Gm@tempcnt=\count318
+\Gm@cnth=\count318
+\Gm@cntv=\count319
+\c@Gm@tempcnt=\count320
 \Gm@bindingoffset=\dimen304
 \Gm@wd@mp=\dimen305
 \Gm@odd@mp=\dimen306
@@ -959,16 +965,16 @@ LaTeX Info: Redefining \nameref on input line 106.
 
 (/usr/local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count319
+\scratchcounter=\count321
 \scratchdimen=\dimen312
 \scratchbox=\box72
-\nofMPsegments=\count320
-\nofMParguments=\count321
+\nofMPsegments=\count322
+\nofMParguments=\count323
 \everyMPshowfont=\toks43
-\MPscratchCnt=\count322
+\MPscratchCnt=\count324
 \MPscratchDim=\dimen313
-\MPnumerator=\count323
-\makeMPintoPDFobject=\count324
+\MPnumerator=\count325
+\makeMPintoPDFobject=\count326
 \everyMPtoPDFconversion=\toks44
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -987,12 +993,12 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count325
+\c@lstlisting=\count327
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@mv@tabular=\count326
-\c@mv@boldtabular=\count327
+\c@mv@tabular=\count328
+\c@mv@boldtabular=\count329
 
 ABD: EveryShipout initializing macros
 *geometry* driver: auto-detecting
@@ -1082,6 +1088,22 @@ LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/bold/n' will be
 \openout7 = `"Qitian Liao Thesis.toc"'.
 
  [8]
+Underfull \hbox (badness 10000) in paragraph at lines 173--175
+
+ []
+
+LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/m/n' in size <10.95> not ava
+ilable
+(Font)              Font shape `OT1/EBGaramond-OsF/regular/n' tried instead on 
+input line 177.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/regular/n' will be
+(Font)              scaled to size 10.95pt on input line 177.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/b/n' in size <10.95> not ava
+ilable
+(Font)              Font shape `OT1/EBGaramond-OsF/bold/n' tried instead on inp
+ut line 179.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/bold/n' will be
+(Font)              scaled to size 10.95pt on input line 179.
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 14.49998pt.
@@ -1092,167 +1114,155 @@ This may cause the page layout to be inconsistent, however.
 <./images/Section1/1.png, id=514, 94.3525pt x 94.3525pt>
 File: ./images/Section1/1.png Graphic file (type png)
 <use ./images/Section1/1.png>
-Package pdftex.def Info: ./images/Section1/1.png  used on input line 187.
+Package pdftex.def Info: ./images/Section1/1.png  used on input line 201.
 (pdftex.def)             Requested size: 109.64111pt x 109.64186pt.
 <./images/Section1/2.png, id=516, 94.3525pt x 94.3525pt>
 File: ./images/Section1/2.png Graphic file (type png)
 <use ./images/Section1/2.png>
-Package pdftex.def Info: ./images/Section1/2.png  used on input line 191.
+Package pdftex.def Info: ./images/Section1/2.png  used on input line 205.
 (pdftex.def)             Requested size: 109.64111pt x 109.64186pt.
-LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/m/n' in size <10.95> not ava
-ilable
-(Font)              Font shape `OT1/EBGaramond-OsF/regular/n' tried instead on 
-input line 193.
-LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/regular/n' will be
-(Font)              scaled to size 10.95pt on input line 193.
-LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/b/n' in size <10.95> not ava
-ilable
-(Font)              Font shape `OT1/EBGaramond-OsF/bold/n' tried instead on inp
-ut line 193.
-LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/bold/n' will be
-(Font)              scaled to size 10.95pt on input line 193.
 <./images/Section1/3.png, id=518, 669.50125pt x 223.83624pt>
 File: ./images/Section1/3.png Graphic file (type png)
 <use ./images/Section1/3.png>
-Package pdftex.def Info: ./images/Section1/3.png  used on input line 202.
+Package pdftex.def Info: ./images/Section1/3.png  used on input line 216.
 (pdftex.def)             Requested size: 380.69788pt x 127.284pt.
  [2 <./images/Section1/1.png> <./images/Section1/2.png>] [3 <./images/Section1/
 3.png>]
-<./images/Section1/4.0.png, id=548, 1137.24875pt x 977.6525pt>
+<./images/Section1/4.0.png, id=549, 1137.24875pt x 977.6525pt>
 File: ./images/Section1/4.0.png Graphic file (type png)
 <use ./images/Section1/4.0.png>
-Package pdftex.def Info: ./images/Section1/4.0.png  used on input line 220.
+Package pdftex.def Info: ./images/Section1/4.0.png  used on input line 234.
 (pdftex.def)             Requested size: 68.52283pt x 58.8953pt.
 LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/m/n' in size <10> not availa
 ble
 (Font)              Font shape `OT1/EBGaramond-OsF/regular/n' tried instead on 
-input line 221.
+input line 235.
 LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/regular/n' will be
-(Font)              scaled to size 10.0pt on input line 221.
-<./images/Section1/4.1.png, id=549, 1137.24875pt x 977.6525pt>
+(Font)              scaled to size 10.0pt on input line 235.
+<./images/Section1/4.1.png, id=550, 1137.24875pt x 977.6525pt>
 File: ./images/Section1/4.1.png Graphic file (type png)
 <use ./images/Section1/4.1.png>
-Package pdftex.def Info: ./images/Section1/4.1.png  used on input line 225.
+Package pdftex.def Info: ./images/Section1/4.1.png  used on input line 239.
 (pdftex.def)             Requested size: 68.52283pt x 58.8953pt.
-<./images/Section1/4.2.png, id=550, 1137.24875pt x 977.6525pt>
+<./images/Section1/4.2.png, id=551, 1137.24875pt x 977.6525pt>
 File: ./images/Section1/4.2.png Graphic file (type png)
 <use ./images/Section1/4.2.png>
-Package pdftex.def Info: ./images/Section1/4.2.png  used on input line 230.
+Package pdftex.def Info: ./images/Section1/4.2.png  used on input line 244.
 (pdftex.def)             Requested size: 68.52283pt x 58.8953pt.
-<./images/Section1/4.3.png, id=551, 1137.24875pt x 977.6525pt>
+<./images/Section1/4.3.png, id=552, 1137.24875pt x 977.6525pt>
 File: ./images/Section1/4.3.png Graphic file (type png)
 <use ./images/Section1/4.3.png>
-Package pdftex.def Info: ./images/Section1/4.3.png  used on input line 235.
+Package pdftex.def Info: ./images/Section1/4.3.png  used on input line 249.
 (pdftex.def)             Requested size: 68.52283pt x 58.8953pt.
-<./images/Section1/4.4.png, id=552, 1137.24875pt x 977.6525pt>
+<./images/Section1/4.4.png, id=553, 1137.24875pt x 977.6525pt>
 File: ./images/Section1/4.4.png Graphic file (type png)
 <use ./images/Section1/4.4.png>
-Package pdftex.def Info: ./images/Section1/4.4.png  used on input line 240.
+Package pdftex.def Info: ./images/Section1/4.4.png  used on input line 254.
 (pdftex.def)             Requested size: 68.52283pt x 58.8953pt.
 LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/m/n' in size <20.74> not ava
 ilable
 (Font)              Font shape `OT1/EBGaramond-OsF/regular/n' tried instead on 
-input line 243.
+input line 257.
 LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/regular/n' will be
-(Font)              scaled to size 20.74pt on input line 243.
-<./images/Section1/5.0.png, id=553, 1137.24875pt x 888.31876pt>
+(Font)              scaled to size 20.74pt on input line 257.
+<./images/Section1/5.0.png, id=554, 1137.24875pt x 888.31876pt>
 File: ./images/Section1/5.0.png Graphic file (type png)
 <use ./images/Section1/5.0.png>
-Package pdftex.def Info: ./images/Section1/5.0.png  used on input line 248.
+Package pdftex.def Info: ./images/Section1/5.0.png  used on input line 262.
 (pdftex.def)             Requested size: 68.52283pt x 53.51369pt.
-<./images/Section1/5.1.png, id=554, 1137.24875pt x 888.31876pt>
+<./images/Section1/5.1.png, id=555, 1137.24875pt x 888.31876pt>
 File: ./images/Section1/5.1.png Graphic file (type png)
 <use ./images/Section1/5.1.png>
-Package pdftex.def Info: ./images/Section1/5.1.png  used on input line 253.
+Package pdftex.def Info: ./images/Section1/5.1.png  used on input line 267.
 (pdftex.def)             Requested size: 68.52283pt x 53.51369pt.
-<./images/Section1/5.2.png, id=555, 1137.24875pt x 888.31876pt>
+<./images/Section1/5.2.png, id=556, 1137.24875pt x 888.31876pt>
 File: ./images/Section1/5.2.png Graphic file (type png)
 <use ./images/Section1/5.2.png>
-Package pdftex.def Info: ./images/Section1/5.2.png  used on input line 258.
+Package pdftex.def Info: ./images/Section1/5.2.png  used on input line 272.
 (pdftex.def)             Requested size: 68.52283pt x 53.51369pt.
-<./images/Section1/5.3.png, id=556, 1137.24875pt x 888.31876pt>
+<./images/Section1/5.3.png, id=557, 1137.24875pt x 888.31876pt>
 File: ./images/Section1/5.3.png Graphic file (type png)
 <use ./images/Section1/5.3.png>
-Package pdftex.def Info: ./images/Section1/5.3.png  used on input line 263.
+Package pdftex.def Info: ./images/Section1/5.3.png  used on input line 277.
 (pdftex.def)             Requested size: 68.52283pt x 53.51369pt.
-<./images/Section1/5.4.png, id=557, 1137.24875pt x 888.31876pt>
+<./images/Section1/5.4.png, id=558, 1137.24875pt x 888.31876pt>
 File: ./images/Section1/5.4.png Graphic file (type png)
 <use ./images/Section1/5.4.png>
-Package pdftex.def Info: ./images/Section1/5.4.png  used on input line 268.
+Package pdftex.def Info: ./images/Section1/5.4.png  used on input line 282.
 (pdftex.def)             Requested size: 68.52283pt x 53.51369pt.
-<./images/Section1/6.0.png, id=558, 1137.24875pt x 1025.8325pt>
+<./images/Section1/6.0.png, id=559, 1137.24875pt x 1025.8325pt>
 File: ./images/Section1/6.0.png Graphic file (type png)
 <use ./images/Section1/6.0.png>
-Package pdftex.def Info: ./images/Section1/6.0.png  used on input line 276.
+Package pdftex.def Info: ./images/Section1/6.0.png  used on input line 290.
 (pdftex.def)             Requested size: 68.52283pt x 61.79773pt.
-<./images/Section1/6.1.png, id=559, 1137.24875pt x 1025.8325pt>
+<./images/Section1/6.1.png, id=560, 1137.24875pt x 1025.8325pt>
 File: ./images/Section1/6.1.png Graphic file (type png)
 <use ./images/Section1/6.1.png>
-Package pdftex.def Info: ./images/Section1/6.1.png  used on input line 281.
+Package pdftex.def Info: ./images/Section1/6.1.png  used on input line 295.
 (pdftex.def)             Requested size: 68.52283pt x 61.79773pt.
-<./images/Section1/6.2.png, id=560, 1137.24875pt x 1025.8325pt>
+<./images/Section1/6.2.png, id=561, 1137.24875pt x 1025.8325pt>
 File: ./images/Section1/6.2.png Graphic file (type png)
 <use ./images/Section1/6.2.png>
-Package pdftex.def Info: ./images/Section1/6.2.png  used on input line 286.
+Package pdftex.def Info: ./images/Section1/6.2.png  used on input line 300.
 (pdftex.def)             Requested size: 68.52283pt x 61.79773pt.
-<./images/Section1/6.3.png, id=561, 1137.24875pt x 1025.8325pt>
+<./images/Section1/6.3.png, id=562, 1137.24875pt x 1025.8325pt>
 File: ./images/Section1/6.3.png Graphic file (type png)
 <use ./images/Section1/6.3.png>
-Package pdftex.def Info: ./images/Section1/6.3.png  used on input line 291.
+Package pdftex.def Info: ./images/Section1/6.3.png  used on input line 305.
 (pdftex.def)             Requested size: 68.52283pt x 61.79773pt.
-<./images/Section1/6.4.png, id=562, 1137.24875pt x 1025.8325pt>
+<./images/Section1/6.4.png, id=563, 1137.24875pt x 1025.8325pt>
 File: ./images/Section1/6.4.png Graphic file (type png)
 <use ./images/Section1/6.4.png>
-Package pdftex.def Info: ./images/Section1/6.4.png  used on input line 296.
+Package pdftex.def Info: ./images/Section1/6.4.png  used on input line 310.
 (pdftex.def)             Requested size: 68.52283pt x 61.79773pt.
-<./images/Section1/7.0.png, id=563, 1137.24875pt x 933.4875pt>
+<./images/Section1/7.0.png, id=564, 1137.24875pt x 933.4875pt>
 File: ./images/Section1/7.0.png Graphic file (type png)
 <use ./images/Section1/7.0.png>
-Package pdftex.def Info: ./images/Section1/7.0.png  used on input line 306.
+Package pdftex.def Info: ./images/Section1/7.0.png  used on input line 320.
 (pdftex.def)             Requested size: 68.52283pt x 56.23473pt.
-<./images/Section1/7.1.png, id=564, 1137.24875pt x 933.4875pt>
+<./images/Section1/7.1.png, id=565, 1137.24875pt x 933.4875pt>
 File: ./images/Section1/7.1.png Graphic file (type png)
 <use ./images/Section1/7.1.png>
-Package pdftex.def Info: ./images/Section1/7.1.png  used on input line 311.
+Package pdftex.def Info: ./images/Section1/7.1.png  used on input line 325.
 (pdftex.def)             Requested size: 68.52283pt x 56.23473pt.
-<./images/Section1/7.2.png, id=565, 1137.24875pt x 933.4875pt>
+<./images/Section1/7.2.png, id=566, 1137.24875pt x 933.4875pt>
 File: ./images/Section1/7.2.png Graphic file (type png)
 <use ./images/Section1/7.2.png>
-Package pdftex.def Info: ./images/Section1/7.2.png  used on input line 316.
+Package pdftex.def Info: ./images/Section1/7.2.png  used on input line 330.
 (pdftex.def)             Requested size: 68.52283pt x 56.23473pt.
-<./images/Section1/7.3.png, id=566, 1137.24875pt x 933.4875pt>
+<./images/Section1/7.3.png, id=567, 1137.24875pt x 933.4875pt>
 File: ./images/Section1/7.3.png Graphic file (type png)
 <use ./images/Section1/7.3.png>
-Package pdftex.def Info: ./images/Section1/7.3.png  used on input line 321.
+Package pdftex.def Info: ./images/Section1/7.3.png  used on input line 335.
 (pdftex.def)             Requested size: 68.52283pt x 56.23473pt.
-<./images/Section1/7.4.png, id=567, 1137.24875pt x 933.4875pt>
+<./images/Section1/7.4.png, id=568, 1137.24875pt x 933.4875pt>
 File: ./images/Section1/7.4.png Graphic file (type png)
 <use ./images/Section1/7.4.png>
-Package pdftex.def Info: ./images/Section1/7.4.png  used on input line 326.
+Package pdftex.def Info: ./images/Section1/7.4.png  used on input line 340.
 (pdftex.def)             Requested size: 68.52283pt x 56.23473pt.
  [4]
-<./images/Section1/8.1.png, id=587, 126.4725pt x 95.35625pt>
+<./images/Section1/8.1.png, id=588, 126.4725pt x 95.35625pt>
 File: ./images/Section1/8.1.png Graphic file (type png)
 <use ./images/Section1/8.1.png>
-Package pdftex.def Info: ./images/Section1/8.1.png  used on input line 338.
+Package pdftex.def Info: ./images/Section1/8.1.png  used on input line 352.
 (pdftex.def)             Requested size: 171.31288pt x 129.16768pt.
-<./images/Section1/8.2.png, id=588, 148.555pt x 95.35625pt>
+<./images/Section1/8.2.png, id=589, 148.555pt x 95.35625pt>
 File: ./images/Section1/8.2.png Graphic file (type png)
 <use ./images/Section1/8.2.png>
-Package pdftex.def Info: ./images/Section1/8.2.png  used on input line 343.
+Package pdftex.def Info: ./images/Section1/8.2.png  used on input line 357.
 (pdftex.def)             Requested size: 201.76941pt x 129.51979pt.
-<./images/Section1/8.3.png, id=589, 111.41624pt x 111.41624pt>
+<./images/Section1/8.3.png, id=590, 111.41624pt x 111.41624pt>
 File: ./images/Section1/8.3.png Graphic file (type png)
 <use ./images/Section1/8.3.png>
-Package pdftex.def Info: ./images/Section1/8.3.png  used on input line 348.
+Package pdftex.def Info: ./images/Section1/8.3.png  used on input line 362.
 (pdftex.def)             Requested size: 159.89241pt x 159.90544pt.
-<./images/Section1/8.4.png, id=590, 153.57375pt x 115.43124pt>
+<./images/Section1/8.4.png, id=591, 153.57375pt x 115.43124pt>
 File: ./images/Section1/8.4.png Graphic file (type png)
 <use ./images/Section1/8.4.png>
-Package pdftex.def Info: ./images/Section1/8.4.png  used on input line 353.
+Package pdftex.def Info: ./images/Section1/8.4.png  used on input line 367.
 (pdftex.def)             Requested size: 213.18988pt x 160.25168pt.
 
-Underfull \hbox (badness 8189) in paragraph at lines 336--356
+Underfull \hbox (badness 8189) in paragraph at lines 350--370
 []$[]$ $[]$
  []
 
@@ -1264,21 +1274,21 @@ ages/Section1/6.1.png> <./images/Section1/6.2.png> <./images/Section1/6.3.png>
 <./images/Section1/6.4.png> <./images/Section1/7.0.png> <./images/Section1/7.1.
 png> <./images/Section1/7.2.png> <./images/Section1/7.3.png> <./images/Section1
 /7.4.png>]
-<./images/Section1/9.png, id=620, 881.2925pt x 268.00125pt>
+<./images/Section1/9.png, id=621, 881.2925pt x 268.00125pt>
 File: ./images/Section1/9.png Graphic file (type png)
 <use ./images/Section1/9.png>
-Package pdftex.def Info: ./images/Section1/9.png  used on input line 365.
+Package pdftex.def Info: ./images/Section1/9.png  used on input line 379.
 (pdftex.def)             Requested size: 380.69788pt x 115.7699pt.
  [6 <./images/Section1/8.1.png> <./images/Section1/8.2.png> <./images/Section1/
 8.3.png> <./images/Section1/8.4.png>] [7 <./images/Section1/9.png>]
 [8] [9]
-<./images/Section2/1.png, id=656, 311.1625pt x 171.64125pt>
+<./images/Section2/1.png, id=657, 311.1625pt x 171.64125pt>
 File: ./images/Section2/1.png Graphic file (type png)
 <use ./images/Section2/1.png>
-Package pdftex.def Info: ./images/Section2/1.png  used on input line 401.
+Package pdftex.def Info: ./images/Section2/1.png  used on input line 415.
 (pdftex.def)             Requested size: 380.69788pt x 209.99913pt.
  [10] [11 <./images/Section2/1.png>] [12] [13]
-Overfull \hbox (0.56906pt too wide) in paragraph at lines 422--423
+Overfull \hbox (0.56906pt too wide) in paragraph at lines 436--437
 []\OT1/EBGaramond-OsF/regular/n/12 We first col-lected the two-dimensional cel-
 lu-lar au-tomata data that the ma-chine learner
  []
@@ -1286,36 +1296,36 @@ lu-lar au-tomata data that the ma-chine learner
 LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/m/n' in size <14.4> not avai
 lable
 (Font)              Font shape `OT1/EBGaramond-OsF/regular/n' tried instead on 
-input line 424.
+input line 438.
 LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/regular/n' will be
-(Font)              scaled to size 14.4pt on input line 424.
+(Font)              scaled to size 14.4pt on input line 438.
 LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/b/n' in size <14.4> not avai
 lable
 (Font)              Font shape `OT1/EBGaramond-OsF/bold/n' tried instead on inp
-ut line 424.
+ut line 438.
 LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/bold/n' will be
-(Font)              scaled to size 14.4pt on input line 424.
+(Font)              scaled to size 14.4pt on input line 438.
 [14]
-<./images/Section3/1.png, id=692, 159.59625pt x 159.59625pt>
+<./images/Section3/1.png, id=693, 159.59625pt x 159.59625pt>
 File: ./images/Section3/1.png Graphic file (type png)
 <use ./images/Section3/1.png>
-Package pdftex.def Info: ./images/Section3/1.png  used on input line 433.
+Package pdftex.def Info: ./images/Section3/1.png  used on input line 447.
 (pdftex.def)             Requested size: 190.34894pt x 190.35046pt.
  [15]
 LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/m/n' in size <8> not availab
 le
 (Font)              Font shape `OT1/EBGaramond-OsF/regular/n' tried instead on 
-input line 440.
+input line 454.
 LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/regular/n' will be
-(Font)              scaled to size 8.0pt on input line 440.
+(Font)              scaled to size 8.0pt on input line 454.
 LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/m/n' in size <6> not availab
 le
 (Font)              Font shape `OT1/EBGaramond-OsF/regular/n' tried instead on 
-input line 440.
+input line 454.
 LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/regular/n' will be
-(Font)              scaled to size 6.0pt on input line 440.
+(Font)              scaled to size 6.0pt on input line 454.
 LaTeX Font Info:    Trying to load font information for TS1+EBGaramond-OsF on i
-nput line 440.
+nput line 454.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/ebgaramond/TS1EBGaramond-OsF.fd
 File: TS1EBGaramond-OsF.fd 2019/10/22 (autoinst) Font definitions for TS1/EBGar
@@ -1324,45 +1334,45 @@ amond-OsF.
 LaTeX Font Info:    Font shape `TS1/EBGaramond-OsF/m/n' in size <12> not availa
 ble
 (Font)              Font shape `TS1/EBGaramond-OsF/regular/n' tried instead on 
-input line 440.
+input line 454.
 LaTeX Font Info:    Font shape `TS1/EBGaramond-OsF/regular/n' will be
-(Font)              scaled to size 12.0pt on input line 440.
+(Font)              scaled to size 12.0pt on input line 454.
 
 [16 <./images/Section3/1.png>] [17]
-Overfull \hbox (6.82846pt too wide) in paragraph at lines 466--466
+Overfull \hbox (6.82846pt too wide) in paragraph at lines 480--480
 |[]\OT1/EBGaramond-OsF/bold/n/14.4 Data Pre-pro-cess-ing, Fea-ture Ex-trac-tion
 , Train-ing with CNN| 
  []
 
-<./images/Section3/2.png, id=715, 89.0235pt x 89.0235pt>
+<./images/Section3/2.png, id=716, 89.0235pt x 89.0235pt>
 File: ./images/Section3/2.png Graphic file (type png)
 <use ./images/Section3/2.png>
-Package pdftex.def Info: ./images/Section3/2.png  used on input line 472.
+Package pdftex.def Info: ./images/Section3/2.png  used on input line 486.
 (pdftex.def)             Requested size: 114.21051pt x 114.21999pt.
 [18 <./images/Section3/2.png>]
-<./images/Section3/3.1.png, id=722, 178.3755pt x 178.3755pt>
+<./images/Section3/3.1.png, id=723, 178.3755pt x 178.3755pt>
 File: ./images/Section3/3.1.png Graphic file (type png)
 <use ./images/Section3/3.1.png>
-Package pdftex.def Info: ./images/Section3/3.1.png  used on input line 482.
+Package pdftex.def Info: ./images/Section3/3.1.png  used on input line 496.
 (pdftex.def)             Requested size: 171.31288pt x 171.31201pt.
-<./images/Section3/3.2.png, id=723, 177.39pt x 177.39pt>
+<./images/Section3/3.2.png, id=724, 177.39pt x 177.39pt>
 File: ./images/Section3/3.2.png Graphic file (type png)
 <use ./images/Section3/3.2.png>
-Package pdftex.def Info: ./images/Section3/3.2.png  used on input line 486.
+Package pdftex.def Info: ./images/Section3/3.2.png  used on input line 500.
 (pdftex.def)             Requested size: 201.76941pt x 201.78549pt.
  [19 <./images/Section3/3.1.png> <./images/Section3/3.2.png>] [20] [21]
-<./images/Section3/4.1.png, id=749, 234.8775pt x 165.61874pt>
+<./images/Section3/4.1.png, id=750, 234.8775pt x 165.61874pt>
 File: ./images/Section3/4.1.png Graphic file (type png)
 <use ./images/Section3/4.1.png>
-Package pdftex.def Info: ./images/Section3/4.1.png  used on input line 537.
+Package pdftex.def Info: ./images/Section3/4.1.png  used on input line 551.
 (pdftex.def)             Requested size: 190.34894pt x 134.22119pt.
-<./images/Section3/4.2.png, id=750, 231.86626pt x 164.615pt>
+<./images/Section3/4.2.png, id=751, 231.86626pt x 164.615pt>
 File: ./images/Section3/4.2.png Graphic file (type png)
 <use ./images/Section3/4.2.png>
-Package pdftex.def Info: ./images/Section3/4.2.png  used on input line 541.
+Package pdftex.def Info: ./images/Section3/4.2.png  used on input line 555.
 (pdftex.def)             Requested size: 190.34894pt x 135.1409pt.
 
-Overfull \hbox (1.5996pt too wide) in paragraph at lines 535--543
+Overfull \hbox (1.5996pt too wide) in paragraph at lines 549--557
 []$[]$ $[]$ 
  []
 
@@ -1370,192 +1380,192 @@ Overfull \hbox (1.5996pt too wide) in paragraph at lines 535--543
 LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/m/n' in size <24.88> not ava
 ilable
 (Font)              Font shape `OT1/EBGaramond-OsF/regular/n' tried instead on 
-input line 562.
+input line 576.
 LaTeX Font Info:    Font shape `OT1/EBGaramond-OsF/regular/n' will be
-(Font)              scaled to size 24.88pt on input line 562.
-<./images/Section4/1.0.png, id=771, 374.39874pt x 1109.14375pt>
+(Font)              scaled to size 24.88pt on input line 576.
+<./images/Section4/1.0.png, id=772, 374.39874pt x 1109.14375pt>
 File: ./images/Section4/1.0.png Graphic file (type png)
 <use ./images/Section4/1.0.png>
-Package pdftex.def Info: ./images/Section4/1.0.png  used on input line 566.
+Package pdftex.def Info: ./images/Section4/1.0.png  used on input line 580.
 (pdftex.def)             Requested size: 186.54404pt x 552.62424pt.
-<./images/Section4/1.1.png, id=772, 374.39874pt x 1109.14375pt>
+<./images/Section4/1.1.png, id=773, 374.39874pt x 1109.14375pt>
 File: ./images/Section4/1.1.png Graphic file (type png)
 <use ./images/Section4/1.1.png>
-Package pdftex.def Info: ./images/Section4/1.1.png  used on input line 570.
+Package pdftex.def Info: ./images/Section4/1.1.png  used on input line 584.
 (pdftex.def)             Requested size: 186.54404pt x 552.62424pt.
  [24]
-<./images/Section4/2.0.png, id=779, 612.2875pt x 1109.14375pt>
+<./images/Section4/2.0.png, id=780, 612.2875pt x 1109.14375pt>
 File: ./images/Section4/2.0.png Graphic file (type png)
 <use ./images/Section4/2.0.png>
-Package pdftex.def Info: ./images/Section4/2.0.png  used on input line 583.
+Package pdftex.def Info: ./images/Section4/2.0.png  used on input line 597.
 (pdftex.def)             Requested size: 72.33351pt x 131.02676pt.
-<./images/Section4/2.1.png, id=780, 612.2875pt x 1109.14375pt>
+<./images/Section4/2.1.png, id=781, 612.2875pt x 1109.14375pt>
 File: ./images/Section4/2.1.png Graphic file (type png)
 <use ./images/Section4/2.1.png>
-Package pdftex.def Info: ./images/Section4/2.1.png  used on input line 587.
+Package pdftex.def Info: ./images/Section4/2.1.png  used on input line 601.
 (pdftex.def)             Requested size: 72.33351pt x 131.02676pt.
-<./images/Section4/2.2.png, id=781, 612.2875pt x 1109.14375pt>
+<./images/Section4/2.2.png, id=782, 612.2875pt x 1109.14375pt>
 File: ./images/Section4/2.2.png Graphic file (type png)
 <use ./images/Section4/2.2.png>
-Package pdftex.def Info: ./images/Section4/2.2.png  used on input line 591.
+Package pdftex.def Info: ./images/Section4/2.2.png  used on input line 605.
 (pdftex.def)             Requested size: 72.33351pt x 131.02676pt.
-<./images/Section4/2.3.png, id=782, 612.2875pt x 1109.14375pt>
+<./images/Section4/2.3.png, id=783, 612.2875pt x 1109.14375pt>
 File: ./images/Section4/2.3.png Graphic file (type png)
 <use ./images/Section4/2.3.png>
-Package pdftex.def Info: ./images/Section4/2.3.png  used on input line 595.
+Package pdftex.def Info: ./images/Section4/2.3.png  used on input line 609.
 (pdftex.def)             Requested size: 72.33351pt x 131.02676pt.
-<./images/Section4/2.4.png, id=783, 612.2875pt x 1109.14375pt>
+<./images/Section4/2.4.png, id=784, 612.2875pt x 1109.14375pt>
 File: ./images/Section4/2.4.png Graphic file (type png)
 <use ./images/Section4/2.4.png>
-Package pdftex.def Info: ./images/Section4/2.4.png  used on input line 599.
+Package pdftex.def Info: ./images/Section4/2.4.png  used on input line 613.
 (pdftex.def)             Requested size: 72.33351pt x 131.02676pt.
  [25 <./images/Section4/1.0.png> <./images/Section4/1.1.png>]
-<./images/Section4/3.0.png, id=796, 672.5125pt x 1109.14375pt>
+<./images/Section4/3.0.png, id=797, 672.5125pt x 1109.14375pt>
 File: ./images/Section4/3.0.png Graphic file (type png)
 <use ./images/Section4/3.0.png>
-Package pdftex.def Info: ./images/Section4/3.0.png  used on input line 614.
+Package pdftex.def Info: ./images/Section4/3.0.png  used on input line 628.
 (pdftex.def)             Requested size: 672.51085pt x 1109.14105pt.
-<./images/Section4/3.1.png, id=797, 672.5125pt x 1109.14375pt>
+<./images/Section4/3.1.png, id=798, 672.5125pt x 1109.14375pt>
 File: ./images/Section4/3.1.png Graphic file (type png)
 <use ./images/Section4/3.1.png>
-Package pdftex.def Info: ./images/Section4/3.1.png  used on input line 619.
+Package pdftex.def Info: ./images/Section4/3.1.png  used on input line 633.
 (pdftex.def)             Requested size: 672.51085pt x 1109.14105pt.
-<./images/Section4/3.2.png, id=798, 672.5125pt x 1109.14375pt>
+<./images/Section4/3.2.png, id=799, 672.5125pt x 1109.14375pt>
 File: ./images/Section4/3.2.png Graphic file (type png)
 <use ./images/Section4/3.2.png>
-Package pdftex.def Info: ./images/Section4/3.2.png  used on input line 624.
+Package pdftex.def Info: ./images/Section4/3.2.png  used on input line 638.
 (pdftex.def)             Requested size: 672.51085pt x 1109.14105pt.
 
-Overfull \hbox (9.31964pt too wide) in paragraph at lines 628--629
+Overfull \hbox (9.31964pt too wide) in paragraph at lines 642--643
 []$[]$ 
  []
 
-<./images/Section4/4.0.png, id=799, 513.92pt x 1109.14375pt>
+<./images/Section4/4.0.png, id=800, 513.92pt x 1109.14375pt>
 File: ./images/Section4/4.0.png Graphic file (type png)
 <use ./images/Section4/4.0.png>
-Package pdftex.def Info: ./images/Section4/4.0.png  used on input line 637.
+Package pdftex.def Info: ./images/Section4/4.0.png  used on input line 651.
 (pdftex.def)             Requested size: 513.91873pt x 1109.14105pt.
-<./images/Section4/4.1.png, id=800, 513.92pt x 1109.14375pt>
+<./images/Section4/4.1.png, id=801, 513.92pt x 1109.14375pt>
 File: ./images/Section4/4.1.png Graphic file (type png)
 <use ./images/Section4/4.1.png>
-Package pdftex.def Info: ./images/Section4/4.1.png  used on input line 642.
+Package pdftex.def Info: ./images/Section4/4.1.png  used on input line 656.
 (pdftex.def)             Requested size: 513.91873pt x 1109.14105pt.
-<./images/Section4/4.2.png, id=801, 513.92pt x 1109.14375pt>
+<./images/Section4/4.2.png, id=802, 513.92pt x 1109.14375pt>
 File: ./images/Section4/4.2.png Graphic file (type png)
 <use ./images/Section4/4.2.png>
-Package pdftex.def Info: ./images/Section4/4.2.png  used on input line 647.
+Package pdftex.def Info: ./images/Section4/4.2.png  used on input line 661.
 (pdftex.def)             Requested size: 513.91873pt x 1109.14105pt.
 
-Overfull \hbox (9.31964pt too wide) in paragraph at lines 651--652
+Overfull \hbox (9.31964pt too wide) in paragraph at lines 665--666
 []$[]$ 
  []
 
-<./images/Section4/5.0.png, id=802, 563.10374pt x 1109.14375pt>
+<./images/Section4/5.0.png, id=803, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/5.0.png Graphic file (type png)
 <use ./images/Section4/5.0.png>
-Package pdftex.def Info: ./images/Section4/5.0.png  used on input line 660.
+Package pdftex.def Info: ./images/Section4/5.0.png  used on input line 674.
 (pdftex.def)             Requested size: 563.10237pt x 1109.14105pt.
-<./images/Section4/5.1.png, id=803, 563.10374pt x 1109.14375pt>
+<./images/Section4/5.1.png, id=804, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/5.1.png Graphic file (type png)
 <use ./images/Section4/5.1.png>
-Package pdftex.def Info: ./images/Section4/5.1.png  used on input line 665.
+Package pdftex.def Info: ./images/Section4/5.1.png  used on input line 679.
 (pdftex.def)             Requested size: 563.10237pt x 1109.14105pt.
-<./images/Section4/5.2.png, id=804, 563.10374pt x 1109.14375pt>
+<./images/Section4/5.2.png, id=805, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/5.2.png Graphic file (type png)
 <use ./images/Section4/5.2.png>
-Package pdftex.def Info: ./images/Section4/5.2.png  used on input line 670.
+Package pdftex.def Info: ./images/Section4/5.2.png  used on input line 684.
 (pdftex.def)             Requested size: 563.10237pt x 1109.14105pt.
 
-Overfull \hbox (9.31964pt too wide) in paragraph at lines 674--675
+Overfull \hbox (9.31964pt too wide) in paragraph at lines 688--689
 []$[]$ 
  []
 
-<./images/Section4/6.0.png, id=805, 711.65875pt x 1109.14375pt>
+<./images/Section4/6.0.png, id=806, 711.65875pt x 1109.14375pt>
 File: ./images/Section4/6.0.png Graphic file (type png)
 <use ./images/Section4/6.0.png>
-Package pdftex.def Info: ./images/Section4/6.0.png  used on input line 683.
+Package pdftex.def Info: ./images/Section4/6.0.png  used on input line 697.
 (pdftex.def)             Requested size: 711.65701pt x 1109.14105pt.
-<./images/Section4/6.1.png, id=806, 711.65875pt x 1109.14375pt>
+<./images/Section4/6.1.png, id=807, 711.65875pt x 1109.14375pt>
 File: ./images/Section4/6.1.png Graphic file (type png)
 <use ./images/Section4/6.1.png>
-Package pdftex.def Info: ./images/Section4/6.1.png  used on input line 688.
+Package pdftex.def Info: ./images/Section4/6.1.png  used on input line 702.
 (pdftex.def)             Requested size: 711.65701pt x 1109.14105pt.
-<./images/Section4/6.2.png, id=807, 711.65875pt x 1109.14375pt>
+<./images/Section4/6.2.png, id=808, 711.65875pt x 1109.14375pt>
 File: ./images/Section4/6.2.png Graphic file (type png)
 <use ./images/Section4/6.2.png>
-Package pdftex.def Info: ./images/Section4/6.2.png  used on input line 693.
+Package pdftex.def Info: ./images/Section4/6.2.png  used on input line 707.
 (pdftex.def)             Requested size: 711.65701pt x 1109.14105pt.
 
-Overfull \hbox (9.31964pt too wide) in paragraph at lines 697--698
+Overfull \hbox (9.31964pt too wide) in paragraph at lines 711--712
 []$[]$ 
  []
 
-<./images/Section4/7.0.png, id=808, 484.81125pt x 1109.14375pt>
+<./images/Section4/7.0.png, id=809, 484.81125pt x 1109.14375pt>
 File: ./images/Section4/7.0.png Graphic file (type png)
 <use ./images/Section4/7.0.png>
-Package pdftex.def Info: ./images/Section4/7.0.png  used on input line 706.
+Package pdftex.def Info: ./images/Section4/7.0.png  used on input line 720.
 (pdftex.def)             Requested size: 484.81006pt x 1109.14105pt.
-<./images/Section4/7.1.png, id=809, 484.81125pt x 1109.14375pt>
+<./images/Section4/7.1.png, id=810, 484.81125pt x 1109.14375pt>
 File: ./images/Section4/7.1.png Graphic file (type png)
 <use ./images/Section4/7.1.png>
-Package pdftex.def Info: ./images/Section4/7.1.png  used on input line 711.
+Package pdftex.def Info: ./images/Section4/7.1.png  used on input line 725.
 (pdftex.def)             Requested size: 484.81006pt x 1109.14105pt.
-<./images/Section4/7.2.png, id=810, 484.81125pt x 1109.14375pt>
+<./images/Section4/7.2.png, id=811, 484.81125pt x 1109.14375pt>
 File: ./images/Section4/7.2.png Graphic file (type png)
 <use ./images/Section4/7.2.png>
-Package pdftex.def Info: ./images/Section4/7.2.png  used on input line 716.
+Package pdftex.def Info: ./images/Section4/7.2.png  used on input line 730.
 (pdftex.def)             Requested size: 484.81006pt x 1109.14105pt.
 
-Overfull \hbox (9.31964pt too wide) in paragraph at lines 720--721
+Overfull \hbox (9.31964pt too wide) in paragraph at lines 734--735
 []$[]$ 
  []
 
 [26 <./images/Section4/2.0.png> <./images/Section4/2.1.png> <./images/Section4/
 2.2.png> <./images/Section4/2.3.png> <./images/Section4/2.4.png>]
-<./images/Section4/8.0.png, id=830, 926.46124pt x 1109.14375pt>
+<./images/Section4/8.0.png, id=831, 926.46124pt x 1109.14375pt>
 File: ./images/Section4/8.0.png Graphic file (type png)
 <use ./images/Section4/8.0.png>
-Package pdftex.def Info: ./images/Section4/8.0.png  used on input line 731.
+Package pdftex.def Info: ./images/Section4/8.0.png  used on input line 745.
 (pdftex.def)             Requested size: 926.45897pt x 1109.14105pt.
-<./images/Section4/8.1.png, id=831, 796.9775pt x 1109.14375pt>
+<./images/Section4/8.1.png, id=832, 796.9775pt x 1109.14375pt>
 File: ./images/Section4/8.1.png Graphic file (type png)
 <use ./images/Section4/8.1.png>
-Package pdftex.def Info: ./images/Section4/8.1.png  used on input line 736.
+Package pdftex.def Info: ./images/Section4/8.1.png  used on input line 750.
 (pdftex.def)             Requested size: 796.97554pt x 1109.14105pt.
-<./images/Section4/8.2.png, id=832, 836.12375pt x 1109.14375pt>
+<./images/Section4/8.2.png, id=833, 836.12375pt x 1109.14375pt>
 File: ./images/Section4/8.2.png Graphic file (type png)
 <use ./images/Section4/8.2.png>
-Package pdftex.def Info: ./images/Section4/8.2.png  used on input line 741.
+Package pdftex.def Info: ./images/Section4/8.2.png  used on input line 755.
 (pdftex.def)             Requested size: 836.1217pt x 1109.14105pt.
-<./images/Section4/8.3.png, id=833, 1109.14375pt x 1109.14375pt>
+<./images/Section4/8.3.png, id=834, 1109.14375pt x 1109.14375pt>
 File: ./images/Section4/8.3.png Graphic file (type png)
 <use ./images/Section4/8.3.png>
-Package pdftex.def Info: ./images/Section4/8.3.png  used on input line 746.
+Package pdftex.def Info: ./images/Section4/8.3.png  used on input line 760.
 (pdftex.def)             Requested size: 1109.14105pt x 1109.14105pt.
-<./images/Section4/8.4.png, id=834, 563.10374pt x 1109.14375pt>
+<./images/Section4/8.4.png, id=835, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/8.4.png Graphic file (type png)
 <use ./images/Section4/8.4.png>
-Package pdftex.def Info: ./images/Section4/8.4.png  used on input line 751.
+Package pdftex.def Info: ./images/Section4/8.4.png  used on input line 765.
 (pdftex.def)             Requested size: 563.10237pt x 1109.14105pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 729--755
+Underfull \hbox (badness 10000) in paragraph at lines 743--769
 
  []
 
-<./images/Section4/9.0.png, id=835, 520.94624pt x 1109.14375pt>
+<./images/Section4/9.0.png, id=836, 520.94624pt x 1109.14375pt>
 File: ./images/Section4/9.0.png Graphic file (type png)
 <use ./images/Section4/9.0.png>
-Package pdftex.def Info: ./images/Section4/9.0.png  used on input line 762.
+Package pdftex.def Info: ./images/Section4/9.0.png  used on input line 776.
 (pdftex.def)             Requested size: 520.94498pt x 1109.14105pt.
-<./images/Section4/9.1.png, id=836, 520.94624pt x 1109.14375pt>
+<./images/Section4/9.1.png, id=837, 520.94624pt x 1109.14375pt>
 File: ./images/Section4/9.1.png Graphic file (type png)
 <use ./images/Section4/9.1.png>
-Package pdftex.def Info: ./images/Section4/9.1.png  used on input line 767.
+Package pdftex.def Info: ./images/Section4/9.1.png  used on input line 781.
 (pdftex.def)             Requested size: 520.94498pt x 1109.14105pt.
-<./images/Section4/9.2.png, id=837, 520.94624pt x 1109.14375pt>
+<./images/Section4/9.2.png, id=838, 520.94624pt x 1109.14375pt>
 File: ./images/Section4/9.2.png Graphic file (type png)
 <use ./images/Section4/9.2.png>
-Package pdftex.def Info: ./images/Section4/9.2.png  used on input line 772.
+Package pdftex.def Info: ./images/Section4/9.2.png  used on input line 786.
 (pdftex.def)             Requested size: 520.94498pt x 1109.14105pt.
 [27 <./images/Section4/3.0.png> <./images/Section4/3.1.png> <./images/Section4/
 3.2.png> <./images/Section4/4.0.png> <./images/Section4/4.1.png> <./images/Sect
@@ -1565,80 +1575,80 @@ mages/Section4/6.2.png> <./images/Section4/7.0.png> <./images/Section4/7.1.png>
  <./images/Section4/7.2.png> <./images/Section4/8.0.png> <./images/Section4/8.1
 .png> <./images/Section4/8.2.png> <./images/Section4/8.3.png> <./images/Section
 4/8.4.png>]
-<./images/Section4/10.0.png, id=864, 654.445pt x 1109.14375pt>
+<./images/Section4/10.0.png, id=865, 654.445pt x 1109.14375pt>
 File: ./images/Section4/10.0.png Graphic file (type png)
 <use ./images/Section4/10.0.png>
-Package pdftex.def Info: ./images/Section4/10.0.png  used on input line 785.
+Package pdftex.def Info: ./images/Section4/10.0.png  used on input line 799.
 (pdftex.def)             Requested size: 654.4434pt x 1109.14105pt.
-<./images/Section4/10.1.png, id=865, 654.445pt x 1109.14375pt>
+<./images/Section4/10.1.png, id=866, 654.445pt x 1109.14375pt>
 File: ./images/Section4/10.1.png Graphic file (type png)
 <use ./images/Section4/10.1.png>
-Package pdftex.def Info: ./images/Section4/10.1.png  used on input line 790.
+Package pdftex.def Info: ./images/Section4/10.1.png  used on input line 804.
 (pdftex.def)             Requested size: 654.4434pt x 1109.14105pt.
-<./images/Section4/10.2.png, id=866, 654.445pt x 1109.14375pt>
+<./images/Section4/10.2.png, id=867, 654.445pt x 1109.14375pt>
 File: ./images/Section4/10.2.png Graphic file (type png)
 <use ./images/Section4/10.2.png>
-Package pdftex.def Info: ./images/Section4/10.2.png  used on input line 795.
+Package pdftex.def Info: ./images/Section4/10.2.png  used on input line 809.
 (pdftex.def)             Requested size: 654.4434pt x 1109.14105pt.
-<./images/Section4/11.0.png, id=867, 520.94624pt x 1109.14375pt>
+<./images/Section4/11.0.png, id=868, 520.94624pt x 1109.14375pt>
 File: ./images/Section4/11.0.png Graphic file (type png)
 <use ./images/Section4/11.0.png>
-Package pdftex.def Info: ./images/Section4/11.0.png  used on input line 803.
+Package pdftex.def Info: ./images/Section4/11.0.png  used on input line 817.
 (pdftex.def)             Requested size: 520.94498pt x 1109.14105pt.
-<./images/Section4/11.1.png, id=868, 520.94624pt x 1109.14375pt>
+<./images/Section4/11.1.png, id=869, 520.94624pt x 1109.14375pt>
 File: ./images/Section4/11.1.png Graphic file (type png)
 <use ./images/Section4/11.1.png>
-Package pdftex.def Info: ./images/Section4/11.1.png  used on input line 808.
+Package pdftex.def Info: ./images/Section4/11.1.png  used on input line 822.
 (pdftex.def)             Requested size: 520.94498pt x 1109.14105pt.
-<./images/Section4/11.2.png, id=869, 520.94624pt x 1109.14375pt>
+<./images/Section4/11.2.png, id=870, 520.94624pt x 1109.14375pt>
 File: ./images/Section4/11.2.png Graphic file (type png)
 <use ./images/Section4/11.2.png>
-Package pdftex.def Info: ./images/Section4/11.2.png  used on input line 813.
+Package pdftex.def Info: ./images/Section4/11.2.png  used on input line 827.
 (pdftex.def)             Requested size: 520.94498pt x 1109.14105pt.
-<./images/Section4/12.0.png, id=870, 563.10374pt x 1109.14375pt>
+<./images/Section4/12.0.png, id=871, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/12.0.png Graphic file (type png)
 <use ./images/Section4/12.0.png>
-Package pdftex.def Info: ./images/Section4/12.0.png  used on input line 821.
+Package pdftex.def Info: ./images/Section4/12.0.png  used on input line 835.
 (pdftex.def)             Requested size: 563.10237pt x 1109.14105pt.
-<./images/Section4/12.1.png, id=871, 563.10374pt x 1109.14375pt>
+<./images/Section4/12.1.png, id=872, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/12.1.png Graphic file (type png)
 <use ./images/Section4/12.1.png>
-Package pdftex.def Info: ./images/Section4/12.1.png  used on input line 826.
+Package pdftex.def Info: ./images/Section4/12.1.png  used on input line 840.
 (pdftex.def)             Requested size: 563.10237pt x 1109.14105pt.
-<./images/Section4/12.2.png, id=872, 563.10374pt x 1109.14375pt>
+<./images/Section4/12.2.png, id=873, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/12.2.png Graphic file (type png)
 <use ./images/Section4/12.2.png>
-Package pdftex.def Info: ./images/Section4/12.2.png  used on input line 831.
+Package pdftex.def Info: ./images/Section4/12.2.png  used on input line 845.
 (pdftex.def)             Requested size: 563.10237pt x 1109.14105pt.
-<./images/Section4/13.0.png, id=873, 688.5725pt x 1109.14375pt>
+<./images/Section4/13.0.png, id=874, 688.5725pt x 1109.14375pt>
 File: ./images/Section4/13.0.png Graphic file (type png)
 <use ./images/Section4/13.0.png>
-Package pdftex.def Info: ./images/Section4/13.0.png  used on input line 839.
+Package pdftex.def Info: ./images/Section4/13.0.png  used on input line 853.
 (pdftex.def)             Requested size: 688.5708pt x 1109.14105pt.
-<./images/Section4/13.1.png, id=874, 688.5725pt x 1109.14375pt>
+<./images/Section4/13.1.png, id=875, 688.5725pt x 1109.14375pt>
 File: ./images/Section4/13.1.png Graphic file (type png)
 <use ./images/Section4/13.1.png>
-Package pdftex.def Info: ./images/Section4/13.1.png  used on input line 844.
+Package pdftex.def Info: ./images/Section4/13.1.png  used on input line 858.
 (pdftex.def)             Requested size: 688.5708pt x 1109.14105pt.
-<./images/Section4/13.2.png, id=875, 688.5725pt x 1109.14375pt>
+<./images/Section4/13.2.png, id=876, 688.5725pt x 1109.14375pt>
 File: ./images/Section4/13.2.png Graphic file (type png)
 <use ./images/Section4/13.2.png>
-Package pdftex.def Info: ./images/Section4/13.2.png  used on input line 849.
+Package pdftex.def Info: ./images/Section4/13.2.png  used on input line 863.
 (pdftex.def)             Requested size: 688.5708pt x 1109.14105pt.
-<./images/Section4/14.0.png, id=876, 466.74374pt x 1109.14375pt>
+<./images/Section4/14.0.png, id=877, 466.74374pt x 1109.14375pt>
 File: ./images/Section4/14.0.png Graphic file (type png)
 <use ./images/Section4/14.0.png>
-Package pdftex.def Info: ./images/Section4/14.0.png  used on input line 857.
+Package pdftex.def Info: ./images/Section4/14.0.png  used on input line 871.
 (pdftex.def)             Requested size: 466.7426pt x 1109.14105pt.
-<./images/Section4/14.1.png, id=877, 466.74374pt x 1109.14375pt>
+<./images/Section4/14.1.png, id=878, 466.74374pt x 1109.14375pt>
 File: ./images/Section4/14.1.png Graphic file (type png)
 <use ./images/Section4/14.1.png>
-Package pdftex.def Info: ./images/Section4/14.1.png  used on input line 862.
+Package pdftex.def Info: ./images/Section4/14.1.png  used on input line 876.
 (pdftex.def)             Requested size: 466.7426pt x 1109.14105pt.
-<./images/Section4/14.2.png, id=878, 466.74374pt x 1109.14375pt>
+<./images/Section4/14.2.png, id=879, 466.74374pt x 1109.14375pt>
 File: ./images/Section4/14.2.png Graphic file (type png)
 <use ./images/Section4/14.2.png>
-Package pdftex.def Info: ./images/Section4/14.2.png  used on input line 867.
+Package pdftex.def Info: ./images/Section4/14.2.png  used on input line 881.
 (pdftex.def)             Requested size: 466.7426pt x 1109.14105pt.
  [28 <./images/Section4/9.0.png> <./images/Section4/9.1.png> <./images/Section4
 /9.2.png> <./images/Section4/10.0.png> <./images/Section4/10.1.png> <./images/S
@@ -1647,221 +1657,221 @@ images/Section4/11.2.png> <./images/Section4/12.0.png> <./images/Section4/12.1.
 png> <./images/Section4/12.2.png> <./images/Section4/13.0.png> <./images/Sectio
 n4/13.1.png> <./images/Section4/13.2.png> <./images/Section4/14.0.png> <./image
 s/Section4/14.1.png> <./images/Section4/14.2.png>] [29]
-<./images/Section4/21.0.png, id=927, 836.12375pt x 1109.14375pt>
+<./images/Section4/21.0.png, id=928, 836.12375pt x 1109.14375pt>
 File: ./images/Section4/21.0.png Graphic file (type png)
 <use ./images/Section4/21.0.png>
-Package pdftex.def Info: ./images/Section4/21.0.png  used on input line 887.
+Package pdftex.def Info: ./images/Section4/21.0.png  used on input line 901.
 (pdftex.def)             Requested size: 60.91304pt x 80.79588pt.
-<./images/Section4/21.1.png, id=928, 836.12375pt x 1109.14375pt>
+<./images/Section4/21.1.png, id=929, 836.12375pt x 1109.14375pt>
 File: ./images/Section4/21.1.png Graphic file (type png)
 <use ./images/Section4/21.1.png>
-Package pdftex.def Info: ./images/Section4/21.1.png  used on input line 892.
+Package pdftex.def Info: ./images/Section4/21.1.png  used on input line 906.
 (pdftex.def)             Requested size: 60.91304pt x 80.79588pt.
-<./images/Section4/21.2.png, id=929, 972.63374pt x 1109.14375pt>
+<./images/Section4/21.2.png, id=930, 972.63374pt x 1109.14375pt>
 File: ./images/Section4/21.2.png Graphic file (type png)
 <use ./images/Section4/21.2.png>
-Package pdftex.def Info: ./images/Section4/21.2.png  used on input line 897.
+Package pdftex.def Info: ./images/Section4/21.2.png  used on input line 911.
 (pdftex.def)             Requested size: 60.91304pt x 69.4567pt.
-<./images/Section4/21.3.png, id=930, 711.65875pt x 1109.14375pt>
+<./images/Section4/21.3.png, id=931, 711.65875pt x 1109.14375pt>
 File: ./images/Section4/21.3.png Graphic file (type png)
 <use ./images/Section4/21.3.png>
-Package pdftex.def Info: ./images/Section4/21.3.png  used on input line 902.
+Package pdftex.def Info: ./images/Section4/21.3.png  used on input line 916.
 (pdftex.def)             Requested size: 60.91304pt x 94.92755pt.
-<./images/Section4/21.4.png, id=931, 780.9175pt x 1109.14375pt>
+<./images/Section4/21.4.png, id=932, 780.9175pt x 1109.14375pt>
 File: ./images/Section4/21.4.png Graphic file (type png)
 <use ./images/Section4/21.4.png>
-Package pdftex.def Info: ./images/Section4/21.4.png  used on input line 907.
+Package pdftex.def Info: ./images/Section4/21.4.png  used on input line 921.
 (pdftex.def)             Requested size: 60.91304pt x 86.49931pt.
-<./images/Section4/21.5.png, id=932, 494.84875pt x 1109.14375pt>
+<./images/Section4/21.5.png, id=933, 494.84875pt x 1109.14375pt>
 File: ./images/Section4/21.5.png Graphic file (type png)
 <use ./images/Section4/21.5.png>
-Package pdftex.def Info: ./images/Section4/21.5.png  used on input line 912.
+Package pdftex.def Info: ./images/Section4/21.5.png  used on input line 926.
 (pdftex.def)             Requested size: 60.91304pt x 136.5271pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 885--917
+Underfull \hbox (badness 10000) in paragraph at lines 899--931
 
  []
 
-<./images/Section4/15.0.png, id=933, 563.10374pt x 1109.14375pt>
+<./images/Section4/15.0.png, id=934, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/15.0.png Graphic file (type png)
 <use ./images/Section4/15.0.png>
-Package pdftex.def Info: ./images/Section4/15.0.png  used on input line 930.
+Package pdftex.def Info: ./images/Section4/15.0.png  used on input line 944.
 (pdftex.def)             Requested size: 68.52283pt x 134.95316pt.
-<./images/Section4/15.1.png, id=934, 563.10374pt x 1109.14375pt>
+<./images/Section4/15.1.png, id=935, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/15.1.png Graphic file (type png)
 <use ./images/Section4/15.1.png>
-Package pdftex.def Info: ./images/Section4/15.1.png  used on input line 935.
+Package pdftex.def Info: ./images/Section4/15.1.png  used on input line 949.
 (pdftex.def)             Requested size: 68.52283pt x 134.95316pt.
-<./images/Section4/15.2.png, id=935, 563.10374pt x 1109.14375pt>
+<./images/Section4/15.2.png, id=936, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/15.2.png Graphic file (type png)
 <use ./images/Section4/15.2.png>
-Package pdftex.def Info: ./images/Section4/15.2.png  used on input line 940.
+Package pdftex.def Info: ./images/Section4/15.2.png  used on input line 954.
 (pdftex.def)             Requested size: 68.52283pt x 134.95316pt.
-<./images/Section4/15.3.png, id=936, 563.10374pt x 1109.14375pt>
+<./images/Section4/15.3.png, id=937, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/15.3.png Graphic file (type png)
 <use ./images/Section4/15.3.png>
-Package pdftex.def Info: ./images/Section4/15.3.png  used on input line 945.
+Package pdftex.def Info: ./images/Section4/15.3.png  used on input line 959.
 (pdftex.def)             Requested size: 68.52283pt x 134.95316pt.
-<./images/Section4/15.4.png, id=937, 563.10374pt x 1109.14375pt>
+<./images/Section4/15.4.png, id=938, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/15.4.png Graphic file (type png)
 <use ./images/Section4/15.4.png>
-Package pdftex.def Info: ./images/Section4/15.4.png  used on input line 950.
+Package pdftex.def Info: ./images/Section4/15.4.png  used on input line 964.
 (pdftex.def)             Requested size: 68.52283pt x 134.95316pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 925--955
+Underfull \hbox (badness 10000) in paragraph at lines 939--969
 
  []
 
-<./images/Section4/16.0.png, id=938, 563.10374pt x 1109.14375pt>
+<./images/Section4/16.0.png, id=939, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/16.0.png Graphic file (type png)
 <use ./images/Section4/16.0.png>
-Package pdftex.def Info: ./images/Section4/16.0.png  used on input line 961.
+Package pdftex.def Info: ./images/Section4/16.0.png  used on input line 975.
 (pdftex.def)             Requested size: 68.52283pt x 134.95316pt.
-<./images/Section4/16.1.png, id=939, 563.10374pt x 1109.14375pt>
+<./images/Section4/16.1.png, id=940, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/16.1.png Graphic file (type png)
 <use ./images/Section4/16.1.png>
-Package pdftex.def Info: ./images/Section4/16.1.png  used on input line 966.
+Package pdftex.def Info: ./images/Section4/16.1.png  used on input line 980.
 (pdftex.def)             Requested size: 68.52283pt x 134.95316pt.
-<./images/Section4/16.2.png, id=940, 563.10374pt x 1109.14375pt>
+<./images/Section4/16.2.png, id=941, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/16.2.png Graphic file (type png)
 <use ./images/Section4/16.2.png>
-Package pdftex.def Info: ./images/Section4/16.2.png  used on input line 971.
+Package pdftex.def Info: ./images/Section4/16.2.png  used on input line 985.
 (pdftex.def)             Requested size: 68.52283pt x 134.95316pt.
-<./images/Section4/16.3.png, id=941, 563.10374pt x 1109.14375pt>
+<./images/Section4/16.3.png, id=942, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/16.3.png Graphic file (type png)
 <use ./images/Section4/16.3.png>
-Package pdftex.def Info: ./images/Section4/16.3.png  used on input line 976.
+Package pdftex.def Info: ./images/Section4/16.3.png  used on input line 990.
 (pdftex.def)             Requested size: 68.52283pt x 134.95316pt.
-<./images/Section4/16.4.png, id=942, 563.10374pt x 1109.14375pt>
+<./images/Section4/16.4.png, id=943, 563.10374pt x 1109.14375pt>
 File: ./images/Section4/16.4.png Graphic file (type png)
 <use ./images/Section4/16.4.png>
-Package pdftex.def Info: ./images/Section4/16.4.png  used on input line 981.
+Package pdftex.def Info: ./images/Section4/16.4.png  used on input line 995.
 (pdftex.def)             Requested size: 68.52283pt x 134.95316pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 956--986
+Underfull \hbox (badness 10000) in paragraph at lines 970--1000
 
  []
 
-<./images/Section4/17.0.png, id=943, 641.39626pt x 1109.14375pt>
+<./images/Section4/17.0.png, id=944, 641.39626pt x 1109.14375pt>
 File: ./images/Section4/17.0.png Graphic file (type png)
 <use ./images/Section4/17.0.png>
-Package pdftex.def Info: ./images/Section4/17.0.png  used on input line 992.
+Package pdftex.def Info: ./images/Section4/17.0.png  used on input line 1006.
 (pdftex.def)             Requested size: 68.52283pt x 118.48596pt.
-<./images/Section4/17.1.png, id=944, 641.39626pt x 1109.14375pt>
+<./images/Section4/17.1.png, id=945, 641.39626pt x 1109.14375pt>
 File: ./images/Section4/17.1.png Graphic file (type png)
 <use ./images/Section4/17.1.png>
-Package pdftex.def Info: ./images/Section4/17.1.png  used on input line 997.
+Package pdftex.def Info: ./images/Section4/17.1.png  used on input line 1011.
 (pdftex.def)             Requested size: 68.52283pt x 118.48596pt.
-<./images/Section4/17.2.png, id=945, 641.39626pt x 1109.14375pt>
+<./images/Section4/17.2.png, id=946, 641.39626pt x 1109.14375pt>
 File: ./images/Section4/17.2.png Graphic file (type png)
 <use ./images/Section4/17.2.png>
-Package pdftex.def Info: ./images/Section4/17.2.png  used on input line 1002.
+Package pdftex.def Info: ./images/Section4/17.2.png  used on input line 1016.
 (pdftex.def)             Requested size: 68.52283pt x 118.48596pt.
-<./images/Section4/17.3.png, id=946, 641.39626pt x 1109.14375pt>
+<./images/Section4/17.3.png, id=947, 641.39626pt x 1109.14375pt>
 File: ./images/Section4/17.3.png Graphic file (type png)
 <use ./images/Section4/17.3.png>
-Package pdftex.def Info: ./images/Section4/17.3.png  used on input line 1007.
+Package pdftex.def Info: ./images/Section4/17.3.png  used on input line 1021.
 (pdftex.def)             Requested size: 68.52283pt x 118.48596pt.
-<./images/Section4/17.4.png, id=947, 641.39626pt x 1109.14375pt>
+<./images/Section4/17.4.png, id=948, 641.39626pt x 1109.14375pt>
 File: ./images/Section4/17.4.png Graphic file (type png)
 <use ./images/Section4/17.4.png>
-Package pdftex.def Info: ./images/Section4/17.4.png  used on input line 1012.
+Package pdftex.def Info: ./images/Section4/17.4.png  used on input line 1026.
 (pdftex.def)             Requested size: 68.52283pt x 118.48596pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 987--1017
+Underfull \hbox (badness 10000) in paragraph at lines 1001--1031
 
  []
 
 [30 <./images/Section4/21.0.png> <./images/Section4/21.1.png> <./images/Section
 4/21.2.png> <./images/Section4/21.3.png> <./images/Section4/21.4.png> <./images
 /Section4/21.5.png>]
-<./images/Section4/18.0.png, id=958, 441.65pt x 1109.14375pt>
+<./images/Section4/18.0.png, id=959, 441.65pt x 1109.14375pt>
 File: ./images/Section4/18.0.png Graphic file (type png)
 <use ./images/Section4/18.0.png>
-Package pdftex.def Info: ./images/Section4/18.0.png  used on input line 1025.
+Package pdftex.def Info: ./images/Section4/18.0.png  used on input line 1039.
 (pdftex.def)             Requested size: 68.52283pt x 172.08475pt.
-<./images/Section4/18.1.png, id=959, 441.65pt x 1109.14375pt>
+<./images/Section4/18.1.png, id=960, 441.65pt x 1109.14375pt>
 File: ./images/Section4/18.1.png Graphic file (type png)
 <use ./images/Section4/18.1.png>
-Package pdftex.def Info: ./images/Section4/18.1.png  used on input line 1030.
+Package pdftex.def Info: ./images/Section4/18.1.png  used on input line 1044.
 (pdftex.def)             Requested size: 68.52283pt x 172.08475pt.
-<./images/Section4/18.2.png, id=960, 441.65pt x 1109.14375pt>
+<./images/Section4/18.2.png, id=961, 441.65pt x 1109.14375pt>
 File: ./images/Section4/18.2.png Graphic file (type png)
 <use ./images/Section4/18.2.png>
-Package pdftex.def Info: ./images/Section4/18.2.png  used on input line 1035.
+Package pdftex.def Info: ./images/Section4/18.2.png  used on input line 1049.
 (pdftex.def)             Requested size: 68.52283pt x 172.08475pt.
-<./images/Section4/18.3.png, id=961, 441.65pt x 1109.14375pt>
+<./images/Section4/18.3.png, id=962, 441.65pt x 1109.14375pt>
 File: ./images/Section4/18.3.png Graphic file (type png)
 <use ./images/Section4/18.3.png>
-Package pdftex.def Info: ./images/Section4/18.3.png  used on input line 1040.
+Package pdftex.def Info: ./images/Section4/18.3.png  used on input line 1054.
 (pdftex.def)             Requested size: 68.52283pt x 172.08475pt.
-<./images/Section4/18.4.png, id=962, 441.65pt x 1109.14375pt>
+<./images/Section4/18.4.png, id=963, 441.65pt x 1109.14375pt>
 File: ./images/Section4/18.4.png Graphic file (type png)
 <use ./images/Section4/18.4.png>
-Package pdftex.def Info: ./images/Section4/18.4.png  used on input line 1045.
+Package pdftex.def Info: ./images/Section4/18.4.png  used on input line 1059.
 (pdftex.def)             Requested size: 68.52283pt x 172.08475pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1020--1050
+Underfull \hbox (badness 10000) in paragraph at lines 1034--1064
 
  []
 
-<./images/Section4/19.0.png, id=963, 494.84875pt x 1109.14375pt>
+<./images/Section4/19.0.png, id=964, 494.84875pt x 1109.14375pt>
 File: ./images/Section4/19.0.png Graphic file (type png)
 <use ./images/Section4/19.0.png>
-Package pdftex.def Info: ./images/Section4/19.0.png  used on input line 1056.
+Package pdftex.def Info: ./images/Section4/19.0.png  used on input line 1070.
 (pdftex.def)             Requested size: 68.52283pt x 153.58665pt.
-<./images/Section4/19.1.png, id=964, 494.84875pt x 1109.14375pt>
+<./images/Section4/19.1.png, id=965, 494.84875pt x 1109.14375pt>
 File: ./images/Section4/19.1.png Graphic file (type png)
 <use ./images/Section4/19.1.png>
-Package pdftex.def Info: ./images/Section4/19.1.png  used on input line 1061.
+Package pdftex.def Info: ./images/Section4/19.1.png  used on input line 1075.
 (pdftex.def)             Requested size: 68.52283pt x 153.58665pt.
-<./images/Section4/19.2.png, id=965, 494.84875pt x 1109.14375pt>
+<./images/Section4/19.2.png, id=966, 494.84875pt x 1109.14375pt>
 File: ./images/Section4/19.2.png Graphic file (type png)
 <use ./images/Section4/19.2.png>
-Package pdftex.def Info: ./images/Section4/19.2.png  used on input line 1066.
+Package pdftex.def Info: ./images/Section4/19.2.png  used on input line 1080.
 (pdftex.def)             Requested size: 68.52283pt x 153.58665pt.
-<./images/Section4/19.3.png, id=966, 494.84875pt x 1109.14375pt>
+<./images/Section4/19.3.png, id=967, 494.84875pt x 1109.14375pt>
 File: ./images/Section4/19.3.png Graphic file (type png)
 <use ./images/Section4/19.3.png>
-Package pdftex.def Info: ./images/Section4/19.3.png  used on input line 1071.
+Package pdftex.def Info: ./images/Section4/19.3.png  used on input line 1085.
 (pdftex.def)             Requested size: 68.52283pt x 153.58665pt.
-<./images/Section4/19.4.png, id=967, 494.84875pt x 1109.14375pt>
+<./images/Section4/19.4.png, id=968, 494.84875pt x 1109.14375pt>
 File: ./images/Section4/19.4.png Graphic file (type png)
 <use ./images/Section4/19.4.png>
-Package pdftex.def Info: ./images/Section4/19.4.png  used on input line 1076.
+Package pdftex.def Info: ./images/Section4/19.4.png  used on input line 1090.
 (pdftex.def)             Requested size: 68.52283pt x 153.58665pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1051--1081
+Underfull \hbox (badness 10000) in paragraph at lines 1065--1095
 
  []
 
-<./images/Section4/20.0.png, id=968, 414.54875pt x 1109.14375pt>
+<./images/Section4/20.0.png, id=969, 414.54875pt x 1109.14375pt>
 File: ./images/Section4/20.0.png Graphic file (type png)
 <use ./images/Section4/20.0.png>
-Package pdftex.def Info: ./images/Section4/20.0.png  used on input line 1087.
+Package pdftex.def Info: ./images/Section4/20.0.png  used on input line 1101.
 (pdftex.def)             Requested size: 68.52283pt x 183.32237pt.
-<./images/Section4/20.1.png, id=969, 414.54875pt x 1109.14375pt>
+<./images/Section4/20.1.png, id=970, 414.54875pt x 1109.14375pt>
 File: ./images/Section4/20.1.png Graphic file (type png)
 <use ./images/Section4/20.1.png>
-Package pdftex.def Info: ./images/Section4/20.1.png  used on input line 1092.
+Package pdftex.def Info: ./images/Section4/20.1.png  used on input line 1106.
 (pdftex.def)             Requested size: 68.52283pt x 183.32237pt.
-<./images/Section4/20.2.png, id=970, 414.54875pt x 1109.14375pt>
+<./images/Section4/20.2.png, id=971, 414.54875pt x 1109.14375pt>
 File: ./images/Section4/20.2.png Graphic file (type png)
 <use ./images/Section4/20.2.png>
-Package pdftex.def Info: ./images/Section4/20.2.png  used on input line 1097.
+Package pdftex.def Info: ./images/Section4/20.2.png  used on input line 1111.
 (pdftex.def)             Requested size: 68.52283pt x 183.32237pt.
-<./images/Section4/20.3.png, id=971, 414.54875pt x 1109.14375pt>
+<./images/Section4/20.3.png, id=972, 414.54875pt x 1109.14375pt>
 File: ./images/Section4/20.3.png Graphic file (type png)
 <use ./images/Section4/20.3.png>
-Package pdftex.def Info: ./images/Section4/20.3.png  used on input line 1102.
+Package pdftex.def Info: ./images/Section4/20.3.png  used on input line 1116.
 (pdftex.def)             Requested size: 68.52283pt x 183.32237pt.
-<./images/Section4/20.4.png, id=972, 414.54875pt x 1109.14375pt>
+<./images/Section4/20.4.png, id=973, 414.54875pt x 1109.14375pt>
 File: ./images/Section4/20.4.png Graphic file (type png)
 <use ./images/Section4/20.4.png>
-Package pdftex.def Info: ./images/Section4/20.4.png  used on input line 1107.
+Package pdftex.def Info: ./images/Section4/20.4.png  used on input line 1121.
 (pdftex.def)             Requested size: 68.52283pt x 183.32237pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1082--1112
+Underfull \hbox (badness 10000) in paragraph at lines 1096--1126
 
  []
 
@@ -1871,105 +1881,105 @@ Underfull \hbox (badness 10000) in paragraph at lines 1082--1112
 ./images/Section4/16.3.png> <./images/Section4/16.4.png> <./images/Section4/17.
 0.png> <./images/Section4/17.1.png> <./images/Section4/17.2.png> <./images/Sect
 ion4/17.3.png> <./images/Section4/17.4.png>]
-<./images/Section4/22.0.png, id=1005, 508.90125pt x 1109.14375pt>
+<./images/Section4/22.0.png, id=1006, 508.90125pt x 1109.14375pt>
 File: ./images/Section4/22.0.png Graphic file (type png)
 <use ./images/Section4/22.0.png>
-Package pdftex.def Info: ./images/Section4/22.0.png  used on input line 1123.
+Package pdftex.def Info: ./images/Section4/22.0.png  used on input line 1137.
 (pdftex.def)             Requested size: 508.90001pt x 1109.14105pt.
-<./images/Section4/22.1.png, id=1006, 508.90125pt x 1109.14375pt>
+<./images/Section4/22.1.png, id=1007, 508.90125pt x 1109.14375pt>
 File: ./images/Section4/22.1.png Graphic file (type png)
 <use ./images/Section4/22.1.png>
-Package pdftex.def Info: ./images/Section4/22.1.png  used on input line 1128.
+Package pdftex.def Info: ./images/Section4/22.1.png  used on input line 1142.
 (pdftex.def)             Requested size: 508.90001pt x 1109.14105pt.
-<./images/Section4/22.2.png, id=1007, 508.90125pt x 1109.14375pt>
+<./images/Section4/22.2.png, id=1008, 508.90125pt x 1109.14375pt>
 File: ./images/Section4/22.2.png Graphic file (type png)
 <use ./images/Section4/22.2.png>
-Package pdftex.def Info: ./images/Section4/22.2.png  used on input line 1133.
+Package pdftex.def Info: ./images/Section4/22.2.png  used on input line 1147.
 (pdftex.def)             Requested size: 508.90001pt x 1109.14105pt.
-<./images/Section4/22.3.png, id=1008, 508.90125pt x 1109.14375pt>
+<./images/Section4/22.3.png, id=1009, 508.90125pt x 1109.14375pt>
 File: ./images/Section4/22.3.png Graphic file (type png)
 <use ./images/Section4/22.3.png>
-Package pdftex.def Info: ./images/Section4/22.3.png  used on input line 1142.
+Package pdftex.def Info: ./images/Section4/22.3.png  used on input line 1156.
 (pdftex.def)             Requested size: 508.90001pt x 1109.14105pt.
-<./images/Section4/22.4.png, id=1009, 508.90125pt x 1109.14375pt>
+<./images/Section4/22.4.png, id=1010, 508.90125pt x 1109.14375pt>
 File: ./images/Section4/22.4.png Graphic file (type png)
 <use ./images/Section4/22.4.png>
-Package pdftex.def Info: ./images/Section4/22.4.png  used on input line 1147.
+Package pdftex.def Info: ./images/Section4/22.4.png  used on input line 1161.
 (pdftex.def)             Requested size: 508.90001pt x 1109.14105pt.
-<./images/Section4/22.5.png, id=1010, 508.90125pt x 1109.14375pt>
+<./images/Section4/22.5.png, id=1011, 508.90125pt x 1109.14375pt>
 File: ./images/Section4/22.5.png Graphic file (type png)
 <use ./images/Section4/22.5.png>
-Package pdftex.def Info: ./images/Section4/22.5.png  used on input line 1152.
+Package pdftex.def Info: ./images/Section4/22.5.png  used on input line 1166.
 (pdftex.def)             Requested size: 508.90001pt x 1109.14105pt.
 
-Overfull \hbox (9.31964pt too wide) in paragraph at lines 1156--1157
+Overfull \hbox (9.31964pt too wide) in paragraph at lines 1170--1171
 []$[]$ 
  []
 
-<./images/Section4/22.6.png, id=1011, 508.90125pt x 1109.14375pt>
+<./images/Section4/22.6.png, id=1012, 508.90125pt x 1109.14375pt>
 File: ./images/Section4/22.6.png Graphic file (type png)
 <use ./images/Section4/22.6.png>
-Package pdftex.def Info: ./images/Section4/22.6.png  used on input line 1164.
+Package pdftex.def Info: ./images/Section4/22.6.png  used on input line 1178.
 (pdftex.def)             Requested size: 508.90001pt x 1109.14105pt.
-<./images/Section4/22.7.png, id=1012, 508.90125pt x 1109.14375pt>
+<./images/Section4/22.7.png, id=1013, 508.90125pt x 1109.14375pt>
 File: ./images/Section4/22.7.png Graphic file (type png)
 <use ./images/Section4/22.7.png>
-Package pdftex.def Info: ./images/Section4/22.7.png  used on input line 1169.
+Package pdftex.def Info: ./images/Section4/22.7.png  used on input line 1183.
 (pdftex.def)             Requested size: 508.90001pt x 1109.14105pt.
-<./images/Section4/22.8.png, id=1013, 508.90125pt x 1109.14375pt>
+<./images/Section4/22.8.png, id=1014, 508.90125pt x 1109.14375pt>
 File: ./images/Section4/22.8.png Graphic file (type png)
 <use ./images/Section4/22.8.png>
-Package pdftex.def Info: ./images/Section4/22.8.png  used on input line 1174.
+Package pdftex.def Info: ./images/Section4/22.8.png  used on input line 1188.
 (pdftex.def)             Requested size: 508.90001pt x 1109.14105pt.
-<./images/Section4/23.0.png, id=1014, 537.00626pt x 1109.14375pt>
+<./images/Section4/23.0.png, id=1015, 537.00626pt x 1109.14375pt>
 File: ./images/Section4/23.0.png Graphic file (type png)
 <use ./images/Section4/23.0.png>
-Package pdftex.def Info: ./images/Section4/23.0.png  used on input line 1184.
+Package pdftex.def Info: ./images/Section4/23.0.png  used on input line 1198.
 (pdftex.def)             Requested size: 537.00494pt x 1109.14105pt.
-<./images/Section4/23.1.png, id=1015, 537.00626pt x 1109.14375pt>
+<./images/Section4/23.1.png, id=1016, 537.00626pt x 1109.14375pt>
 File: ./images/Section4/23.1.png Graphic file (type png)
 <use ./images/Section4/23.1.png>
-Package pdftex.def Info: ./images/Section4/23.1.png  used on input line 1189.
+Package pdftex.def Info: ./images/Section4/23.1.png  used on input line 1203.
 (pdftex.def)             Requested size: 537.00494pt x 1109.14105pt.
-<./images/Section4/23.2.png, id=1016, 537.00626pt x 1109.14375pt>
+<./images/Section4/23.2.png, id=1017, 537.00626pt x 1109.14375pt>
 File: ./images/Section4/23.2.png Graphic file (type png)
 <use ./images/Section4/23.2.png>
-Package pdftex.def Info: ./images/Section4/23.2.png  used on input line 1194.
+Package pdftex.def Info: ./images/Section4/23.2.png  used on input line 1208.
 (pdftex.def)             Requested size: 537.00494pt x 1109.14105pt.
-<./images/Section4/23.3.png, id=1017, 537.00626pt x 1109.14375pt>
+<./images/Section4/23.3.png, id=1018, 537.00626pt x 1109.14375pt>
 File: ./images/Section4/23.3.png Graphic file (type png)
 <use ./images/Section4/23.3.png>
-Package pdftex.def Info: ./images/Section4/23.3.png  used on input line 1204.
+Package pdftex.def Info: ./images/Section4/23.3.png  used on input line 1218.
 (pdftex.def)             Requested size: 537.00494pt x 1109.14105pt.
-<./images/Section4/23.4.png, id=1018, 537.00626pt x 1109.14375pt>
+<./images/Section4/23.4.png, id=1019, 537.00626pt x 1109.14375pt>
 File: ./images/Section4/23.4.png Graphic file (type png)
 <use ./images/Section4/23.4.png>
-Package pdftex.def Info: ./images/Section4/23.4.png  used on input line 1209.
+Package pdftex.def Info: ./images/Section4/23.4.png  used on input line 1223.
 (pdftex.def)             Requested size: 537.00494pt x 1109.14105pt.
-<./images/Section4/23.5.png, id=1019, 537.00626pt x 1109.14375pt>
+<./images/Section4/23.5.png, id=1020, 537.00626pt x 1109.14375pt>
 File: ./images/Section4/23.5.png Graphic file (type png)
 <use ./images/Section4/23.5.png>
-Package pdftex.def Info: ./images/Section4/23.5.png  used on input line 1214.
+Package pdftex.def Info: ./images/Section4/23.5.png  used on input line 1228.
 (pdftex.def)             Requested size: 537.00494pt x 1109.14105pt.
 
-Overfull \hbox (9.31964pt too wide) in paragraph at lines 1218--1219
+Overfull \hbox (9.31964pt too wide) in paragraph at lines 1232--1233
 []$[]$ 
  []
 
-<./images/Section4/23.6.png, id=1020, 537.00626pt x 1109.14375pt>
+<./images/Section4/23.6.png, id=1021, 537.00626pt x 1109.14375pt>
 File: ./images/Section4/23.6.png Graphic file (type png)
 <use ./images/Section4/23.6.png>
-Package pdftex.def Info: ./images/Section4/23.6.png  used on input line 1226.
+Package pdftex.def Info: ./images/Section4/23.6.png  used on input line 1240.
 (pdftex.def)             Requested size: 537.00494pt x 1109.14105pt.
-<./images/Section4/23.7.png, id=1021, 537.00626pt x 1109.14375pt>
+<./images/Section4/23.7.png, id=1022, 537.00626pt x 1109.14375pt>
 File: ./images/Section4/23.7.png Graphic file (type png)
 <use ./images/Section4/23.7.png>
-Package pdftex.def Info: ./images/Section4/23.7.png  used on input line 1231.
+Package pdftex.def Info: ./images/Section4/23.7.png  used on input line 1245.
 (pdftex.def)             Requested size: 537.00494pt x 1109.14105pt.
-<./images/Section4/23.8.png, id=1022, 537.00626pt x 1109.14375pt>
+<./images/Section4/23.8.png, id=1023, 537.00626pt x 1109.14375pt>
 File: ./images/Section4/23.8.png Graphic file (type png)
 <use ./images/Section4/23.8.png>
-Package pdftex.def Info: ./images/Section4/23.8.png  used on input line 1236.
+Package pdftex.def Info: ./images/Section4/23.8.png  used on input line 1250.
 (pdftex.def)             Requested size: 537.00494pt x 1109.14105pt.
 [32 <./images/Section4/18.0.png> <./images/Section4/18.1.png> <./images/Section
 4/18.2.png> <./images/Section4/18.3.png> <./images/Section4/18.4.png> <./images
@@ -1977,65 +1987,65 @@ Package pdftex.def Info: ./images/Section4/23.8.png  used on input line 1236.
 ./images/Section4/19.3.png> <./images/Section4/19.4.png> <./images/Section4/20.
 0.png> <./images/Section4/20.1.png> <./images/Section4/20.2.png> <./images/Sect
 ion4/20.3.png> <./images/Section4/20.4.png>]
-<./images/Section4/24.0.png, id=1046, 890.32625pt x 1109.14375pt>
+<./images/Section4/24.0.png, id=1047, 890.32625pt x 1109.14375pt>
 File: ./images/Section4/24.0.png Graphic file (type png)
 <use ./images/Section4/24.0.png>
-Package pdftex.def Info: ./images/Section4/24.0.png  used on input line 1249.
+Package pdftex.def Info: ./images/Section4/24.0.png  used on input line 1263.
 (pdftex.def)             Requested size: 890.32408pt x 1109.14105pt.
-<./images/Section4/24.1.png, id=1047, 999.735pt x 1109.14375pt>
+<./images/Section4/24.1.png, id=1048, 999.735pt x 1109.14375pt>
 File: ./images/Section4/24.1.png Graphic file (type png)
 <use ./images/Section4/24.1.png>
-Package pdftex.def Info: ./images/Section4/24.1.png  used on input line 1255.
+Package pdftex.def Info: ./images/Section4/24.1.png  used on input line 1269.
 (pdftex.def)             Requested size: 999.73256pt x 1109.14105pt.
-<./images/Section4/25.0.png, id=1048, 484.81125pt x 1109.14375pt>
+<./images/Section4/25.0.png, id=1049, 484.81125pt x 1109.14375pt>
 File: ./images/Section4/25.0.png Graphic file (type png)
 <use ./images/Section4/25.0.png>
-Package pdftex.def Info: ./images/Section4/25.0.png  used on input line 1270.
+Package pdftex.def Info: ./images/Section4/25.0.png  used on input line 1284.
 (pdftex.def)             Requested size: 72.33351pt x 165.48433pt.
-<./images/Section4/25.1.png, id=1049, 484.81125pt x 1109.14375pt>
+<./images/Section4/25.1.png, id=1050, 484.81125pt x 1109.14375pt>
 File: ./images/Section4/25.1.png Graphic file (type png)
 <use ./images/Section4/25.1.png>
-Package pdftex.def Info: ./images/Section4/25.1.png  used on input line 1275.
+Package pdftex.def Info: ./images/Section4/25.1.png  used on input line 1289.
 (pdftex.def)             Requested size: 72.33351pt x 165.48433pt.
-<./images/Section4/25.2.png, id=1050, 484.81125pt x 1109.14375pt>
+<./images/Section4/25.2.png, id=1051, 484.81125pt x 1109.14375pt>
 File: ./images/Section4/25.2.png Graphic file (type png)
 <use ./images/Section4/25.2.png>
-Package pdftex.def Info: ./images/Section4/25.2.png  used on input line 1280.
+Package pdftex.def Info: ./images/Section4/25.2.png  used on input line 1294.
 (pdftex.def)             Requested size: 72.33351pt x 165.48433pt.
-<./images/Section4/25.3.png, id=1051, 484.81125pt x 1109.14375pt>
+<./images/Section4/25.3.png, id=1052, 484.81125pt x 1109.14375pt>
 File: ./images/Section4/25.3.png Graphic file (type png)
 <use ./images/Section4/25.3.png>
-Package pdftex.def Info: ./images/Section4/25.3.png  used on input line 1285.
+Package pdftex.def Info: ./images/Section4/25.3.png  used on input line 1299.
 (pdftex.def)             Requested size: 72.33351pt x 165.48433pt.
-<./images/Section4/25.4.png, id=1052, 484.81125pt x 1109.14375pt>
+<./images/Section4/25.4.png, id=1053, 484.81125pt x 1109.14375pt>
 File: ./images/Section4/25.4.png Graphic file (type png)
 <use ./images/Section4/25.4.png>
-Package pdftex.def Info: ./images/Section4/25.4.png  used on input line 1290.
+Package pdftex.def Info: ./images/Section4/25.4.png  used on input line 1304.
 (pdftex.def)             Requested size: 72.33351pt x 165.48433pt.
-<./images/Section4/26.0.png, id=1053, 796.9775pt x 1109.14375pt>
+<./images/Section4/26.0.png, id=1054, 796.9775pt x 1109.14375pt>
 File: ./images/Section4/26.0.png Graphic file (type png)
 <use ./images/Section4/26.0.png>
-Package pdftex.def Info: ./images/Section4/26.0.png  used on input line 1297.
+Package pdftex.def Info: ./images/Section4/26.0.png  used on input line 1311.
 (pdftex.def)             Requested size: 72.33351pt x 100.66483pt.
-<./images/Section4/26.1.png, id=1054, 796.9775pt x 1109.14375pt>
+<./images/Section4/26.1.png, id=1055, 796.9775pt x 1109.14375pt>
 File: ./images/Section4/26.1.png Graphic file (type png)
 <use ./images/Section4/26.1.png>
-Package pdftex.def Info: ./images/Section4/26.1.png  used on input line 1302.
+Package pdftex.def Info: ./images/Section4/26.1.png  used on input line 1316.
 (pdftex.def)             Requested size: 72.33351pt x 100.66483pt.
-<./images/Section4/26.2.png, id=1055, 796.9775pt x 1109.14375pt>
+<./images/Section4/26.2.png, id=1056, 796.9775pt x 1109.14375pt>
 File: ./images/Section4/26.2.png Graphic file (type png)
 <use ./images/Section4/26.2.png>
-Package pdftex.def Info: ./images/Section4/26.2.png  used on input line 1307.
+Package pdftex.def Info: ./images/Section4/26.2.png  used on input line 1321.
 (pdftex.def)             Requested size: 72.33351pt x 100.66483pt.
-<./images/Section4/26.3.png, id=1056, 796.9775pt x 1109.14375pt>
+<./images/Section4/26.3.png, id=1057, 796.9775pt x 1109.14375pt>
 File: ./images/Section4/26.3.png Graphic file (type png)
 <use ./images/Section4/26.3.png>
-Package pdftex.def Info: ./images/Section4/26.3.png  used on input line 1312.
+Package pdftex.def Info: ./images/Section4/26.3.png  used on input line 1326.
 (pdftex.def)             Requested size: 72.33351pt x 100.66483pt.
-<./images/Section4/26.4.png, id=1057, 796.9775pt x 1109.14375pt>
+<./images/Section4/26.4.png, id=1058, 796.9775pt x 1109.14375pt>
 File: ./images/Section4/26.4.png Graphic file (type png)
 <use ./images/Section4/26.4.png>
-Package pdftex.def Info: ./images/Section4/26.4.png  used on input line 1317.
+Package pdftex.def Info: ./images/Section4/26.4.png  used on input line 1331.
 (pdftex.def)             Requested size: 72.33351pt x 100.66483pt.
  [33 <./images/Section4/22.0.png> <./images/Section4/22.1.png> <./images/Sectio
 n4/22.2.png> <./images/Section4/22.3.png> <./images/Section4/22.4.png> <./image
@@ -2045,75 +2055,75 @@ s/Section4/22.5.png> <./images/Section4/22.6.png> <./images/Section4/22.7.png>
 tion4/23.4.png> <./images/Section4/23.5.png> <./images/Section4/23.6.png> <./im
 ages/Section4/23.7.png> <./images/Section4/23.8.png> <./images/Section4/24.0.pn
 g> <./images/Section4/24.1.png>]
-<./images/Section4/27.0.png, id=1086, 502.87875pt x 1109.14375pt>
+<./images/Section4/27.0.png, id=1087, 502.87875pt x 1109.14375pt>
 File: ./images/Section4/27.0.png Graphic file (type png)
 <use ./images/Section4/27.0.png>
-Package pdftex.def Info: ./images/Section4/27.0.png  used on input line 1333.
+Package pdftex.def Info: ./images/Section4/27.0.png  used on input line 1347.
 (pdftex.def)             Requested size: 72.33351pt x 159.52702pt.
-<./images/Section4/27.1.png, id=1087, 502.87875pt x 1109.14375pt>
+<./images/Section4/27.1.png, id=1088, 502.87875pt x 1109.14375pt>
 File: ./images/Section4/27.1.png Graphic file (type png)
 <use ./images/Section4/27.1.png>
-Package pdftex.def Info: ./images/Section4/27.1.png  used on input line 1338.
+Package pdftex.def Info: ./images/Section4/27.1.png  used on input line 1352.
 (pdftex.def)             Requested size: 72.33351pt x 159.52702pt.
-<./images/Section4/27.2.png, id=1088, 502.87875pt x 1109.14375pt>
+<./images/Section4/27.2.png, id=1089, 502.87875pt x 1109.14375pt>
 File: ./images/Section4/27.2.png Graphic file (type png)
 <use ./images/Section4/27.2.png>
-Package pdftex.def Info: ./images/Section4/27.2.png  used on input line 1343.
+Package pdftex.def Info: ./images/Section4/27.2.png  used on input line 1357.
 (pdftex.def)             Requested size: 72.33351pt x 159.52702pt.
-<./images/Section4/27.3.png, id=1089, 502.87875pt x 1109.14375pt>
+<./images/Section4/27.3.png, id=1090, 502.87875pt x 1109.14375pt>
 File: ./images/Section4/27.3.png Graphic file (type png)
 <use ./images/Section4/27.3.png>
-Package pdftex.def Info: ./images/Section4/27.3.png  used on input line 1348.
+Package pdftex.def Info: ./images/Section4/27.3.png  used on input line 1362.
 (pdftex.def)             Requested size: 72.33351pt x 159.52702pt.
-<./images/Section4/27.4.png, id=1090, 502.87875pt x 1109.14375pt>
+<./images/Section4/27.4.png, id=1091, 502.87875pt x 1109.14375pt>
 File: ./images/Section4/27.4.png Graphic file (type png)
 <use ./images/Section4/27.4.png>
-Package pdftex.def Info: ./images/Section4/27.4.png  used on input line 1353.
+Package pdftex.def Info: ./images/Section4/27.4.png  used on input line 1367.
 (pdftex.def)             Requested size: 72.33351pt x 159.52702pt.
-<./images/Section4/28.0.png, id=1093, 414.54875pt x 1109.14375pt>
+<./images/Section4/28.0.png, id=1094, 414.54875pt x 1109.14375pt>
 File: ./images/Section4/28.0.png Graphic file (type png)
 <use ./images/Section4/28.0.png>
-Package pdftex.def Info: ./images/Section4/28.0.png  used on input line 1368.
+Package pdftex.def Info: ./images/Section4/28.0.png  used on input line 1382.
 (pdftex.def)             Requested size: 72.33351pt x 193.52763pt.
-<./images/Section4/28.1.png, id=1094, 414.54875pt x 1109.14375pt>
+<./images/Section4/28.1.png, id=1095, 414.54875pt x 1109.14375pt>
 File: ./images/Section4/28.1.png Graphic file (type png)
 <use ./images/Section4/28.1.png>
-Package pdftex.def Info: ./images/Section4/28.1.png  used on input line 1373.
+Package pdftex.def Info: ./images/Section4/28.1.png  used on input line 1387.
 (pdftex.def)             Requested size: 72.33351pt x 193.52763pt.
-<./images/Section4/28.2.png, id=1095, 414.54875pt x 1109.14375pt>
+<./images/Section4/28.2.png, id=1096, 414.54875pt x 1109.14375pt>
 File: ./images/Section4/28.2.png Graphic file (type png)
 <use ./images/Section4/28.2.png>
-Package pdftex.def Info: ./images/Section4/28.2.png  used on input line 1378.
+Package pdftex.def Info: ./images/Section4/28.2.png  used on input line 1392.
 (pdftex.def)             Requested size: 72.33351pt x 193.52763pt.
-<./images/Section4/28.3.png, id=1096, 414.54875pt x 1109.14375pt>
+<./images/Section4/28.3.png, id=1097, 414.54875pt x 1109.14375pt>
 File: ./images/Section4/28.3.png Graphic file (type png)
 <use ./images/Section4/28.3.png>
-Package pdftex.def Info: ./images/Section4/28.3.png  used on input line 1383.
+Package pdftex.def Info: ./images/Section4/28.3.png  used on input line 1397.
 (pdftex.def)             Requested size: 72.33351pt x 193.52763pt.
-<./images/Section4/28.4.png, id=1097, 414.54875pt x 1109.14375pt>
+<./images/Section4/28.4.png, id=1098, 414.54875pt x 1109.14375pt>
 File: ./images/Section4/28.4.png Graphic file (type png)
 <use ./images/Section4/28.4.png>
-Package pdftex.def Info: ./images/Section4/28.4.png  used on input line 1388.
+Package pdftex.def Info: ./images/Section4/28.4.png  used on input line 1402.
 (pdftex.def)             Requested size: 72.33351pt x 193.52763pt.
-<./images/Section4/28.5.png, id=1098, 414.54875pt x 1109.14375pt>
+<./images/Section4/28.5.png, id=1099, 414.54875pt x 1109.14375pt>
 File: ./images/Section4/28.5.png Graphic file (type png)
 <use ./images/Section4/28.5.png>
-Package pdftex.def Info: ./images/Section4/28.5.png  used on input line 1394.
+Package pdftex.def Info: ./images/Section4/28.5.png  used on input line 1408.
 (pdftex.def)             Requested size: 72.33351pt x 193.52763pt.
-<./images/Section4/28.6.png, id=1099, 414.54875pt x 1109.14375pt>
+<./images/Section4/28.6.png, id=1100, 414.54875pt x 1109.14375pt>
 File: ./images/Section4/28.6.png Graphic file (type png)
 <use ./images/Section4/28.6.png>
-Package pdftex.def Info: ./images/Section4/28.6.png  used on input line 1399.
+Package pdftex.def Info: ./images/Section4/28.6.png  used on input line 1413.
 (pdftex.def)             Requested size: 72.33351pt x 193.52763pt.
-<./images/Section4/28.7.png, id=1100, 414.54875pt x 1109.14375pt>
+<./images/Section4/28.7.png, id=1101, 414.54875pt x 1109.14375pt>
 File: ./images/Section4/28.7.png Graphic file (type png)
 <use ./images/Section4/28.7.png>
-Package pdftex.def Info: ./images/Section4/28.7.png  used on input line 1404.
+Package pdftex.def Info: ./images/Section4/28.7.png  used on input line 1418.
 (pdftex.def)             Requested size: 72.33351pt x 193.52763pt.
-<./images/Section4/28.8.png, id=1101, 414.54875pt x 1109.14375pt>
+<./images/Section4/28.8.png, id=1102, 414.54875pt x 1109.14375pt>
 File: ./images/Section4/28.8.png Graphic file (type png)
 <use ./images/Section4/28.8.png>
-Package pdftex.def Info: ./images/Section4/28.8.png  used on input line 1409.
+Package pdftex.def Info: ./images/Section4/28.8.png  used on input line 1423.
 (pdftex.def)             Requested size: 72.33351pt x 193.52763pt.
 
 [34 <./images/Section4/25.0.png> <./images/Section4/25.1.png> <./images/Section
@@ -2122,175 +2132,175 @@ Package pdftex.def Info: ./images/Section4/28.8.png  used on input line 1409.
 ./images/Section4/26.3.png> <./images/Section4/26.4.png> <./images/Section4/27.
 0.png> <./images/Section4/27.1.png> <./images/Section4/27.2.png> <./images/Sect
 ion4/27.3.png> <./images/Section4/27.4.png>]
-<./images/Section4/29.0.png, id=1123, 879.285pt x 1109.14375pt>
+<./images/Section4/29.0.png, id=1124, 879.285pt x 1109.14375pt>
 File: ./images/Section4/29.0.png Graphic file (type png)
 <use ./images/Section4/29.0.png>
-Package pdftex.def Info: ./images/Section4/29.0.png  used on input line 1423.
+Package pdftex.def Info: ./images/Section4/29.0.png  used on input line 1437.
 (pdftex.def)             Requested size: 114.21051pt x 144.05835pt.
-<./images/Section4/29.1.png, id=1124, 879.285pt x 1109.14375pt>
+<./images/Section4/29.1.png, id=1125, 879.285pt x 1109.14375pt>
 File: ./images/Section4/29.1.png Graphic file (type png)
 <use ./images/Section4/29.1.png>
-Package pdftex.def Info: ./images/Section4/29.1.png  used on input line 1428.
+Package pdftex.def Info: ./images/Section4/29.1.png  used on input line 1442.
 (pdftex.def)             Requested size: 114.21051pt x 144.05835pt.
-<./images/Section4/29.2.png, id=1125, 879.285pt x 1109.14375pt>
+<./images/Section4/29.2.png, id=1126, 879.285pt x 1109.14375pt>
 File: ./images/Section4/29.2.png Graphic file (type png)
 <use ./images/Section4/29.2.png>
-Package pdftex.def Info: ./images/Section4/29.2.png  used on input line 1433.
+Package pdftex.def Info: ./images/Section4/29.2.png  used on input line 1447.
 (pdftex.def)             Requested size: 114.21051pt x 144.05835pt.
-<./images/Section4/29.3.png, id=1126, 879.285pt x 1109.14375pt>
+<./images/Section4/29.3.png, id=1127, 879.285pt x 1109.14375pt>
 File: ./images/Section4/29.3.png Graphic file (type png)
 <use ./images/Section4/29.3.png>
-Package pdftex.def Info: ./images/Section4/29.3.png  used on input line 1438.
+Package pdftex.def Info: ./images/Section4/29.3.png  used on input line 1452.
 (pdftex.def)             Requested size: 114.21051pt x 144.05835pt.
-<./images/Section4/29.4.png, id=1127, 879.285pt x 1109.14375pt>
+<./images/Section4/29.4.png, id=1128, 879.285pt x 1109.14375pt>
 File: ./images/Section4/29.4.png Graphic file (type png)
 <use ./images/Section4/29.4.png>
-Package pdftex.def Info: ./images/Section4/29.4.png  used on input line 1443.
+Package pdftex.def Info: ./images/Section4/29.4.png  used on input line 1457.
 (pdftex.def)             Requested size: 114.21051pt x 144.05835pt.
-<./images/Section4/29.5.png, id=1128, 879.285pt x 1109.14375pt>
+<./images/Section4/29.5.png, id=1129, 879.285pt x 1109.14375pt>
 File: ./images/Section4/29.5.png Graphic file (type png)
 <use ./images/Section4/29.5.png>
-Package pdftex.def Info: ./images/Section4/29.5.png  used on input line 1448.
+Package pdftex.def Info: ./images/Section4/29.5.png  used on input line 1462.
 (pdftex.def)             Requested size: 114.21051pt x 144.05835pt.
-<./images/Section4/29.6.png, id=1129, 879.285pt x 1109.14375pt>
+<./images/Section4/29.6.png, id=1130, 879.285pt x 1109.14375pt>
 File: ./images/Section4/29.6.png Graphic file (type png)
 <use ./images/Section4/29.6.png>
-Package pdftex.def Info: ./images/Section4/29.6.png  used on input line 1453.
+Package pdftex.def Info: ./images/Section4/29.6.png  used on input line 1467.
 (pdftex.def)             Requested size: 114.21051pt x 144.05835pt.
-<./images/Section4/29.7.png, id=1130, 879.285pt x 1109.14375pt>
+<./images/Section4/29.7.png, id=1131, 879.285pt x 1109.14375pt>
 File: ./images/Section4/29.7.png Graphic file (type png)
 <use ./images/Section4/29.7.png>
-Package pdftex.def Info: ./images/Section4/29.7.png  used on input line 1458.
+Package pdftex.def Info: ./images/Section4/29.7.png  used on input line 1472.
 (pdftex.def)             Requested size: 114.21051pt x 144.05835pt.
-<./images/Section4/29.8.png, id=1131, 879.285pt x 1109.14375pt>
+<./images/Section4/29.8.png, id=1132, 879.285pt x 1109.14375pt>
 File: ./images/Section4/29.8.png Graphic file (type png)
 <use ./images/Section4/29.8.png>
-Package pdftex.def Info: ./images/Section4/29.8.png  used on input line 1463.
+Package pdftex.def Info: ./images/Section4/29.8.png  used on input line 1477.
 (pdftex.def)             Requested size: 114.21051pt x 144.05835pt.
  [35 <./images/Section4/28.0.png> <./images/Section4/28.1.png> <./images/Sectio
 n4/28.2.png> <./images/Section4/28.3.png> <./images/Section4/28.4.png> <./image
 s/Section4/28.5.png> <./images/Section4/28.6.png> <./images/Section4/28.7.png> 
 <./images/Section4/28.8.png>]
-<./images/Section4/30.0.png, id=1148, 1137.24875pt x 977.6525pt>
+<./images/Section4/30.0.png, id=1149, 1137.24875pt x 977.6525pt>
 File: ./images/Section4/30.0.png Graphic file (type png)
 <use ./images/Section4/30.0.png>
-Package pdftex.def Info: ./images/Section4/30.0.png  used on input line 1476.
+Package pdftex.def Info: ./images/Section4/30.0.png  used on input line 1490.
 (pdftex.def)             Requested size: 68.52283pt x 58.8953pt.
-<./images/Section4/30.1.png, id=1149, 1137.24875pt x 977.6525pt>
+<./images/Section4/30.1.png, id=1150, 1137.24875pt x 977.6525pt>
 File: ./images/Section4/30.1.png Graphic file (type png)
 <use ./images/Section4/30.1.png>
-Package pdftex.def Info: ./images/Section4/30.1.png  used on input line 1481.
+Package pdftex.def Info: ./images/Section4/30.1.png  used on input line 1495.
 (pdftex.def)             Requested size: 68.52283pt x 58.8953pt.
-<./images/Section4/30.2.png, id=1150, 1137.24875pt x 977.6525pt>
+<./images/Section4/30.2.png, id=1151, 1137.24875pt x 977.6525pt>
 File: ./images/Section4/30.2.png Graphic file (type png)
 <use ./images/Section4/30.2.png>
-Package pdftex.def Info: ./images/Section4/30.2.png  used on input line 1486.
+Package pdftex.def Info: ./images/Section4/30.2.png  used on input line 1500.
 (pdftex.def)             Requested size: 68.52283pt x 58.8953pt.
-<./images/Section4/30.3.png, id=1151, 1137.24875pt x 977.6525pt>
+<./images/Section4/30.3.png, id=1152, 1137.24875pt x 977.6525pt>
 File: ./images/Section4/30.3.png Graphic file (type png)
 <use ./images/Section4/30.3.png>
-Package pdftex.def Info: ./images/Section4/30.3.png  used on input line 1491.
+Package pdftex.def Info: ./images/Section4/30.3.png  used on input line 1505.
 (pdftex.def)             Requested size: 68.52283pt x 58.8953pt.
-<./images/Section4/30.4.png, id=1152, 1137.24875pt x 977.6525pt>
+<./images/Section4/30.4.png, id=1153, 1137.24875pt x 977.6525pt>
 File: ./images/Section4/30.4.png Graphic file (type png)
 <use ./images/Section4/30.4.png>
-Package pdftex.def Info: ./images/Section4/30.4.png  used on input line 1496.
+Package pdftex.def Info: ./images/Section4/30.4.png  used on input line 1510.
 (pdftex.def)             Requested size: 68.52283pt x 58.8953pt.
 
 [36 <./images/Section4/29.0.png> <./images/Section4/29.1.png> <./images/Section
 4/29.2.png> <./images/Section4/29.3.png> <./images/Section4/29.4.png> <./images
 /Section4/29.5.png> <./images/Section4/29.6.png> <./images/Section4/29.7.png> <
 ./images/Section4/29.8.png>]
-<./images/Section4/31.0.png, id=1172, 1137.24875pt x 977.6525pt>
+<./images/Section4/31.0.png, id=1173, 1137.24875pt x 977.6525pt>
 File: ./images/Section4/31.0.png Graphic file (type png)
 <use ./images/Section4/31.0.png>
-Package pdftex.def Info: ./images/Section4/31.0.png  used on input line 1523.
+Package pdftex.def Info: ./images/Section4/31.0.png  used on input line 1537.
 (pdftex.def)             Requested size: 83.75398pt x 71.99309pt.
-<./images/Section4/31.1.png, id=1173, 1137.24875pt x 977.6525pt>
+<./images/Section4/31.1.png, id=1174, 1137.24875pt x 977.6525pt>
 File: ./images/Section4/31.1.png Graphic file (type png)
 <use ./images/Section4/31.1.png>
-Package pdftex.def Info: ./images/Section4/31.1.png  used on input line 1528.
+Package pdftex.def Info: ./images/Section4/31.1.png  used on input line 1542.
 (pdftex.def)             Requested size: 83.75398pt x 71.99309pt.
-<./images/Section4/31.2.png, id=1174, 1137.24875pt x 977.6525pt>
+<./images/Section4/31.2.png, id=1175, 1137.24875pt x 977.6525pt>
 File: ./images/Section4/31.2.png Graphic file (type png)
 <use ./images/Section4/31.2.png>
-Package pdftex.def Info: ./images/Section4/31.2.png  used on input line 1533.
+Package pdftex.def Info: ./images/Section4/31.2.png  used on input line 1547.
 (pdftex.def)             Requested size: 83.75398pt x 71.99309pt.
-<./images/Section4/31.3.png, id=1175, 1137.24875pt x 977.6525pt>
+<./images/Section4/31.3.png, id=1176, 1137.24875pt x 977.6525pt>
 File: ./images/Section4/31.3.png Graphic file (type png)
 <use ./images/Section4/31.3.png>
-Package pdftex.def Info: ./images/Section4/31.3.png  used on input line 1538.
+Package pdftex.def Info: ./images/Section4/31.3.png  used on input line 1552.
 (pdftex.def)             Requested size: 83.75398pt x 71.99309pt.
  [37 <./images/Section4/30.0.png> <./images/Section4/30.1.png> <./images/Sectio
 n4/30.2.png> <./images/Section4/30.3.png> <./images/Section4/30.4.png>]
-<./images/Section4/37.0.png, id=1190, 796.9775pt x 1109.14375pt>
+<./images/Section4/37.0.png, id=1191, 796.9775pt x 1109.14375pt>
 File: ./images/Section4/37.0.png Graphic file (type png)
 <use ./images/Section4/37.0.png>
-Package pdftex.def Info: ./images/Section4/37.0.png  used on input line 1554.
+Package pdftex.def Info: ./images/Section4/37.0.png  used on input line 1568.
 (pdftex.def)             Requested size: 83.75398pt x 116.55661pt.
-<./images/Section4/37.1.png, id=1191, 796.9775pt x 1109.14375pt>
+<./images/Section4/37.1.png, id=1192, 796.9775pt x 1109.14375pt>
 File: ./images/Section4/37.1.png Graphic file (type png)
 <use ./images/Section4/37.1.png>
-Package pdftex.def Info: ./images/Section4/37.1.png  used on input line 1559.
+Package pdftex.def Info: ./images/Section4/37.1.png  used on input line 1573.
 (pdftex.def)             Requested size: 83.75398pt x 116.55661pt.
-<./images/Section4/37.2.png, id=1192, 796.9775pt x 1109.14375pt>
+<./images/Section4/37.2.png, id=1193, 796.9775pt x 1109.14375pt>
 File: ./images/Section4/37.2.png Graphic file (type png)
 <use ./images/Section4/37.2.png>
-Package pdftex.def Info: ./images/Section4/37.2.png  used on input line 1564.
+Package pdftex.def Info: ./images/Section4/37.2.png  used on input line 1578.
 (pdftex.def)             Requested size: 83.75398pt x 116.55661pt.
-<./images/Section4/37.3.png, id=1193, 796.9775pt x 1109.14375pt>
+<./images/Section4/37.3.png, id=1194, 796.9775pt x 1109.14375pt>
 File: ./images/Section4/37.3.png Graphic file (type png)
 <use ./images/Section4/37.3.png>
-Package pdftex.def Info: ./images/Section4/37.3.png  used on input line 1569.
+Package pdftex.def Info: ./images/Section4/37.3.png  used on input line 1583.
 (pdftex.def)             Requested size: 83.75398pt x 116.55661pt.
-<./images/Section4/37.4.png, id=1194, 796.9775pt x 1109.14375pt>
+<./images/Section4/37.4.png, id=1195, 796.9775pt x 1109.14375pt>
 File: ./images/Section4/37.4.png Graphic file (type png)
 <use ./images/Section4/37.4.png>
-Package pdftex.def Info: ./images/Section4/37.4.png  used on input line 1579.
+Package pdftex.def Info: ./images/Section4/37.4.png  used on input line 1593.
 (pdftex.def)             Requested size: 83.75398pt x 116.55661pt.
-<./images/Section4/37.5.png, id=1195, 796.9775pt x 1109.14375pt>
+<./images/Section4/37.5.png, id=1196, 796.9775pt x 1109.14375pt>
 File: ./images/Section4/37.5.png Graphic file (type png)
 <use ./images/Section4/37.5.png>
-Package pdftex.def Info: ./images/Section4/37.5.png  used on input line 1584.
+Package pdftex.def Info: ./images/Section4/37.5.png  used on input line 1598.
 (pdftex.def)             Requested size: 83.75398pt x 116.55661pt.
-<./images/Section4/37.6.png, id=1196, 796.9775pt x 1109.14375pt>
+<./images/Section4/37.6.png, id=1197, 796.9775pt x 1109.14375pt>
 File: ./images/Section4/37.6.png Graphic file (type png)
 <use ./images/Section4/37.6.png>
-Package pdftex.def Info: ./images/Section4/37.6.png  used on input line 1589.
+Package pdftex.def Info: ./images/Section4/37.6.png  used on input line 1603.
 (pdftex.def)             Requested size: 83.75398pt x 116.55661pt.
-<./images/Section4/37.7.png, id=1197, 796.9775pt x 1109.14375pt>
+<./images/Section4/37.7.png, id=1198, 796.9775pt x 1109.14375pt>
 File: ./images/Section4/37.7.png Graphic file (type png)
 <use ./images/Section4/37.7.png>
-Package pdftex.def Info: ./images/Section4/37.7.png  used on input line 1594.
+Package pdftex.def Info: ./images/Section4/37.7.png  used on input line 1608.
 (pdftex.def)             Requested size: 83.75398pt x 116.55661pt.
 
-Underfull \hbox (badness 1430) in paragraph at lines 1597--1597
+Underfull \hbox (badness 1430) in paragraph at lines 1611--1611
 []\OT1/EBGaramond-OsF/bold/n/10.95 Figure 4.17: |\OT1/EBGaramond-OsF/regular/n/
 10.95 Ex-am-ple of a \com-bined glider" that ap-pears in rules
  []
 
-<./images/Section4/32.0.png, id=1200, 1109.14375pt x 1109.14375pt>
+<./images/Section4/32.0.png, id=1201, 1109.14375pt x 1109.14375pt>
 File: ./images/Section4/32.0.png Graphic file (type png)
 <use ./images/Section4/32.0.png>
-Package pdftex.def Info: ./images/Section4/32.0.png  used on input line 1610.
+Package pdftex.def Info: ./images/Section4/32.0.png  used on input line 1624.
 (pdftex.def)             Requested size: 83.75398pt x 83.74068pt.
-<./images/Section4/32.1.png, id=1201, 1109.14375pt x 1109.14375pt>
+<./images/Section4/32.1.png, id=1202, 1109.14375pt x 1109.14375pt>
 File: ./images/Section4/32.1.png Graphic file (type png)
 <use ./images/Section4/32.1.png>
-Package pdftex.def Info: ./images/Section4/32.1.png  used on input line 1615.
+Package pdftex.def Info: ./images/Section4/32.1.png  used on input line 1629.
 (pdftex.def)             Requested size: 83.75398pt x 83.74068pt.
-<./images/Section4/32.2.png, id=1202, 1109.14375pt x 1109.14375pt>
+<./images/Section4/32.2.png, id=1203, 1109.14375pt x 1109.14375pt>
 File: ./images/Section4/32.2.png Graphic file (type png)
 <use ./images/Section4/32.2.png>
-Package pdftex.def Info: ./images/Section4/32.2.png  used on input line 1620.
+Package pdftex.def Info: ./images/Section4/32.2.png  used on input line 1634.
 (pdftex.def)             Requested size: 83.75398pt x 83.74068pt.
-<./images/Section4/32.3.png, id=1203, 1109.14375pt x 1109.14375pt>
+<./images/Section4/32.3.png, id=1204, 1109.14375pt x 1109.14375pt>
 File: ./images/Section4/32.3.png Graphic file (type png)
 <use ./images/Section4/32.3.png>
-Package pdftex.def Info: ./images/Section4/32.3.png  used on input line 1625.
+Package pdftex.def Info: ./images/Section4/32.3.png  used on input line 1639.
 (pdftex.def)             Requested size: 83.75398pt x 83.74068pt.
 
-Underfull \hbox (badness 1472) in paragraph at lines 1628--1628
+Underfull \hbox (badness 1472) in paragraph at lines 1642--1642
 []\OT1/EBGaramond-OsF/bold/n/10.95 Figure 4.18: |\OT1/EBGaramond-OsF/regular/n/
 10.95 Ex-am-ple of a \mur-dered glider" that ap-pears in rules
  []
@@ -2300,178 +2310,178 @@ Underfull \hbox (badness 1472) in paragraph at lines 1628--1628
 /Section4/37.1.png> <./images/Section4/37.2.png> <./images/Section4/37.3.png> <
 ./images/Section4/37.4.png> <./images/Section4/37.5.png> <./images/Section4/37.
 6.png> <./images/Section4/37.7.png>]
-<./images/Section4/33.0.png, id=1222, 1137.24875pt x 832.10875pt>
+<./images/Section4/33.0.png, id=1223, 1137.24875pt x 832.10875pt>
 File: ./images/Section4/33.0.png Graphic file (type png)
 <use ./images/Section4/33.0.png>
-Package pdftex.def Info: ./images/Section4/33.0.png  used on input line 1641.
+Package pdftex.def Info: ./images/Section4/33.0.png  used on input line 1655.
 (pdftex.def)             Requested size: 83.75398pt x 61.27544pt.
-<./images/Section4/33.1.png, id=1223, 1137.24875pt x 832.10875pt>
+<./images/Section4/33.1.png, id=1224, 1137.24875pt x 832.10875pt>
 File: ./images/Section4/33.1.png Graphic file (type png)
 <use ./images/Section4/33.1.png>
-Package pdftex.def Info: ./images/Section4/33.1.png  used on input line 1646.
+Package pdftex.def Info: ./images/Section4/33.1.png  used on input line 1660.
 (pdftex.def)             Requested size: 83.75398pt x 61.27544pt.
-<./images/Section4/33.2.png, id=1224, 1137.24875pt x 832.10875pt>
+<./images/Section4/33.2.png, id=1225, 1137.24875pt x 832.10875pt>
 File: ./images/Section4/33.2.png Graphic file (type png)
 <use ./images/Section4/33.2.png>
-Package pdftex.def Info: ./images/Section4/33.2.png  used on input line 1651.
+Package pdftex.def Info: ./images/Section4/33.2.png  used on input line 1665.
 (pdftex.def)             Requested size: 83.75398pt x 61.27544pt.
-<./images/Section4/33.3.png, id=1225, 1137.24875pt x 832.10875pt>
+<./images/Section4/33.3.png, id=1226, 1137.24875pt x 832.10875pt>
 File: ./images/Section4/33.3.png Graphic file (type png)
 <use ./images/Section4/33.3.png>
-Package pdftex.def Info: ./images/Section4/33.3.png  used on input line 1656.
+Package pdftex.def Info: ./images/Section4/33.3.png  used on input line 1670.
 (pdftex.def)             Requested size: 83.75398pt x 61.27544pt.
-<./images/Section4/33.4.png, id=1226, 1137.24875pt x 832.10875pt>
+<./images/Section4/33.4.png, id=1227, 1137.24875pt x 832.10875pt>
 File: ./images/Section4/33.4.png Graphic file (type png)
 <use ./images/Section4/33.4.png>
-Package pdftex.def Info: ./images/Section4/33.4.png  used on input line 1666.
+Package pdftex.def Info: ./images/Section4/33.4.png  used on input line 1680.
 (pdftex.def)             Requested size: 83.75398pt x 61.27544pt.
-<./images/Section4/33.5.png, id=1227, 1137.24875pt x 832.10875pt>
+<./images/Section4/33.5.png, id=1228, 1137.24875pt x 832.10875pt>
 File: ./images/Section4/33.5.png Graphic file (type png)
 <use ./images/Section4/33.5.png>
-Package pdftex.def Info: ./images/Section4/33.5.png  used on input line 1671.
+Package pdftex.def Info: ./images/Section4/33.5.png  used on input line 1685.
 (pdftex.def)             Requested size: 83.75398pt x 61.27544pt.
-<./images/Section4/33.6.png, id=1228, 1137.24875pt x 832.10875pt>
+<./images/Section4/33.6.png, id=1229, 1137.24875pt x 832.10875pt>
 File: ./images/Section4/33.6.png Graphic file (type png)
 <use ./images/Section4/33.6.png>
-Package pdftex.def Info: ./images/Section4/33.6.png  used on input line 1676.
+Package pdftex.def Info: ./images/Section4/33.6.png  used on input line 1690.
 (pdftex.def)             Requested size: 83.75398pt x 61.27544pt.
-<./images/Section4/33.7.png, id=1229, 1137.24875pt x 832.10875pt>
+<./images/Section4/33.7.png, id=1230, 1137.24875pt x 832.10875pt>
 File: ./images/Section4/33.7.png Graphic file (type png)
 <use ./images/Section4/33.7.png>
-Package pdftex.def Info: ./images/Section4/33.7.png  used on input line 1681.
+Package pdftex.def Info: ./images/Section4/33.7.png  used on input line 1695.
 (pdftex.def)             Requested size: 83.75398pt x 61.27544pt.
 
-Underfull \hbox (badness 1406) in paragraph at lines 1684--1684
+Underfull \hbox (badness 1406) in paragraph at lines 1698--1698
 []\OT1/EBGaramond-OsF/bold/n/10.95 Figure 4.19: |\OT1/EBGaramond-OsF/regular/n/
 10.95 Ex-am-ple of a \mur-dered glider" that ap-pears in rules
  []
 
-<./images/Section4/34.0.png, id=1233, 484.81125pt x 1109.14375pt>
+<./images/Section4/34.0.png, id=1234, 484.81125pt x 1109.14375pt>
 File: ./images/Section4/34.0.png Graphic file (type png)
 <use ./images/Section4/34.0.png>
-Package pdftex.def Info: ./images/Section4/34.0.png  used on input line 1699.
+Package pdftex.def Info: ./images/Section4/34.0.png  used on input line 1713.
 (pdftex.def)             Requested size: 68.52283pt x 156.75146pt.
-<./images/Section4/34.1.png, id=1234, 484.81125pt x 1109.14375pt>
+<./images/Section4/34.1.png, id=1235, 484.81125pt x 1109.14375pt>
 File: ./images/Section4/34.1.png Graphic file (type png)
 <use ./images/Section4/34.1.png>
-Package pdftex.def Info: ./images/Section4/34.1.png  used on input line 1704.
+Package pdftex.def Info: ./images/Section4/34.1.png  used on input line 1718.
 (pdftex.def)             Requested size: 68.52283pt x 156.75146pt.
-<./images/Section4/34.2.png, id=1235, 484.81125pt x 1109.14375pt>
+<./images/Section4/34.2.png, id=1236, 484.81125pt x 1109.14375pt>
 File: ./images/Section4/34.2.png Graphic file (type png)
 <use ./images/Section4/34.2.png>
-Package pdftex.def Info: ./images/Section4/34.2.png  used on input line 1709.
+Package pdftex.def Info: ./images/Section4/34.2.png  used on input line 1723.
 (pdftex.def)             Requested size: 68.52283pt x 156.75146pt.
-<./images/Section4/34.3.png, id=1236, 484.81125pt x 1109.14375pt>
+<./images/Section4/34.3.png, id=1237, 484.81125pt x 1109.14375pt>
 File: ./images/Section4/34.3.png Graphic file (type png)
 <use ./images/Section4/34.3.png>
-Package pdftex.def Info: ./images/Section4/34.3.png  used on input line 1714.
+Package pdftex.def Info: ./images/Section4/34.3.png  used on input line 1728.
 (pdftex.def)             Requested size: 68.52283pt x 156.75146pt.
-<./images/Section4/34.4.png, id=1237, 484.81125pt x 1109.14375pt>
+<./images/Section4/34.4.png, id=1238, 484.81125pt x 1109.14375pt>
 File: ./images/Section4/34.4.png Graphic file (type png)
 <use ./images/Section4/34.4.png>
-Package pdftex.def Info: ./images/Section4/34.4.png  used on input line 1719.
+Package pdftex.def Info: ./images/Section4/34.4.png  used on input line 1733.
 (pdftex.def)             Requested size: 68.52283pt x 156.75146pt.
 [39 <./images/Section4/32.0.png> <./images/Section4/32.1.png> <./images/Section
 4/32.2.png> <./images/Section4/32.3.png> <./images/Section4/33.0.png> <./images
 /Section4/33.1.png> <./images/Section4/33.2.png> <./images/Section4/33.3.png> <
 ./images/Section4/33.4.png> <./images/Section4/33.5.png> <./images/Section4/33.
 6.png> <./images/Section4/33.7.png>]
-<./images/Section4/35.0.png, id=1258, 1137.24875pt x 497.86pt>
+<./images/Section4/35.0.png, id=1259, 1137.24875pt x 497.86pt>
 File: ./images/Section4/35.0.png Graphic file (type png)
 <use ./images/Section4/35.0.png>
-Package pdftex.def Info: ./images/Section4/35.0.png  used on input line 1735.
+Package pdftex.def Info: ./images/Section4/35.0.png  used on input line 1749.
 (pdftex.def)             Requested size: 171.31288pt x 74.99483pt.
-<./images/Section4/35.1.png, id=1259, 1137.24875pt x 497.86pt>
+<./images/Section4/35.1.png, id=1260, 1137.24875pt x 497.86pt>
 File: ./images/Section4/35.1.png Graphic file (type png)
 <use ./images/Section4/35.1.png>
-Package pdftex.def Info: ./images/Section4/35.1.png  used on input line 1739.
+Package pdftex.def Info: ./images/Section4/35.1.png  used on input line 1753.
 (pdftex.def)             Requested size: 171.31288pt x 74.99483pt.
-<./images/Section4/35.2.png, id=1260, 1137.24875pt x 497.86pt>
+<./images/Section4/35.2.png, id=1261, 1137.24875pt x 497.86pt>
 File: ./images/Section4/35.2.png Graphic file (type png)
 <use ./images/Section4/35.2.png>
-Package pdftex.def Info: ./images/Section4/35.2.png  used on input line 1748.
+Package pdftex.def Info: ./images/Section4/35.2.png  used on input line 1762.
 (pdftex.def)             Requested size: 171.31288pt x 74.99483pt.
-<./images/Section4/35.3.png, id=1261, 1137.24875pt x 497.86pt>
+<./images/Section4/35.3.png, id=1262, 1137.24875pt x 497.86pt>
 File: ./images/Section4/35.3.png Graphic file (type png)
 <use ./images/Section4/35.3.png>
-Package pdftex.def Info: ./images/Section4/35.3.png  used on input line 1752.
+Package pdftex.def Info: ./images/Section4/35.3.png  used on input line 1766.
 (pdftex.def)             Requested size: 171.31288pt x 74.99483pt.
-<./images/Section4/35.4.png, id=1262, 1137.24875pt x 497.86pt>
+<./images/Section4/35.4.png, id=1263, 1137.24875pt x 497.86pt>
 File: ./images/Section4/35.4.png Graphic file (type png)
 <use ./images/Section4/35.4.png>
-Package pdftex.def Info: ./images/Section4/35.4.png  used on input line 1761.
+Package pdftex.def Info: ./images/Section4/35.4.png  used on input line 1775.
 (pdftex.def)             Requested size: 171.31288pt x 74.99483pt.
-<./images/Section4/35.5.png, id=1263, 1137.24875pt x 497.86pt>
+<./images/Section4/35.5.png, id=1264, 1137.24875pt x 497.86pt>
 File: ./images/Section4/35.5.png Graphic file (type png)
 <use ./images/Section4/35.5.png>
-Package pdftex.def Info: ./images/Section4/35.5.png  used on input line 1765.
+Package pdftex.def Info: ./images/Section4/35.5.png  used on input line 1779.
 (pdftex.def)             Requested size: 171.31288pt x 74.99483pt.
-<./images/Section4/35.6.png, id=1264, 1137.24875pt x 497.86pt>
+<./images/Section4/35.6.png, id=1265, 1137.24875pt x 497.86pt>
 File: ./images/Section4/35.6.png Graphic file (type png)
 <use ./images/Section4/35.6.png>
-Package pdftex.def Info: ./images/Section4/35.6.png  used on input line 1774.
+Package pdftex.def Info: ./images/Section4/35.6.png  used on input line 1788.
 (pdftex.def)             Requested size: 171.31288pt x 74.99483pt.
-<./images/Section4/35.7.png, id=1265, 1137.24875pt x 497.86pt>
+<./images/Section4/35.7.png, id=1266, 1137.24875pt x 497.86pt>
 File: ./images/Section4/35.7.png Graphic file (type png)
 <use ./images/Section4/35.7.png>
-Package pdftex.def Info: ./images/Section4/35.7.png  used on input line 1778.
+Package pdftex.def Info: ./images/Section4/35.7.png  used on input line 1792.
 (pdftex.def)             Requested size: 171.31288pt x 74.99483pt.
-<./images/Section4/35.8.png, id=1266, 1137.24875pt x 497.86pt>
+<./images/Section4/35.8.png, id=1267, 1137.24875pt x 497.86pt>
 File: ./images/Section4/35.8.png Graphic file (type png)
 <use ./images/Section4/35.8.png>
-Package pdftex.def Info: ./images/Section4/35.8.png  used on input line 1787.
+Package pdftex.def Info: ./images/Section4/35.8.png  used on input line 1801.
 (pdftex.def)             Requested size: 171.31288pt x 74.99483pt.
-<./images/Section4/35.9.png, id=1267, 1137.24875pt x 497.86pt>
+<./images/Section4/35.9.png, id=1268, 1137.24875pt x 497.86pt>
 File: ./images/Section4/35.9.png Graphic file (type png)
 <use ./images/Section4/35.9.png>
-Package pdftex.def Info: ./images/Section4/35.9.png  used on input line 1791.
+Package pdftex.def Info: ./images/Section4/35.9.png  used on input line 1805.
 (pdftex.def)             Requested size: 171.31288pt x 74.99483pt.
-<./images/Section4/35.10.png, id=1268, 1137.24875pt x 497.86pt>
+<./images/Section4/35.10.png, id=1269, 1137.24875pt x 497.86pt>
 File: ./images/Section4/35.10.png Graphic file (type png)
 <use ./images/Section4/35.10.png>
-Package pdftex.def Info: ./images/Section4/35.10.png  used on input line 1800.
+Package pdftex.def Info: ./images/Section4/35.10.png  used on input line 1814.
 (pdftex.def)             Requested size: 171.31288pt x 74.99483pt.
-<./images/Section4/35.11.png, id=1269, 1137.24875pt x 497.86pt>
+<./images/Section4/35.11.png, id=1270, 1137.24875pt x 497.86pt>
 File: ./images/Section4/35.11.png Graphic file (type png)
 <use ./images/Section4/35.11.png>
-Package pdftex.def Info: ./images/Section4/35.11.png  used on input line 1804.
+Package pdftex.def Info: ./images/Section4/35.11.png  used on input line 1818.
 (pdftex.def)             Requested size: 171.31288pt x 74.99483pt.
  [40 <./images/Section4/34.0.png> <./images/Section4/34.1.png> <./images/Sectio
 n4/34.2.png> <./images/Section4/34.3.png> <./images/Section4/34.4.png>]
-<./images/Section4/36.0.png, id=1282, 963.6pt x 1109.14375pt>
+<./images/Section4/36.0.png, id=1283, 963.6pt x 1109.14375pt>
 File: ./images/Section4/36.0.png Graphic file (type png)
 <use ./images/Section4/36.0.png>
-Package pdftex.def Info: ./images/Section4/36.0.png  used on input line 1818.
+Package pdftex.def Info: ./images/Section4/36.0.png  used on input line 1832.
 (pdftex.def)             Requested size: 83.75398pt x 96.39995pt.
-<./images/Section4/36.1.png, id=1283, 963.6pt x 1109.14375pt>
+<./images/Section4/36.1.png, id=1284, 963.6pt x 1109.14375pt>
 File: ./images/Section4/36.1.png Graphic file (type png)
 <use ./images/Section4/36.1.png>
-Package pdftex.def Info: ./images/Section4/36.1.png  used on input line 1822.
+Package pdftex.def Info: ./images/Section4/36.1.png  used on input line 1836.
 (pdftex.def)             Requested size: 83.75398pt x 96.39995pt.
-<./images/Section4/36.2.png, id=1284, 963.6pt x 1109.14375pt>
+<./images/Section4/36.2.png, id=1285, 963.6pt x 1109.14375pt>
 File: ./images/Section4/36.2.png Graphic file (type png)
 <use ./images/Section4/36.2.png>
-Package pdftex.def Info: ./images/Section4/36.2.png  used on input line 1826.
+Package pdftex.def Info: ./images/Section4/36.2.png  used on input line 1840.
 (pdftex.def)             Requested size: 83.75398pt x 96.39995pt.
-<./images/Section4/36.3.png, id=1285, 963.6pt x 1109.14375pt>
+<./images/Section4/36.3.png, id=1286, 963.6pt x 1109.14375pt>
 File: ./images/Section4/36.3.png Graphic file (type png)
 <use ./images/Section4/36.3.png>
-Package pdftex.def Info: ./images/Section4/36.3.png  used on input line 1830.
+Package pdftex.def Info: ./images/Section4/36.3.png  used on input line 1844.
 (pdftex.def)             Requested size: 83.75398pt x 96.39995pt.
-<./images/Section4/36.4.png, id=1286, 963.6pt x 1109.14375pt>
+<./images/Section4/36.4.png, id=1287, 963.6pt x 1109.14375pt>
 File: ./images/Section4/36.4.png Graphic file (type png)
 <use ./images/Section4/36.4.png>
-Package pdftex.def Info: ./images/Section4/36.4.png  used on input line 1839.
+Package pdftex.def Info: ./images/Section4/36.4.png  used on input line 1853.
 (pdftex.def)             Requested size: 83.75398pt x 96.39995pt.
-<./images/Section4/36.5.png, id=1287, 963.6pt x 1109.14375pt>
+<./images/Section4/36.5.png, id=1288, 963.6pt x 1109.14375pt>
 File: ./images/Section4/36.5.png Graphic file (type png)
 <use ./images/Section4/36.5.png>
-Package pdftex.def Info: ./images/Section4/36.5.png  used on input line 1843.
+Package pdftex.def Info: ./images/Section4/36.5.png  used on input line 1857.
 (pdftex.def)             Requested size: 83.75398pt x 96.39995pt.
-<./images/Section4/36.6.png, id=1288, 963.6pt x 1109.14375pt>
+<./images/Section4/36.6.png, id=1289, 963.6pt x 1109.14375pt>
 File: ./images/Section4/36.6.png Graphic file (type png)
 <use ./images/Section4/36.6.png>
-Package pdftex.def Info: ./images/Section4/36.6.png  used on input line 1847.
+Package pdftex.def Info: ./images/Section4/36.6.png  used on input line 1861.
 (pdftex.def)             Requested size: 83.75398pt x 96.39995pt.
  [41 <./images/Section4/35.0.png> <./images/Section4/35.1.png> <./images/Sectio
 n4/35.2.png> <./images/Section4/35.3.png> <./images/Section4/35.4.png> <./image
@@ -2481,119 +2491,119 @@ s/Section4/35.5.png> <./images/Section4/35.6.png> <./images/Section4/35.7.png>
 ges/Section4/36.1.png> <./images/Section4/36.2.png> <./images/Section4/36.3.png
 > <./images/Section4/36.4.png> <./images/Section4/36.5.png> <./images/Section4/
 36.6.png>] [43] [44]
-<./images/Section5/1.png, id=1329, 881.2925pt x 268.00125pt>
+<./images/Section5/1.png, id=1330, 881.2925pt x 268.00125pt>
 File: ./images/Section5/1.png Graphic file (type png)
 <use ./images/Section5/1.png>
-Package pdftex.def Info: ./images/Section5/1.png  used on input line 1876.
+Package pdftex.def Info: ./images/Section5/1.png  used on input line 1890.
 (pdftex.def)             Requested size: 380.69788pt x 115.7699pt.
-<./images/Section5/2.png, id=1330, 874.26625pt x 262.9825pt>
+<./images/Section5/2.png, id=1331, 874.26625pt x 262.9825pt>
 File: ./images/Section5/2.png Graphic file (type png)
 <use ./images/Section5/2.png>
-Package pdftex.def Info: ./images/Section5/2.png  used on input line 1880.
+Package pdftex.def Info: ./images/Section5/2.png  used on input line 1894.
 (pdftex.def)             Requested size: 380.69788pt x 114.51683pt.
-<./images/Section5/3.png, id=1331, 873.2625pt x 189.70876pt>
+<./images/Section5/3.png, id=1332, 873.2625pt x 189.70876pt>
 File: ./images/Section5/3.png Graphic file (type png)
 <use ./images/Section5/3.png>
-Package pdftex.def Info: ./images/Section5/3.png  used on input line 1884.
+Package pdftex.def Info: ./images/Section5/3.png  used on input line 1898.
 (pdftex.def)             Requested size: 380.69788pt x 82.7021pt.
-<./images/Section5/4.png, id=1332, 871.255pt x 192.72pt>
+<./images/Section5/4.png, id=1333, 871.255pt x 192.72pt>
 File: ./images/Section5/4.png Graphic file (type png)
 <use ./images/Section5/4.png>
-Package pdftex.def Info: ./images/Section5/4.png  used on input line 1888.
+Package pdftex.def Info: ./images/Section5/4.png  used on input line 1902.
 (pdftex.def)             Requested size: 380.69788pt x 84.20891pt.
  [45]
-<./images/Section5/5.png, id=1337, 871.255pt x 261.97874pt>
+<./images/Section5/5.png, id=1338, 871.255pt x 261.97874pt>
 File: ./images/Section5/5.png Graphic file (type png)
 <use ./images/Section5/5.png>
-Package pdftex.def Info: ./images/Section5/5.png  used on input line 1895.
+Package pdftex.def Info: ./images/Section5/5.png  used on input line 1909.
 (pdftex.def)             Requested size: 380.69788pt x 114.4715pt.
-<./images/Section5/6.png, id=1338, 873.2625pt x 258.9675pt>
+<./images/Section5/6.png, id=1339, 873.2625pt x 258.9675pt>
 File: ./images/Section5/6.png Graphic file (type png)
 <use ./images/Section5/6.png>
-Package pdftex.def Info: ./images/Section5/6.png  used on input line 1899.
+Package pdftex.def Info: ./images/Section5/6.png  used on input line 1913.
 (pdftex.def)             Requested size: 380.69788pt x 112.89493pt.
-<./images/Section5/7.png, id=1339, 869.2475pt x 271.0125pt>
+<./images/Section5/7.png, id=1340, 869.2475pt x 271.0125pt>
 File: ./images/Section5/7.png Graphic file (type png)
 <use ./images/Section5/7.png>
-Package pdftex.def Info: ./images/Section5/7.png  used on input line 1903.
+Package pdftex.def Info: ./images/Section5/7.png  used on input line 1917.
 (pdftex.def)             Requested size: 380.69788pt x 118.69586pt.
  [46 <./images/Section5/1.png> <./images/Section5/2.png> <./images/Section5/3.p
 ng> <./images/Section5/4.png>]
-<./images/Section5/8.png, id=1349, 875.27pt x 266.9975pt>
+<./images/Section5/8.png, id=1350, 875.27pt x 266.9975pt>
 File: ./images/Section5/8.png Graphic file (type png)
 <use ./images/Section5/8.png>
-Package pdftex.def Info: ./images/Section5/8.png  used on input line 1910.
+Package pdftex.def Info: ./images/Section5/8.png  used on input line 1924.
 (pdftex.def)             Requested size: 380.69788pt x 116.13074pt.
-<./images/Section5/9.png, id=1350, 875.27pt x 265.99374pt>
+<./images/Section5/9.png, id=1351, 875.27pt x 265.99374pt>
 File: ./images/Section5/9.png Graphic file (type png)
 <use ./images/Section5/9.png>
-Package pdftex.def Info: ./images/Section5/9.png  used on input line 1914.
+Package pdftex.def Info: ./images/Section5/9.png  used on input line 1928.
 (pdftex.def)             Requested size: 380.69788pt x 115.69415pt.
-<./images/Section5/10.png, id=1351, 878.28125pt x 263.98625pt>
+<./images/Section5/10.png, id=1352, 878.28125pt x 263.98625pt>
 File: ./images/Section5/10.png Graphic file (type png)
 <use ./images/Section5/10.png>
-Package pdftex.def Info: ./images/Section5/10.png  used on input line 1918.
+Package pdftex.def Info: ./images/Section5/10.png  used on input line 1932.
 (pdftex.def)             Requested size: 380.69788pt x 114.43027pt.
  [47 <./images/Section5/5.png> <./images/Section5/6.png> <./images/Section5/7.p
 ng>] [48 <./images/Section5/8.png> <./images/Section5/9.png> <./images/Section5
 /10.png>] [49] [50]
-Underfull \hbox (badness 1762) in paragraph at lines 1943--1947
+Underfull \hbox (badness 1762) in paragraph at lines 1957--1961
 []\OT1/EBGaramond-OsF/regular/n/12 Bays C. \OT1/EBGaramond-OsF/regular/it/12 Gl
 id-ers in Cel-lu-lar Au-tomata\OT1/EBGaramond-OsF/regular/n/12 . In: Mey-ers R.
  (eds) En-cy-clo-pe-dia
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1949--1953
+Underfull \hbox (badness 10000) in paragraph at lines 1963--1967
 []\OT1/EBGaramond-OsF/regular/n/12 Wuensche A. \OT1/EBGaramond-OsF/regular/it/1
 2 Find-ing Glid-ers in Cel-lu-lar Au-tomata\OT1/EBGaramond-OsF/regular/n/12 . I
 n: Adamatzky
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1949--1953
+Underfull \hbox (badness 10000) in paragraph at lines 1963--1967
 \OT1/EBGaramond-OsF/regular/n/12 A. (eds) Collision-Based Com-put-ing. Springer
 , Lon-don, 2002. DOI:
  []
 
 [51]
-Underfull \hbox (badness 10000) in paragraph at lines 2005--2009
+Underfull \hbox (badness 10000) in paragraph at lines 2019--2023
 []\OT1/EBGaramond-OsF/regular/n/12 Martin G. \OT1/EBGaramond-OsF/regular/it/12 
 MATH-E-MAT-I-CAL GAMES The fan-tas-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2005--2009
+Underfull \hbox (badness 10000) in paragraph at lines 2019--2023
 \OT1/EBGaramond-OsF/regular/it/12 tic com-bi-na-tions of John Con-way's new sol
 i-taire game
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2005--2009
+Underfull \hbox (badness 10000) in paragraph at lines 2019--2023
 \OT1/EBGaramond-OsF/regular/it/12 "life"\OT1/EBGaramond-OsF/regular/n/12 . In S
 ci-en-tific Amer-i-can 223 (Oc-to-ber 1970): 120-123.
  []
 
 
-Underfull \hbox (badness 4531) in paragraph at lines 2011--2013
+Underfull \hbox (badness 4531) in paragraph at lines 2025--2027
 []\OT1/EBGaramond-OsF/regular/n/12 \Cellular au-toma-ton." Merriam-Webster.com 
 Dic-tio-nary. (2021, May 10).
  []
 
 
-Overfull \hbox (30.49825pt too wide) in paragraph at lines 2011--2013
+Overfull \hbox (30.49825pt too wide) in paragraph at lines 2025--2027
 \OT1/cmtt/m/n/12 https://www.merriam-webster.com/dictionary/cellular%20automato
 n\OT1/EBGaramond-OsF/regular/n/12 . 
  []
 
 
-Overfull \hbox (8.51523pt too wide) in paragraph at lines 2015--2017
+Overfull \hbox (8.51523pt too wide) in paragraph at lines 2029--2031
 \OT1/cmtt/m/n/12 https://en.wikipedia.org/wiki/Spaceship[](cellular[]automaton)
 \OT1/EBGaramond-OsF/regular/n/12 . 
  []
 
 
-Overfull \hbox (35.93224pt too wide) in paragraph at lines 2023--2025
+Overfull \hbox (35.93224pt too wide) in paragraph at lines 2037--2039
 \OT1/cmtt/m/n/12 https://en.wikipedia.org/wiki/Speed[]of[]light[](cellular[]aut
 omaton)\OT1/EBGaramond-OsF/regular/n/12 . 
  []
@@ -2601,58 +2611,68 @@ omaton)\OT1/EBGaramond-OsF/regular/n/12 .
 [52] [53] (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-Underfull \hbox (badness 10000) in paragraph at lines 2090--2090
+Underfull \hbox (badness 10000) in paragraph at lines 2104--2104
 []|\OT1/EBGaramond-OsF/bold/n/12 Survival
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2090--2090
+Underfull \hbox (badness 10000) in paragraph at lines 2104--2104
 []|\OT1/EBGaramond-OsF/bold/n/12 Death
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2090--2091
+Underfull \hbox (badness 10000) in paragraph at lines 2104--2105
 []|\OT1/EBGaramond-OsF/bold/n/12 Number
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2126--2126
+Underfull \hbox (badness 10000) in paragraph at lines 2140--2140
 []|\OT1/EBGaramond-OsF/bold/n/12 Survival
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2126--2126
+Underfull \hbox (badness 10000) in paragraph at lines 2140--2140
 []|\OT1/EBGaramond-OsF/bold/n/12 Death
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2126--2127
+Underfull \hbox (badness 10000) in paragraph at lines 2140--2141
 []|\OT1/EBGaramond-OsF/bold/n/12 Number
  []
 
 [54] [55] [56] [57] [58] [59] [60] [61]
-Overfull \hbox (1.51929pt too wide) in paragraph at lines 2456--2457
+Overfull \hbox (1.51929pt too wide) in paragraph at lines 2470--2471
 []\OT1/EBGaramond-OsF/regular/n/12 Description: vi-su-al-ize the gen-er-a-tions
  of cel-lu-lar au-tomata with four or fewer states
  []
 
 [62] [63] [64] [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3514.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3514.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3528.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3528.
 
 (./Qitian Liao Thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3514.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3514.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3528.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3528.
 
-Package rerunfilecheck Info: File `"Qitian Liao Thesis".out' has not changed.
-(rerunfilecheck)             Checksum: F5548C68E01293C258DBAC5E75D59F5B;5664.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3514.
+
+
+Package rerunfilecheck Warning: File `"Qitian Liao Thesis".out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `"Qitian Liao Thesis".out':
+(rerunfilecheck)             Before: 03873EAC1C4A2F07F18CF6DB5617ECA4;5613
+(rerunfilecheck)             After:  F5548C68E01293C258DBAC5E75D59F5B;5664.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3528.
  ) 
 Here is how much of TeX's memory you used:
- 28127 strings out of 480608
- 514253 string characters out of 5903631
- 1533415 words of memory out of 5000000
- 41979 multiletter control sequences out of 15000+600000
+ 28167 strings out of 480608
+ 514913 string characters out of 5903631
+ 1534158 words of memory out of 5000000
+ 42015 multiletter control sequences out of 15000+600000
  564200 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,17n,77p,2111b,1974s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2666,15 +2686,16 @@ mond/EBGaramond-Regular.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmtt10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmtt12.pfb>
-Output written on "Qitian Liao Thesis.pdf" (84 pages, 4873005 bytes).
+amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmtt10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmtt12.pfb>
+Output written on "Qitian Liao Thesis.pdf" (84 pages, 4880194 bytes).
 PDF statistics:
- 2889 PDF objects out of 2984 (max. 8388607)
- 2265 compressed objects within 23 object streams
+ 2893 PDF objects out of 2984 (max. 8388607)
+ 2268 compressed objects within 23 object streams
  1270 named destinations out of 1440 (max. 500000)
  1725 words of extra memory for PDF output out of 10000 (max. 10000000)
 

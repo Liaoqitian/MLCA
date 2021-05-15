@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage{hyperref, amsmath, graphicx, sectsty, amssymb, lipsum, titlesec, romannum, enumitem, mathtools, setspace, tabularx, listings, array, tocloft, abstract, fancyhdr, nameref}
 \usepackage{caption}
-\usepackage{subcaption}
+\usepackage{subcaption, changepage}
 \usepackage{ebgaramond}
 \usepackage[super]{nth}
 \usepackage{tikz}
@@ -170,7 +170,21 @@ Throughout my years at UC Berkeley, I met many amazing friends, peers, and mento
 \section{Introduction}
 \label{Introduction}
 \pagenumbering{arabic}
-A cellular automaton is an element in a computer simulation composed of semi-autonomous interacting elements, specifically: any of such elements that are visualized on a computer screen as square or hexagonal cells comprising an array, grid, or lattice, that are controlled by similar but separate software routines or hardware devices, that can exist in a number of states, that are influenced by the states of their neighbors, and that are used to simulate diverse complex systems \cite{MW}. The most common configurations are the von Neumann and the Moore neighborhoods shown in Figure~\ref{fig:Neighborhood configuration}, which include the surrounding four and eight cells respectively. There are three types of two-dimensional cellular automata rules \cite{A new kind of Science}: totalistic rules depend only on the states of the cells in the neighborhood, outer totalistic rules also depend on the state of the center cell, and growth totalistic rules make any cell that becomes live remain live forever. Cellular automata have attracted much attention among scientists and have been regarded by Stephen Wolfram as the “new kind of science” \cite{A new kind of Science}. 
+Merriam-Webster defines a cellular automaton as follows \cite{MW}: \\
+%your text here  
+\begin{adjustwidth}{1cm}{1cm}
+\vspace{-1cm}
+\begin{small} 
+\begin{spacing}{1}
+cellular automaton, \textbf{sel}-yuh-ler aw-\textbf{tom}-uh-ton\\ 
+$[$noun$]$
+\newline
+an element in a computer simulation composed of semi-autonomous interacting elements, specifically: any of such elements that are visualized on a computer screen as square or hexagonal cells comprising an array, grid, or lattice, that are controlled by similar but separate software routines or hardware devices, that can exist in a number of states, that are influenced by the states of their neighbors, and that are used to simulate diverse complex systems. 
+\end{spacing}
+\end{small}
+\vspace{-0.1cm}
+\end{adjustwidth}
+The most common configurations are the von Neumann and the Moore neighborhoods shown in Figure~\ref{fig:Neighborhood configuration}, which include the surrounding four and eight cells respectively. There are three types of two-dimensional cellular automata rules \cite{A new kind of Science}: totalistic rules depend only on the states of the cells in the neighborhood, outer totalistic rules also depend on the state of the center cell, and growth totalistic rules make any cell that becomes live remain live forever. Cellular automata have attracted much attention among scientists and have been regarded by Stephen Wolfram as the “new kind of science” \cite{A new kind of Science}. 
 
 We normally restrict ourselves to systems whose behavior we can readily understand and predict because otherwise, we cannot be sure that the system will do what we want. However, unlike carefully engineered machinery, everything in nature is fundamentally made of particles flowing in space with arbitrary rules. Cellular automaton, like nature, operates under no such constraints of predictability or controllability. Applying a simple cellular automaton rule to a simple initial configuration can lead to a result that shows an immense level of complexity. The most fascinating aspect of it is that it seems to involve generating something from nothing, a practice that humans are simply not used to. Therefore, because of the resemblance between cellular automata and nature, it is natural to think of their dynamics as a micro-world where the cells constitute their own ecosystems. 
 
