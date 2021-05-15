@@ -1,30 +1,24 @@
 \documentclass[12pt]{article}
-\usepackage{hyperref, amsmath, graphicx, sectsty, amssymb, lipsum, titlesec, romannum, enumitem, mathtools, setspace, tabularx, listings, array, tocloft, abstract, fancyhdr, nameref}
-\usepackage{caption}
-\usepackage{subcaption, changepage}
-\usepackage{ebgaramond}
+\usepackage{hyperref, amsmath, graphicx, sectsty, amssymb, lipsum, titlesec, romannum, enumitem, mathtools, setspace, tabularx, listings, array, tocloft, abstract, fancyhdr, nameref, changepage}
+\usepackage{caption, subcaption, ebgaramond, tikz, pagecolor, lipsum, adjustbox, expl3, etoolbox, relsize, float}
 \usepackage[super]{nth}
-\usepackage{tikz}
-\usepackage{pagecolor,lipsum}
-\usepackage{adjustbox,expl3,etoolbox} % longsum
+\usepackage[nottoc,numbib]{tocbibind}
 \letcs\replicate{prg_replicate:nn}
-\usepackage{relsize} %Summation size
-\usepackage{float} % figure placement
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
 \graphicspath{ {./images/} }
-\DeclareMathOperator{\di}{d\!}%Antiderivative Line
-\newcommand*\Eval[3]{\left.#1\right\rvert_{#2}^{#3}}
+
+
 \pagecolor{white}
 \setlist[itemize,1]{leftmargin=\dimexpr 26pt-.5in}
 \setlength{\abovedisplayskip}{2pt}%Set Equation Space above and Below
 \setlength{\belowdisplayskip}{2pt}
 \setlength{\textfloatsep}{10pt plus 1.0pt minus 2.0pt}
 
+% Change Margin 
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
 % Align space
-
-\def\Arg{\mathop{\operator@font Arg}\nolimits}
-
 \titleformat*{\section}{\Large\bfseries}
 \titleformat*{\subsection}{\large\bfseries}
 \titleformat*{\subsubsection}{\normalsize\bfseries}
@@ -42,7 +36,6 @@
 
 \geometry{a4paper, margin=1.5in}
 \renewcommand{\baselinestretch}{1.5}
-\usepackage[nottoc,numbib]{tocbibind}
 
 % Set up figure captions 
 \captionsetup[figure]{
@@ -97,7 +90,6 @@
 %\renewcommand\cftsecfont{\large\bfseries}
 %\renewcommand\cftsubsecfont{\large}
 
-
 \setlength\cftparskip{-2pt}
 \setlength\cftbeforesecskip{1pt}
 \setlength\cftaftertoctitleskip{2pt}
@@ -133,13 +125,11 @@ Approval for the Report and Comprehensive Examination:
 \section*{\centering Abstract}
 \addcontentsline{toc}{section}{Abstract}
 
-A cellular automaton is an element in a computer simulation composed of semi-autonomous interacting elements, specifically: any of such elements that are visualized on a computer screen as square or hexagonal cells comprising an array, grid, or lattice, that are controlled by similar but separate software routines or hardware devices, that can exist in a number of states, that are influenced by the states of their neighbors, and that are used to simulate diverse complex systems \cite{MW}. 
+A cellular automaton consists of a grid of cells, and the grid can be in any finite number of dimensions. Each cell is in one of a finite number of states, and evolves with respect to time steps according to a set of evolution rules based on the previous states of its neighbors and itself \cite{Cellular automaton}. The evolution rules are applied iteratively for as many steps as desired to produce new generations. There are many possible configurations; this report specifically explores two-dimensional outer totalistic cellular automata using the Moore neighborhood with decay, meaning that sick cells are not able to recover and have to move one step closer to death at each generation. 
 
-The evolution rules are applied iteratively for as many steps as desired to generate new grid configurations. There are many possible configurations; this report specifically explores two-dimensional cellular automata using the Moore neighborhood in the deterministic model of “instant birth, gradual death, no recovery”, meaning that sick cells are not able to recover and have to move one step closer to death at each generation. 
+The challenge when searching for interesting patterns in two-dimensional cellular automata is a huge parameter search space. The number of possible combinations of rule parameters can easily exceed $2^{18}$. Our research focused on adjusting the rules to find new, interesting spaceships (oscillating translators that move across the grid). Existing research has not discovered a clear pattern among rules that generate spaceships. 
 
-The challenge when searching for interesting patterns in two-dimensional cellular automata is a huge parameter search space. The number of possible combinations of rule parameters can easily exceed $2^{18}$. Our research focused on adjusting the rules to find new, interesting gliders (oscillating translators that move across the grid). Existing research has not discovered a clear pattern among rules that generate gliders. 
-
-Manually searching for the interesting rules would be unrealistic, but fortunately, the introduction of neural networks has revolutionized a variety of tedious classification tasks. This report explores the use of neural networks to detect interesting cellular automata rules, specifically Recurrent Neural Networks (RNN), Convolutional Neural Networks (CNN), feature extraction, entropy analysis, and other techniques. We then put the trained machine learners into practice and detected several new rules with only three states. We discovered an entire \textit{family} of gliders of different periods, as well as many other interesting results. 
+Manually searching for the interesting rules would be unrealistic, but fortunately, the introduction of neural networks has revolutionized a variety of tedious classification tasks. This report explores the use of neural networks to detect interesting cellular automata rules, specifically Recurrent Neural Networks (RNN), Convolutional Neural Networks (CNN), feature extraction, entropy analysis, and other techniques. We then put the trained machine learners into practice and detected several new rules with only three states. We discovered an entire \textit{family} of spaceships of different periods, as well as many other interesting results. 
 
 \newpage
 \thispagestyle{plain}
@@ -209,25 +199,26 @@ Arguably the most famous cellular automaton is John Conway’s the Game of Life 
    	\label{fig:Neighborhood configuration}
 \end{figure}
 
-Since there are two possible states in the Game of Life, the live cells satisfying the survival rule and the dead cells satisfying the born rule will be alive in the next generation, and the remaining cells will all be dead. The probability of surviving and being born is $\frac{2}{9}$ and $\frac{1}{9}$ respectively. The evolution rule is often visualized using cellular automaton state transition diagrams, where each vertex on the graph represents one of the states and each directed edge represents a viable evolution from one state to another. The probability of that transition, if available, will be highlighted on the edge. Figure ~\ref{fig:Transitional state diagram of the Game of Life} shows the transitional state diagram of the Game of Life. 
+Since there are two possible states in the Game of Life, the live cells satisfying the survival rule and the dead cells satisfying the born rule will be alive in the next generation, and the remaining cells will all be dead. The probability of surviving and being born is $\frac{2}{9}$ and $\frac{1}{9}$ respectively. The evolution rule is often visualized using cellular automaton state transition diagrams, where each vertex on the graph represents one of the states, and each directed edge represents a viable evolution from one state to another. The probability of that transition, if available, will be highlighted on the edge. Figure ~\ref{fig:Transitional state diagram of the Game of Life} shows the transitional state diagram of the Game of Life. 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{Section1/3}
-	\caption[Transitional state diagram of the Game of Life]{Transitional state diagram of the Game of Life. The probability of the transition followed by the specific satisfying state requirements in parentheses is highlighted on the corresponding edge. For example, the edge connecting the dead state to the live state represents the action of a cell being born. The probability of being born is $\frac{1}{9}$. Specifically, a dead cell needs three live cells in its neighborhood to be born.}
+	\caption[Transitional state diagram of the Game of Life]{Transitional state diagram of the Game of Life. The probability of the transition followed by the specific satisfying state requirements in parentheses is highlighted on the corresponding edge. For example, the edge connecting the dead state to the live state represents the action of a cell being born, which has a $\frac{1}{9}$ chance of occurring (only when exactly three live cells surrounded it in the previous step).}
 	\label{fig:Transitional state diagram of the Game of Life}
 	\vspace{-1.5em}
 \end{figure}
 
 Cellular automata become much more complicated and interesting when there are more than two possible states. In this case, apart from the live (i.e, healthy) and dead cells, there are also transitional dying cells (i.e., sick cells) in between and we are free to implement new rules to define how all of these states transition to other states. In the rest of the report, healthy and live cells refer to the same thing and are thus used interchangeably. These newly added rules, combined with the survival and born rules, constitute a new set of evolution rules. 
 
-Some of the most frequent patterns generated by the rules are “still life”, which are static patterns that do not change between generations, and “oscillators”, which are periodic patterns that return to their initial state after a finite number of generations \cite{Cellular automaton}. While these patterns are fun, the feature that makes the Game of Life so well-known is undoubtedly the discovery of “gliders” \cite{Glider}. \textit{Gliders}, also known as translating oscillators, “spaceships” or “fish”, are automata that travel by looping through a short series of iterations and end up in a new location after each cycle returns to the original configuration \cite{rake}. They are usually considered the most interesting pattern and are widely used for modeling complicated nonlinear systems in computational science, physics, chemistry, and biology \cite{Cellular automaton}. If we think of cellular automata as an ecosystem, then the gliders are a unique kind of independent life form within. Finding gliders can potentially help us answer questions like how accurately we are simulating biological life, or whether our artificial life forms can adapt to a changing environment. 
+Some of the most frequent patterns generated by the rules are “still life”, which are static patterns that do not change between generations, and “oscillators”, which are periodic patterns that return to their initial state after a finite number of generations \cite{Cellular automaton}. While these patterns are fun, the feature that makes the Game of Life so well-known is undoubtedly the discovery of “spaceships” \cite{Glider}. \textit{Spaceships}, also known as translating oscillators or “fish”, are automata that travel by looping through a short series of iterations and end up in a new location after each cycle returns to the original configuration \cite{rake}. They are usually considered the most interesting pattern and are widely used for modeling complicated nonlinear systems in computational science, physics, chemistry, and biology \cite{Cellular automaton}. If we think of cellular automata as an ecosystem, then the spaceships are a unique kind of independent life form within. Finding spaceships can potentially help us answer questions like how accurately we are simulating biological life, or whether our artificial life forms can adapt to a changing environment. 
 
-\textit{Period} and \textit{speed} are the two frequently-utilized metrics to describe a glider. Period refers to the number of ticks a pattern must iterate through before returning to its initial configuration \cite{The Game of Life}. The speed of the glider is expressed in terms of the metaphorical “speed of light”, $c$ \cite{spaceship, speed of light}. The speed of light is a propagation rate across the grid of exactly one step, either horizontally, vertically, or diagonally, per generation. Since a cell can only influence its nearest neighbors, the speed of light is the upper bound to the speed at which any pattern can move. Generally, if the glider in a two-dimensional automaton is translated by $(x,y)$ after $n$ generations, then the speed $v$ is defined as: 
+\textit{Period} and \textit{speed} are the two frequently-utilized metrics to describe a spaceship. Period refers to the number of ticks a pattern must iterate through before returning to its initial configuration \cite{The Game of Life}. The speed of the spaceship is expressed in terms of the metaphorical “speed of light”, $c$ \cite{spaceship, speed of light}. The speed of light is a propagation rate across the grid of exactly one step, either horizontally, vertically, or diagonally, per generation. Since a cell can only influence its nearest neighbors, the speed of light is the upper bound to the speed at which any pattern can move. Generally, if the spaceship in a two-dimensional automaton is translated by $(x,y)$ after $n$ generations, then the speed $v$ is defined as: 
 $$v = \frac{\max{(|x|, |y|)}}{n}c$$
-The most famous glider found by Conway is the first one in Figure ~\ref{fig:GOL examples} with a period of 4 and a speed of $\frac{c}{4}$, as it takes four generations for a given state to be translated by one cell diagonally. There are many other cellular automata rules besides the Game of Life that can produce gliders. Figure ~\ref{fig:famous gliders} shows some of the famous gliders and \textit{glider generators}, a pattern with a main part that repeats periodically, like an oscillator, and that also periodically emits gliders \cite{gun}, that have been generated with other sets of rules featured in Cellular Automata Rules Lexicon \cite{Lexicon}. 
+The most famous spaceship found by Conway is the first one in Figure ~\ref{fig:GOL examples} with a period of 4 and a speed of $\frac{c}{4}$, as it takes four generations for a given state to be translated by one cell diagonally. There are many other cellular automata rules besides the Game of Life that can produce spaceships. Figure ~\ref{fig:famous spaceships} shows some of the famous spaceships and \textit{glider generators}, a pattern with a main part that repeats periodically, like an oscillator, and that also periodically emits spaceships \cite{gun}, that have been generated with other sets of rules featured in Cellular Automata Rules Lexicon \cite{Lexicon}. 
 
 \begin{figure}[H]
+	\color{blue}
 	\centering
   	\begin{subfigure}{0.18\textwidth}
      		\centering
@@ -341,7 +332,7 @@ The most famous glider found by Conway is the first one in Figure ~\ref{fig:GOL 
      		\subcaption{}
    	\end{subfigure}
    	{\LARGE$\xrightarrow{}$}
-	\caption[Gliders in the Game of Life]{Gliders generated by the Game of Life “2,3/3/2” rule. The top is the original glider first found by Conway. The rest are the light-weight, mid-weight and heavy-weight spaceships respectively. All four gliders have a period of four. The light-weight, mid-weight and heavy-weight spaceship have a speed of $\frac{c}{2}$, as it takes four generations for a given state to be translated by two cells. Code is provided in ~\ref{subsubsection:GOL}, ~\ref{subsubsection:lightweight spaceship}, ~\ref{subsubsection:midweight spaceship}, ~\ref{subsubsection:heavyweight spaceship}.}
+	\caption[Spaceships in the Game of Life]{Spaceships generated by the Game of Life “2,3/3/2” rule. The top is the original spaceship first found by Conway. The rest are the light-weight, mid-weight and heavy-weight spaceships respectively. All four spaceships have a period of four. The light-weight, mid-weight and heavy-weight spaceship have a speed of $\frac{c}{2}$, as it takes four generations for a given state to be translated by two cells. Code is provided in ~\ref{subsubsection:GOL}, ~\ref{subsubsection:light-weight spaceship}, ~\ref{subsubsection:mid-weight spaceship}, ~\ref{subsubsection:heavy-weight spaceship}.}
 	\label{fig:GOL examples}
 	\vspace{-1.5em}
 \end{figure}
@@ -367,66 +358,66 @@ The most famous glider found by Conway is the first one in Figure ~\ref{fig:GOL 
      		\includegraphics[width=\linewidth]{Section1/8.4}
      		\subcaption{}
    	\end{subfigure}
-   	\caption[Examples of famous gliders]{Four examples of discovered glider generators with different rules. They are "Brian’s Brain" with rule “/2/3” (top left), "Burst" with rule “0,2,3,5,6,7,8/3,4,6,8/9” (top right), "Brain6" with rule “6/2,4,6/3” (bottom left), and "Star Wars" with rule “3,4,5/2/4” (bottom right) \cite{Lexicon}.}
-   	\label{fig:famous gliders}
+   	\caption[Examples of famous spaceships]{Four examples of discovered glider generators with different rules. They are “Brian’s Brain" with rule “/2/3” (top left), “Burst" with rule “0,2,3,5,6,7,8/3,4,6,8/9” (top right), “Brain6" with rule “6/2,4,6/3” (bottom left), and “Star Wars" with rule “3,4,5/2/4” (bottom right) \cite{Lexicon}.}
+   	\label{fig:famous spaceships}
    	\vspace{-1.5em}
 \end{figure}
 
-The gliders in Figure ~\ref{fig:famous gliders} belong to the category of outer totalistic generations of two-dimensional cellular automata and are generated using the Moore neighborhood with decay. In other words, it uses the “Instant birth, gradual death, no recovery” model depicted in Figure ~\ref{fig:IGN model}. 
+The spaceships in Figure ~\ref{fig:famous spaceships} belong to the category of outer totalistic generations of two-dimensional cellular automata and are generated using the Moore neighborhood with decay. In other words, they use the “Instant birth, gradual death, no recovery” model depicted in Figure ~\ref{fig:IGN model}. 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{Section1/9}
-	\caption["Instant birth, gradual death, no recovery” Model]{"Instant birth, gradual death, no recovery” Model. Healthy cells can get sick. Sick cells are not able to recover, and they will be one step closer to death at each step. Dead cells cannot be born sick.}
+	\caption[“Instant birth, gradual death, no recovery” Model]{"Instant birth, gradual death, no recovery” Model. Healthy cells can get sick. Sick cells are not able to recover, and they will be one step closer to death at each step. Dead cells cannot be born sick.}
 	\label{fig:IGN model}
 	\vspace{-1.5em}
 \end{figure}
 
 The behavior of sick cells under this model is deterministic as they are not able to recover and can only approach one step closer to death at each step. The healthy cells that do not satisfy the survival rule will become sick and inevitably enter the path of gradual death. Hence, we do not need extra parameters to categorize the behavior of sick cells. Specifically, like the Game of Life,  three parameters constitute the rules of the model: 
 \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
-\item The number of total possible states. 
 \item The survival rule that determines which of the live cells survive in the next step. 
 \item The born rule that determines which of the dead cells are born in the next step. 
+\item The number of total possible states. 
 \end{enumerate}
 The canonical way to represent the evolution rules of the generations is “S/B/C”, where S, B, and C represents the survival rule, the born rule, and the count of states cells can have respectively \cite{Lexicon}. Hence, the Game of Life can be summarized as the “2,3/3/2” rule.
 
-Not all rules are able to produce beautiful results like the ones in Figure ~\ref{fig:famous gliders}. In fact, the results from most of the rules turn out to be unappealing. Configurations under some rules always die out, while others might lead to explosive growth. It is worth noting that gliders exist for many unstable rules, especially those that lead to explosive growth. However, in this case, there is no real value in exploring them because they often disappear quickly and move around recklessly without clear patterns. Therefore, we shall only consider gliders for stable rules that exhibit bounded growth and eventually yield a finite number of gilders. One potential problem is that there may be some carefully constructed initial configuration within an interesting rule that could lead to explosive growth or stasis \cite{Gliders in Cellular Automata}. However, statistically it has an extremely low probability if the initial configuration is randomly generated. In this report, we decided to define the rules that satisfy these requirements using the “Instant birth, gradual death, no recovery” model with the Moore neighborhood as interesting. Specifically, the definition of \textit{interesting rules} in this report includes: 
+Not all rules are able to produce beautiful results like the ones in Figure ~\ref{fig:famous spaceships}. In fact, the results from most of the rules turn out to be unappealing. Configurations under some rules always die out, while others might lead to explosive growth. It is worth noting that spaceships exist for many unstable rules, especially those that lead to explosive growth. However, in this case, there is no real value in exploring them because they often disappear quickly and move around recklessly without clear patterns. Therefore, we shall only consider spaceships for stable rules that exhibit bounded growth and eventually yield a finite number of gilders. One potential problem is that there may be some carefully constructed initial configuration within an interesting rule that could lead to explosive growth or stasis \cite{Gliders in Cellular Automata}. However, statistically it has an extremely low probability if the initial configuration is randomly generated. In this report, we decided to define the rules that satisfy these requirements using the “Instant birth, gradual death, no recovery” model with the Moore neighborhood as interesting. Specifically, the definition of \textit{interesting rules} in this report includes: 
 \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
 \item It uses the Moore neighborhood. 
 \item It uses the “Instant birth, gradual death, no recovery” model, which means the evolution rule consists of the survival rule, the born rule, and the number of possible states. 
 \item Random initial configurations will always eventually stabilize (i.e., non-static and non-explosive). 
-\item It produces a finite number of gliders. 
+\item It produces a finite number of spaceships. 
 \end{enumerate}
 
-All the remaining rules in the same model that lead to stasis, noise with no discernible patterns moving across the screens, or some patterns other than gliders, are classified as boring. Finding out what the interesting rules are and what the gliders look like is a daunting task. Under most circumstances, it is impossible to tell whether the rule is interesting or boring just by looking at the parameters of the rules. Furthermore, in one single case where we have a total of 10 possible states (i.e., 8 sick states), there are $2^9$ survival rules and $2^9$ born rules, which already leads to a total of $2^{18}$ combinations of rules. Given the fact that we may also want to explore rules with other number of total states, this eventually becomes an impossible task with normal computer software. Because of this daunting number of possibilities, automatic detection of interesting rules will be very helpful, so that users do not have to manually go through the process. 
+All the remaining rules in the same model that lead to stasis, noise with no discernible patterns moving across the screens, or some patterns other than spaceships, are classified as boring. Finding out what the interesting rules are and what the spaceships look like is a daunting task. Under most circumstances, it is impossible to tell whether the rule is interesting or boring just by looking at the parameters of the rules. Furthermore, in one single case where we have a total of 10 possible states (i.e., 8 sick states), there are $2^9$ survival rules and $2^9$ born rules, which already leads to a total of $2^{18}$ combinations of rules. Given the fact that we may also want to explore rules with other numbers of total states, this eventually becomes an impossible task if it needs to be done by hand. That led us to explore automated detection of interesting rules so that users do not have to manually go through the process. 
 
-This report explores the possibility of using deep neural networks to detect these interesting cellular automata rules. Deep neural networks, a branch of machine learning, are computational algorithms that can extract information from complicated data to detect patterns or trends which are too convoluted for human brains and other computer software. The most unique property of neural networks is that once trained, they can learn and adapt to new situations on their own. In this way, their learning process resembles the cognitive development of the human brain, which is made of neurons, the fundamental building unit for information transmission. These characteristics make neural networks much better candidates than humans to distinguish the interesting rules in cellular automata. We will train the neural network on a dataset consisting of samples of interesting and boring rules so that the machine learner can gradually recognize the decisive properties that distinguish interesting from boring rules. After the training, validating, and testing processes, our machine learner would be ready to dive into the remaining search space of rules that have not yet been classified and collect the interesting ones. The best part about it is that humans do not need to be involved in the exploration process at all, which is the most tedious and time-consuming step. All we have to do is manually inspect the rules that have been classified as interesting by our machine learner and record the gliders within the patterns if they have been classified correctly. 
+This report explores the possibility of using deep neural networks to detect these interesting cellular automata rules. Deep neural networks, a branch of machine learning, are computational algorithms that can extract information from complicated data to detect patterns or trends which are too convoluted for human brains and other computer software. The most unique property of neural networks is that once trained, they can learn and adapt to new situations on their own. In this way, their learning process resembles the cognitive development of the human brain, which is made of neurons, the fundamental building unit for information transmission. These characteristics make neural networks much better candidates than humans to distinguish the interesting rules in cellular automata. We will train the neural network on a dataset consisting of samples of interesting and boring rules so that the machine learner can gradually recognize the decisive properties that distinguish interesting from boring rules. After the training, validating, and testing processes, our machine learner would be ready to dive into the remaining search space of rules that have not yet been classified and collect the interesting ones. The best part about it is that humans do not need to be involved in the exploration process at all, which is the most tedious and time-consuming step. All we have to do is manually inspect the rules that have been classified as interesting by our machine learner and record the spaceships within the patterns if they have been classified correctly. 
 
-Specifically, we first built the dataset from scratch by programming the generation algorithm and applying data augmentation to selected known rules. Then we used Recurrent Neural Networks (RNN), Convolutional Neural Networks (CNN), feature extraction, entropy analysis, and other techniques to help find interesting rules that generate gliders. We then put the trained machine learners into practice and detected several new rules with only three states. We discovered an entire \textit{family} of gliders of different periods, Frankenstein gliders, the new Life, and many other interesting results.
+Specifically, we first built the dataset from scratch by programming the generation algorithm and applying data augmentation to selected known rules. We used Recurrent Neural Networks (RNN), Convolutional Neural Networks (CNN), feature extraction, entropy analysis, and other techniques to help find interesting rules that generate spaceships. We then put the trained machine learners into practice and detected several new rules with only three states. We discovered an entire \textit{family} of spaceships of different periods, Frankenstein spaceships, the new Life, and many other interesting results.
 
 \newpage
 \section{Related Work}
 \label{Related Work}
-John Conway, regarded as the father of cellular automata and the “founder of life”, first described this elegant mathematical model of computation in 1970. From his famous rules of Game of Life emerged a five-celled organism that moves diagonally across the grid. This discovery has attracted a group of fanatics who dedicated themselves to constructing rules in hopes of spotting new life forms. However, there has not been a systematic method of identifying interesting rules and the progress of searching has been rather slow. 
+John Conway, regarded as the father of cellular automata and the “founder of life”, first described this elegant mathematical model of computation in 1970. From his famous rules of the Game of Life emerged a five-celled organism that moves diagonally across the grid. This discovery has attracted a group of fanatics who dedicated themselves to constructing rules in hopes of spotting new life forms. However, there has not been a systematic method of identifying interesting rules and the progress of searching has been rather slow. 
 
 The hype for cellular automata reached its peak when Stephen Wolfram published “A New Kind of Science” in 2002, which is also regarded as the encyclopedia of cellular automata \cite{A new kind of Science}. In the book, he introduced a large variety of cellular automata with many arbitrary rules that generate interesting results. However, the most important lesson from his book is that complexity arises from simplicity and there is incredible richness in the computational universe. Even the simplest rule can produce the most complicated and unpredictable behavior. The vast space of the computational universe and the scarcity of the discovered rules gives us the potential to mine the interesting rules and harness them for our purposes. Wolfram describes the process of looking for something interesting in the space of cellular automata as very different from our accustomed approach of building models step by step while ensuring that we have control over their behaviors. He makes the rather counterintuitive claim that we should not try building anything at all. Instead, we should just define what we want and then search for it in the computational universe. It is sometimes very easy and fast to find what we want. For example, Wolfram quickly came across with rule 30 \cite{Rule 30} in Figure ~\ref{fig:Rule 30}, which is a one-dimensional cellular automata rule with two states and later became one of the best-known generators of apparent randomness, just by enumerating the rules. However, in other cases, it might take much longer, like it took Wolfram millions of attempts to find the simplest universal Turing machine. 
  
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{Section2/1}
-	\caption[Wolfram's Rule 30]{Wolfram’s Rule 30 \cite{Rule 30}.}
+	\caption[Wolfram's rule 30]{Wolfram’s Rule 30 \cite{Rule 30}.}
 	\vspace{-1.5em}
 	\label{fig:Rule 30}
 \end{figure}
 
 The justification he makes for his claim is that when one looks at what the cellular automata is doing, one does not comprehend how it really works. Just like nature, one might be able to analyze some of its parts and be impressed with how smart they are, but it would be extremely hard to understand the full picture. Wolfram claims by the laws of computational irreducibility that we had to do an irreducible number of computations to figure out precisely what the generated patterns look like. In other words, there are no shortcuts and the only viable method is to do a full-sized simulation. Therefore, it is radically different from exact science where we normally predict the behaviors of the models by solving mathematical equations. Hence, it is in vain to even attempt to manipulate or systematically build a cellular automata rule which generates the desired pattern. 
 
-Nevertheless, despite the unpredictable nature of cellular automata, there have been some approaches to find interesting two-dimensional cellular automata rules containing gliders. The most naïve is to repeatedly create random neighborhood rules and inspect if it generates an interesting result. This method only works for lower dimensional cellular automata (specifically one-dimension), whose parameter search space is relatively small. In this case, we can brute force all the possible sets of rules and manually inspect which ones are interesting after the generations are saved. However, when it comes to higher-dimensional cellular automata, even a two-dimensional one, the parameter search space becomes gigantic, and most rules would not produce gliders. Hence, this method becomes inefficient and random as the experiment turns into a pure matter of luck. Another approach is to make slight modifications to known interesting rules, such as John Conway’s the Game of Life, to generate similar or refined patterns. This specifically involves modifying one or two of the parameters while leaving the rest unchanged. However, this practice usually leads to a radically different result than the original because the interesting rules are not necessarily clustered together in the parameter search space. Consequently, this method turns out to be not much more promising than the first. Nevertheless, despite their randomness and ineffectiveness, the two methods mentioned above are commonly used to find rules containing gliders. 
+Nevertheless, despite the unpredictable nature of cellular automata, there have been some approaches to find interesting two-dimensional cellular automata rules containing spaceships. The most naïve is to repeatedly create random neighborhood rules and inspect if it generates an interesting result. This method only works for lower dimensional cellular automata (specifically one-dimension), whose parameter search space is relatively small. In this case, we can brute force all the possible sets of rules and manually inspect which ones are interesting after the generations are saved. However, when it comes to higher-dimensional cellular automata, even a two-dimensional one, the parameter search space becomes gigantic, and most rules would not produce spaceships. Hence, this method becomes inefficient and random as the experiment turns into a pure matter of luck. Another approach is to make slight modifications to known interesting rules, such as John Conway’s the Game of Life, to generate similar or refined patterns. This specifically involves modifying one or two of the parameters while leaving the rest unchanged. However, this practice usually leads to a radically different result than the original because the interesting rules are not necessarily clustered together in the parameter search space. Consequently, this method turns out to be not much more promising than the first. Nevertheless, despite their randomness and ineffectiveness, the two methods mentioned above are commonly used to find rules containing spaceships. 
 
-A more systematic method to find gliders is introduced by Andrew Wuensche in Collision-Based Computing \cite{Finding Gliders in Cellular Automata}. He proposed that this could be achieved by a measure of the variance of input entropy over time. The distribution of rule classes in rule-space is discovered. The method also allows automatic “filtering” of cellular automata space-time patterns to show up gliders and related emergent configurations more clearly. Cellular automata dynamics are shown to exhibit some approximate correlations with global measures on convergence in attractor basins, characterized by the distribution of in-degree sizes in their branching structure, and to the rule parameter Z. 
+A more systematic method to find spaceships is introduced by Andrew Wuensche in Collision-Based Computing \cite{Finding Gliders in Cellular Automata}. He proposed that this could be achieved by measuring the variance of input entropy over time. The method also allows automatic “filtering” of cellular automata space-time patterns to show up spaceships and related emergent configurations more clearly. He claimed that cellular automata dynamics are shown to exhibit some approximate correlations with global measures on convergence in attractor basins, characterized by the distribution of in-degree sizes in their branching structure, and to the rule parameter $Z$. 
 
 There are also some computational methods to determine the type of the generated cellular automata. For example, Christopher Langton created a cellular automata lambda value that is computed based on the number of cells that have been born at that time step and dividing it by the total number of cellular automata cells \cite{Edge of Chaos}. This formula generates a decimal value between 0 and 1. The endpoints of the interval, 0 and 1, correspond to the static patterns and explosive growth respectively. Based on his classification, a lambda value within 0.1 and 0.15 indicates an interesting rule that requires further investigation. However, the most well-known classification of cellular automata is introduced by Stephen Wolfram, which consists of four different classes: automata in which patterns stabilize into homogeneity, automata in which patterns evolve into mostly stable or oscillating structures, automata in which patterns evolve into chaos, and automata in which patterns become extremely complex \cite{Cellular automaton}. Based on his classification, the fourth class is potentially computational universal and worth investigating. But neither Langton nor Wolfram established a connection between the classifications and the rules themselves.  
 
-None of these described methods have been proven to be reliable as they usually find noise or stasis. Therefore, detecting gliders in two-dimensional outer totalistic cellular automata is an unsolved problem and this report will introduce the potential of neural networks to detect interesting rules. The main idea is that we will build machine learners, which are much more computationally capable than humans and other programs, to help determine whether the rules would be interesting. If we think of the parameter space as an ocean, then an interesting rule is like a particular depth and the gliders are the fish at that depth. Instead of randomly choosing a depth and inspect whether fish can survive, we can quickly scan a vast volume of the sea and inspect those depths that have fish swimming in it. Given sufficient computers and memory, we have the potential to detect all the interesting rules containing gliders. 
+None of these described methods have been proven to be reliable as they usually find noise or stasis. Therefore, detecting spaceships in two-dimensional outer totalistic cellular automata is an unsolved problem and this report will introduce the potential of neural networks to detect interesting rules. The main idea is that we will build machine learners, which are much more computationally capable than humans and other programs, to help determine whether the rules would be interesting. If we think of the parameter space as an ocean, then an interesting rule is like a particular depth and the spaceships are the fish at that depth. Instead of randomly choosing a depth and inspect whether fish can survive, we can quickly scan a vast volume of the sea and inspect those depths that have fish swimming in it. Given sufficient computers and memory, we have the potential to detect all the interesting rules containing spaceships. 
 
 Interestingly, Wolfram also described an uncanny systematic resemblance between neural networks and cellular automata in his book \cite{A new kind of Science}. The parameters in neural networks are never explicitly set or engineered but are generated automatically. Similar things happen with cellular automata as the patterns are never artificially constructed. What differentiates between the two is that in neural networks there are learning processes, where the weights are improving according to rules of linear algebra and calculus. However, in cellular automata, the parameters of the rules are not necessarily improving, and one is forced to enumerate all possibilities.
 
@@ -436,9 +427,9 @@ Interestingly, Wolfram also described an uncanny systematic resemblance between 
 We first collected the two-dimensional cellular automata data that the machine learner could use for training, validation, and testing. This entailed designing and implementing a data-collection pipeline from scratch to generate a sequence of raw frames for each of the patterns. Then we tested several models and analyzed for the best results. We trained the data with different models including RNN and CNN, and performed hyperparameter tuning, image feature extraction, and entropy analysis. 
 
 \subsection{Dataset Generation}
-The foremost step was to program the cellular automata evolution algorithm, which computes the states of each cell in the next generation based on the rules and the current configuration. The logic follows the rules in the “Instant birth, gradual death, no recovery” model: in the next generation, the live cells that satisfy the survival rule and the dead cells that satisfy the born rule will be alive, the live cells that do not satisfy the survival rule will become sick, the cells that are in the dying transitional (sick) states will move one step closer to death, and the remaining dead cells that do not satisfy the born rule will remain dead. The survival rule, born rule, the total number of possible states, and the neighborhood were passed in as parameters. The specific implementation of the algorithm can be found in ~\ref{subsection:Cellular Automata Generation Algorithm}. 
+The foremost step was to program the cellular automata evolution algorithm, which computes the states of each cell in the next generation based on the rules and the current configuration. The logic follows the rules in the “Instant birth, gradual death, no recovery” model: in the next generation, the live cells that satisfy the survival rule and the dead cells that satisfy the born rule will be alive, the live cells that do not satisfy the survival rule will become sick, the cells that are in the dying transitional (sick) states will move one step closer to death, and the remaining dead cells that do not satisfy the born rule will remain dead. The survival rule, born rule, the total number of possible states, and the neighborhood were passed in as parameters. The specific implementation of the algorithm can be found in Section ~\ref{subsection:Cellular Automata Generation Algorithm}. 
 
-We were able to keep track of the evolution of all cells in the grid in each generation using the evolution algorithm. With the help of $CellPyLib$, which is a python package supporting the visualization of two-dimensional, k-color, adjustable neighbor cellular automata, we could save the evolution as a sequence of frames. However, we still needed to collect known rules so that we could pass them into the algorithm and train our machine learner on the generated sequence of frames later. To obtain boring rules, we manually went through random examples and collected those that died out immediately, generated static noise or boring non-glider patterns. Enumeration proved to be quite effective because most rules fall under the category of boring, and we easily collected 105 boring rules using this method. Interesting rules, on the other hand, are more rare, and thus were harder to find. Hence, we borrowed existing examples provided in Cellular Automata Rules Lexicon and recorded those with gliders. Eventually, we successfully collected 35 rules that can be subjectively classified as interesting. The set of interesting rules we included in our dataset is described in ~\ref{subsection:The 35 Selected Interesting Rules}. 
+We were able to keep track of the evolution of all cells in the grid in each generation using the evolution algorithm. With the help of $CellPyLib$, which is a python package supporting the visualization of two-dimensional, k-color, adjustable neighbor cellular automata, we could save the evolution as a sequence of frames. However, we still needed to collect known rules so that we could pass them into the algorithm and train our machine learner on the generated sequence of frames later. To obtain boring rules, we manually went through random examples and collected those that died out immediately, generated static noise or boring non-spaceship patterns. Enumeration proved to be quite effective because most rules fall under the category of boring, and we easily collected 105 boring rules using this method. Interesting rules, on the other hand, are more rare, and thus were harder to find. Hence, we borrowed existing examples provided in Cellular Automata Rules Lexicon and recorded those with spaceships. Eventually, we successfully collected 35 rules that can be subjectively classified as interesting. The set of interesting rules we included in our dataset is described in Section ~\ref{subsection:The 35 Selected Interesting Rules}. 
 
 Because of the limited number of rules that we classified, we decided to apply data augmentation to increase the size of the dataset to a reasonable size exceeding 1,000. Since we also wanted to maintain a 50/50 split of the two patterns for training purposes, we reused each boring and interesting rule 10 and 30 times with different random initial configurations. Consequently, we generated a total of 1050 boring and 1050 interesting patterns. For each of the patterns, we recorded 140 consecutive generations as grayscale frames using $CellPyLib$, which was usually more than enough for the patterns to stabilize. The living and dead cells were in black and white respectively. The remaining sick cells were assigned with a grayscale color in between depending on their specific state. Figure ~\ref{fig:generated frame example} shows an example of a generated frame. This happened to be the most time-consuming step as it took roughly five hours to go through the lexicons and record the interesting ones, and another 12 hours to generate the frames. 
 
@@ -451,7 +442,7 @@ Because of the limited number of rules that we classified, we decided to apply d
 \end{figure}
 
 \subsection{Sequence Training with RNN}
-After building the dataset from scratch, we were ready to start testing different machine learners and analyze the results. Unlike other image classification tasks like distinguishing between cats and dogs, our classification task contains extra temporal information. Specifically, the sequence in which the frames were generated represents the evolution of cellular automata with respect to time, so the frames could not be processed in random order. It is very similar to a video classification task from this perspective. Hence our first approach was to use a Recurrent Neural Network (RNN), as an RNN can effectively connect information obtained from previous frames to the present frame. However, one potential problem was that RNNs only work if the gap between the relevant information and the place it is needed is small. In our case, we might need to include many consecutive frames because gliders sometimes span across a large number of time steps. Therefore, we decided to use a Long Short-term Memory network (LSTM), which is a special kind of RNN capable of learning long-term dependencies and thus a perfect fit for our sequence classification task \cite{LSTM}. Since the initial configuration was totally random, we believed under most circumstances the starting generations of the cellular automata were highly randomized and would not reflect the eventual pattern accurately. Therefore, we decided to start training the LSTM at the 80th frame, where the patterns were reasonably solidified. Each sample consisted of 41 (from $80^{\text{th}}$ to $120^{\text{th}}$) consecutive frames, and each frame was of size 300 × 300 and has 1 channel as it is grayscale. The 41 selected frames were congregated into a list and the LSTM would process the entire list as one sample. The frame extraction code can be found in ~\ref{subsection:Frame Extraction}. We hoped that the machine learner would consider the existence of gliders as the decisive trait during the training process. 
+After building the dataset from scratch, we were ready to start testing different machine learners and analyze the results. Unlike other image classification tasks like distinguishing between cats and dogs, our classification task contains extra temporal information. Specifically, the sequence in which the frames were generated represents the evolution of cellular automata with respect to time, so the frames could not be processed in random order. It is very similar to a video classification task from this perspective. Hence our first approach was to use a Recurrent Neural Network (RNN), as an RNN can effectively connect information obtained from previous frames to the present frame. However, one potential problem was that RNNs only work if the gap between the relevant information and the place it is needed is small. In our case, we might need to include many consecutive frames because spaceships sometimes span across a large number of time steps. Therefore, we decided to use a Long Short-term Memory network (LSTM), which is a special kind of RNN capable of learning long-term dependencies and thus a perfect fit for our sequence classification task \cite{LSTM}. Since the initial configuration was totally random, we believed under most circumstances the starting generations of the cellular automata were highly randomized and would not reflect the eventual pattern accurately. Therefore, we decided to start training the LSTM at the $80^{th}$ frame, where the patterns were reasonably solidified. Each sample consisted of 41 (from $80^{th}$ to $120^{th}$) consecutive frames, and each frame was of size 300 × 300 and has 1 channel as it is grayscale. The 41 selected frames were congregated into a list and the LSTM would process the entire list as one sample. The frame extraction code can be found in Section ~\ref{subsection:Frame Extraction}. We hoped that the machine learner would consider the existence of spaceships as the decisive trait during the training process. 
 
 We tested many architectural parameters and structures to create the best model. One failed attempt was stacking a Conv2D layer on top of an LSTM layer. We thought this might work because a Conv2D layer is capable of capturing image features and LSTM can detect temporal correlations across the frames. However, the results were suboptimal and the correlation between time and space features was not captured properly by stacking the layers. Therefore, we eventually used a convolutional LSTM network, which differentiates itself from a normal LSTM in the way that it has convolutional structures in both the input-to-state and state-to-state transitions and research has shown that a ConvLSTM2D layer is better at capturing spatiotemporal information \cite{ConvLSTM}. Our results did improve significantly after we made this change. Furthermore, we also tried different filter sizes, dropout rates, kernel sizes, and activations. Eventually, we used the structure described in Table ~\ref{table:RNN structure} for our machine learner. The amount of time it took to train the model depended greatly on the number of training epochs and the size of the dataset, but it would not exceed an hour in our case. 
 \begin{table}[H]
@@ -499,20 +490,20 @@ Another challenge we faced was to decide which frames should be included in the 
      		\centering
      		\includegraphics[width=\linewidth]{Section3/3.2}
    	\end{subfigure}
-   	\caption[Examples of stitched images]{Examples of stitched up images. (Left) Nine frames are stitched together, which are generated by a boring rule “6/0,5,6,9”. All frames are noise. (Right) Sixteen frames are stitched together, which are generated interesting rule “2/2/8”. By comparing the frames in the top left and the bottom right corner, we could see the pattern translating to the right, which indicates a glider.}
+   	\caption[Examples of stitched images]{Examples of stitched up images. (Left) Nine frames are stitched together, which are generated by a boring rule “6/0,5,6,9/8”. All frames are noise. (Right) Sixteen frames are stitched together, which are generated interesting rule “2/2/8”. By comparing the frames in the top left and the bottom right corner, we could see the pattern translating to the right, which indicates a spaceship.}
    	\vspace{-1.5em}
    	\label{fig:stitched image examples}
 \end{figure}
 
-Since stitching frames is an uncanonical method of classifying cellular automata patterns, we wanted to measure the learnability of the stitched images using Brainome.ai \cite{Brainome} before we built the model. Because Brainome.ai accepts labeled data in CSV format, we needed to do feature extraction to the stitched images as the final pre-processing step. We first used a pre-trained NASNet-Large Model, which is a CNN that is trained on more than a million images from the ImageNet database \cite{ImageNet}. For each of the stitched images, the model returned 1000 selected features. We then fed the data into Brainome.ai and obtained corresponding information about Decision Trees and Neural Networks. The expected generalization using Decision Tree is 2.05 bits/bit and using a Neural Network is 0.19 bits/bit.  The decision tree has 1,026 parameters, and the estimated memory equivalent capacity for neural networks is 11,034 parameters. This overwhelming memory equivalent capacity indicated that the neural network would be extremely overfitting, which means that the features extracted were barely learnable by the neural network. This poor result was reasonable in retrospect because the NASNet-Large model is specifically used for classifying and extracting features from images of common-life objects, and cellular automata patterns is not one of the targeted objects. 
+Since stitching frames is an uncanonical method of classifying cellular automata patterns, we wanted to measure the learnability of the stitched images using Brainome.ai \cite{Brainome} before we built the model. Because Brainome.ai accepts labeled data in CSV format, we needed to do feature extraction to the stitched images as the final pre-processing step. We first used a pre-trained NASNet-Large Model, which is a CNN that is trained on more than a million images from the ImageNet database \cite{ImageNet}. For each of the stitched images, the model returned 1000 selected features. We then fed the data into Brainome.ai and obtained corresponding information about Decision Trees and Neural Networks. The expected generalization using Decision Tree is 2.05 bits/bit and using a Neural Network is 0.19 bits/bit.  The decision tree has 1,026 parameters, and the estimated memory equivalent capacity for neural networks is 11,034 parameters. This overwhelming memory equivalent capacity indicated that the neural network would be extremely overfitting, which means that the features extracted were barely learnable by the neural network. This poor result was reasonable in retrospect because the NASNet-Large model is specifically used for classifying and extracting features from images of common-life objects, and cellular automata patterns is not one of its targets. 
 
 As our previous feature extraction method with NASNet-Large model was unsuccessful, we decided to directly use the pixels of the stitched images as features. We fed the data into Brainome.ai and learned that the estimated memory equivalent capacity for neural networks is 3217 parameters, which was much better than the previous result even though the risk of overfitting persisted. Nevertheless, this gave us sufficient confidence to proceed with model training. 
 
-As raw data, these images were quite large given the RAM allocation of 12 Gigabytes by Google Colab \cite{Google Colab}. Running the notebook tended to crash the kernel so we settled for lower resolution and down sampled the pixel images to 300×300. This tradeoff allowed us to manipulate and do machine learning on the data without too much computational expense. As a final preprocessing step, the [0, 255] valued matrices representing the images were normalized using simple division to [0, 1]. This improved performance greatly in practice. Many of the model architectures we tried produced sub-baseline results before this step. The next part of the optimization process was a question of model architecture and hyperparameter tuning. We tried many things to create the best model, which includes altering the convolutional filter size, dense layers at output, pooling kernel size, type of pooling, dropout, and batch normalization. 
+As raw data, these images were quite large given the RAM allocation of 12 Gigabytes by Google Colab \cite{Google Colab}. Running the notebook tended to crash the kernel so we settled for lower resolution and downsampled the pixel images to 300×300. This tradeoff allowed us to manipulate and do machine learning on the data without too much computational expense. As a final preprocessing step, the [0, 255] valued matrices representing the images were normalized using simple division to [0, 1]. This improved performance greatly in practice. Many of the model architectures we tried produced sub-baseline results before this step. The next part of the optimization process was a question of model architecture and hyperparameter tuning. We tried many things to create the best model, which included altering the convolutional filter size, adding batch normalization, adding dense layers at the output, pooling the kernel size, modifying the type of pooling, and tweaking the dropout.  
 
 We found that the greatest improvements happened after adding dropout and batch normalization. There was also a significant increase in accuracy after increasing the convolutional filter size of the first convolutional layer to 5×5 from 3×3. We believed this is because 3×3 is too small to capture much of the complexity of the interesting configurations. Given a 3×3 window, many of the interesting shapes looked like noise.
 
-We tried many things that did not work in addition to those that did. Increasing the pooling kernel size, using average pooling instead of max pooling, increasing the number of filters in the convolutional layers (from 64 in each), and increasing the second convolutional layer’s filter size from 3×3 to 5×5, all resulted in worse performance by the validation accuracy metric. We found that increasing the epochs past 30 resulted in overfitting. Eventually, we used the architecture described in Table ~\ref{table:CNN structure}. The amount of time it took to train the model depended on greatly the number of training epochs and the size of the dataset, but it would not exceed an hour in our case. 
+We tried many things that did not work in addition to those that did. Increasing the pooling kernel size, using average pooling instead of max pooling, increasing the number of filters in the convolutional layers (from 64 in each), and increasing the second convolutional layer’s filter size from 3×3 to 5×5, all resulted in worse performance by the validation accuracy metric. We found that increasing the epochs past 30 resulted in overfitting. Eventually, we used the architecture described in Table ~\ref{table:CNN structure}. The amount of time it took to train the model depended greatly on the number of training epochs and the size of the dataset, but it would not exceed an hour in our case. 
 
 The machine learner was able to achieve 93.44\% training accuracy and 84.12\% testing accuracy on the testing set with 10\% interesting data. The test recall is 100\%, indicating every interesting configuration has been correctly labeled as such. 
 
@@ -542,9 +533,9 @@ The machine learner was able to achieve 93.44\% training accuracy and 84.12\% te
 \end{table}
 
 \subsection{Entropy Analysis}
-Due to the varying degrees of information density in cellular automata patterns, entropy is an adequate measure to use since there is likely a correlation between the label (boring and interesting) and the degree of randomness in the images created by the cellular automata. There are many existing research on this topic and the common consensus is that the problem of computing or even approximating the topological entropy of a given cellular automata is algorithmically undecidable \cite{entropy, entropy-two}. Therefore, we decided to try something that has not yet been attempted before. Namely, we decided to compute the cross-entropy values of the stitched images generated in the preprocessing step of Section ~\ref{CNN Training}. In this case, boredom can be understood as either static or complete noise, which correspond to extremely low and high entropy values. 
+Due to the varying degrees of information density in cellular automata patterns, entropy is an adequate measure to use since there is likely a correlation between the label (boring and interesting) and the degree of randomness in the images created by the cellular automata. There are many existing research on this topic and the common consensus is that the problem of computing or even approximating the topological entropy of a given cellular automata is algorithmically undecidable \cite{entropy, entropy-two}. Therefore, we decided to try something that has not yet been attempted before. Namely, we computed the cross-entropy values of the stitched images generated in the preprocessing step of Section ~\ref{CNN Training}. In this case, boredom can be understood as either static or complete noise, which correspond to extremely low and high entropy values. 
 
-We used cross-entropy as the default entropy function. We iterated through all the stitched frames and computed their entropies using the cross-entropy algorithm, then plotted the entropy values of the boring and interesting images in Figure ~\ref{fig:entropy distribution}. 
+We iterated through all the stitched frames and computed their entropies using the cross-entropy algorithm, then plotted the entropy values of the boring and interesting images in Figure ~\ref{fig:entropy distribution}. 
 \begin{figure}[H]
 	\begin{subfigure}{0.5 \textwidth}
 		\centering
@@ -554,7 +545,7 @@ We used cross-entropy as the default entropy function. We iterated through all t
 		\centering
 		\includegraphics[width=\linewidth]{Section3/4.2}
 	\end{subfigure}
-	\caption[Entropy distribution of patterns]{Entropy distribution of boring (left) and interesting (right) patterns.}
+	\caption[Entropy pattern distribution]{Entropy distribution of boring (left) and interesting (right) patterns.}
 	\label{fig:entropy distribution}
 	\vspace{-1.5em}
 \end{figure}
@@ -562,16 +553,17 @@ We used cross-entropy as the default entropy function. We iterated through all t
 Boring images had entropy values that spread roughly evenly from 0.0 to 3.5, with a small gap between 0.5 and 0.75. Many had entropy values close to 0.0, which is reasonable because they would likely correspond to patterns that die out. On the other hand, interesting images had entropy values concentrated in the 0.0 to 2.0 range, especially between 0.5 and 0.75. This intuitively makes sense because interesting images had less noise and entropy compared to boring images on average. It should be noted the minimum entropy for boring images was 0.0 while the minimum entropy for interesting images was 0.0318. This is because frames that had no live cells were always labeled as boring. The entropy values suggest adding features identifying if the image entropy is above 2.0 or equals to exactly 0 may be beneficial for the model accuracy. 
 
 \newpage
-\section{Glider Discoveries}
-\label{Glider Discoveries}
-After we finished training the machine learners, we put them into practice and used them to classify patterns and find gliders in those that are interesting. Since cellular automata with two possible states, like the Game of Life, have already been widely explored, we focused mainly on those with three states. We ran the machine learner on the sequences of frames generated from random combinations of survival and born rules, and then manually inspected the few rules which the learner classified as interesting. Overall this was a very time-consuming process since for each new rule, we had to generate a sequence of frames so that the machine learner can have something to train on. However, we believed that the situation could be ameliorated in the future thanks to the process being entirely parallelizable. More relavant information is discussed in Section ~\ref{Future Work}. The evolution of the gliders in this section will be provided as a sequence of figures. The numbers give the generations and the exact movement of each is depicted by its shifting position in the enclosing grids. Code used to generate the figures can be found in ~\ref{subsection:Glider Image and GIF generation} and ~\ref{subsection:Initial configuration of the gliders}. 
+\section{Spaceship Discoveries}
+\label{Spaceship Discoveries}
+After we finished training the machine learners, we put them into practice and used them to classify patterns and find spaceships in those that are interesting. Since cellular automata with two possible states, like the Game of Life, have already been widely explored, we focused mainly on those with three states. We ran the machine learner on the sequences of frames generated from random combinations of survival and born rules, and then manually inspected the few rules which the learner classified as interesting. Overall this was a very time-consuming process since for each new rule, we had to generate a sequence of frames so that the machine learner can have something to train on. However, we believed that the situation could be ameliorated in the future thanks to the process being entirely parallelizable. More relavant information is discussed in Section ~\ref{Future Work}. The evolution of the spaceships in this section will be provided as a sequence of figures. The numbers give the generations and the exact movement of each is depicted by its shifting position in the enclosing grids. Code used to generate the figures can be found in Sections ~\ref{subsection:Spaceship Image and GIF generation} and ~\ref{subsection:Initial configuration of the spaceships}. 
 
-\subsection{Gliders in three-state cellular automata}
-Our machine learner has found several new interesting rules with three states (the dead state, the live state, and one sick state) that have not been previously discovered, which are “4,6/2/3”, “4/2,4/3”, “4,6/2,4/3”, “4,6/2,4/3”, “4/2,5/3”, “3,6/2,6/3”, “5,6/2,6/3”. The common trait of these newly discovered rules is that dead cells will be born with two alive cells in their neighborhoods. These rules all generate the same family of gliders, where the members are all led by a two-by-two glider and followed with a distinct \textit{tagalong}, where tagalong is defined as a pattern that is not a glider itself but can be attached to the back of a glider to form a larger glider \cite{spaceship}. We decided to call this two-by-two leading structure the “leading block” (top left corner in Figure ~\ref{fig:one-period gliders}). The leading block is the smallest found glider in all patterns with three possible states. It has a period of one and a speed of $c$. Since all members in the family are led by the leading block, they all have a uniform speed of $c$. However, the members can have different periods. The one-period members have zero or more one-by-two blocks (we named it the supplemental block), which are the smallest possible tagalongs, attached to either side of the leading block. We can enumerate the number of one-period gliders with at most two supplemental blocks. There is one member with no supplemental block attached, namely the leading block, four members with one, and eighteen members with two. These gliders are shown in Figure ~\ref{fig:one-period gliders}. There are infinitely many one-period members in the family because any arbitrary number of supplemental blocks can be attached. 
+\subsection{Spaceships in three-state cellular automata}
+Our machine learner has found several new interesting rules with three states (the dead state, the live state, and one sick state) that have not been previously discovered, which are “4,6/2/3”, “4/2,4/3”, “4,6/2,4/3”, “2,4,6/2,4/3”, “4/2,5/3”, “3,6/2,6/3”, and “5,6/2,6/3”. The common trait of these newly discovered rules is that dead cells will be born with two alive cells in their neighborhoods. These rules all generate the same family of spaceships, where the members are all led by a two-by-two spaceship and followed with a distinct \textit{tagalong}, where tagalong is defined as a pattern that is not a spaceship itself but can be attached to the back of a spaceship to form a larger spaceship \cite{spaceship}. We decided to call this two-by-two leading structure the “leading block” (top left corner in Figure ~\ref{fig:one-period spaceships}). The leading block is the smallest found spaceship in all patterns with three possible states. It has a period of one and a speed of $c$. Since all members in the family are led by the leading block, they all have a uniform speed of $c$. However, the members can have different periods. The one-period members have zero or more one-by-two blocks (we named it the supplemental block), which are the smallest possible tagalongs, attached to either side of the leading block. We can enumerate the number of one-period spaceships with at most two supplemental blocks. There is one member with no supplemental block attached, namely the leading block, two members with one, and ten members with two. These spaceships are shown in Figure ~\ref{fig:one-period spaceships}. There are infinitely many one-period members in the family because any arbitrary number of supplemental blocks can be attached. 
 
-However, one caveat is that there are some patterns, like the one shown in ~\ref{fig:counter example}, that have the supplemental blocks attached to the leading block but are not actually gliders. This means that the tagalongs are very delicate and the slightest difference in their structure can lead to a massive change in the eventual outcome. Most patterns that have almost the same tagalong as one of the basic forms with only a few different cells will not turn out to be a glider. Thus, it is very hard to artificially engineer a glider and proves Wolfram's philosophy that we should not try to build anything at all. 
+However, one caveat is that there are some patterns, like the one shown in ~\ref{fig:counter example}, that have the supplemental blocks attached to the leading block but are not actually spaceships. This means that the tagalongs are very delicate and the slightest difference in their structure can lead to a massive change in the eventual outcome. Most patterns that have almost the same tagalong as one of the basic forms with only a few different cells will not turn out to be a spaceship. Thus, it is very hard to artificially engineer a spaceship and it proves Wolfram's philosophy that we should not try to build anything at all. 
 
 \begin{figure}[H]
+	\color{blue}
 	\begin{center}
 		{\Huge$\uparrow$}
 	\end{center}
@@ -583,12 +575,13 @@ However, one caveat is that there are some patterns, like the one shown in ~\ref
      		\centering
      		\includegraphics[width=\linewidth]{Section4/1.1}
    	\end{subfigure}
-   	\caption[One-period gliders]{All one-period members with zero, one, or two supplemental blocks of the glider family that appears in rules “4,6/2/3”, “2,4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. Code is provided in ~\ref{subsubsection:one-period gliders}.}
-   	\label{fig:one-period gliders}
+   	\caption[One-period spaceships]{All one-period members with zero, one, or two supplemental blocks of the spaceship family that appears in rules “4,6/2/3”, “4,6/2,4/3”, “2,4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. Code is provided in ~\ref{subsubsection:one-period spaceships}.}
+   	\label{fig:one-period spaceships}
    	\vspace{-1.5em}
 \end{figure}
 
 \begin{figure}[H]
+	\color{blue}
 	\begin{center}
 		{\Huge$\uparrow$}
 	\end{center}
@@ -612,14 +605,15 @@ However, one caveat is that there are some patterns, like the one shown in ~\ref
      		\centering
      		\includegraphics[width=\linewidth]{Section4/2.4}
    	\end{subfigure}
-   	\caption[A non-glider that looks like one]{A pattern that is not a glider in rules “4,6/2/3”, “(2)4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3” despite consisting of the leading block and three supplemental blocks. However, it does transform into another two-period glider in four steps. Code is provided in ~\ref{subsubsection:counter example}.}
+   	\caption[A non-spaceship that looks like one]{A pattern that is not a spaceship in rules “4,6/2/3”, “2,4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3” despite consisting of the leading block and three supplemental blocks. However, it does transform into another two-period spaceship in four steps. Code is provided in ~\ref{subsubsection:counter example}.}
    	\label{fig:counter example}
    	\vspace{-1.5em}
 \end{figure}
 
-We also found many family members with a period of two. Their structures are more complicated since their tagalongs are no longer entirely made of the supplemental blocks. They emit one unit of vanishing "exhaust" when moving across the grid, whereas the rest of their body remains unchanged. We have discovered five most basic two-period gliders that appear in rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, and “5,6/2,6/3” in Figure ~\ref{fig:two-period gliders}, each with a distinct tagalong. For simplicity, they will be referred to as “two-period glider A, B, C, D, and E” in the rest of the report. Furthermore, we have also observed some two-period gliders that have the exact same tagalongs as the five basic forms. For example, in Figure ~\ref{fig:almost same two-period glider} is another glider that looks virtually the same as the “two-period glider E” and only differs in the way that its tagalong is relatively moved towards the right by one unit. We have already seen such room for diversity in the one-period members. Additionally, like the one-period members, there are also infinitely many two-period gliders in the family. Their tagalongs can get arbitrarily large as they can have a connecting bridge consisting of any arbitrary number of supplemental between the basic tagalong and the two-by-two leading block. However, all of these tagalongs are essentially extensions of one of the five most basic forms in Figure ~\ref{fig:tagalongs of two-period gliders}. This means that their tagalongs can be reduced by stripping away one or more supplemental blocks. Figure ~\ref{fig:extended two-period gliders} depicts some possible extensions of the basic five two-period gliders. 
+We also found many family members with a period of two. Their structures are more complicated since their tagalongs are no longer entirely made of the supplemental blocks. They emit one unit of vanishing "exhaust" when moving across the grid, whereas the rest of their body remains unchanged. We have discovered five most basic two-period spaceships that appear in rules “4,6/2/3”, “4,6/2,4/3”, “2,4,6/2,4/3”, “3,6/2,6/3”, and “5,6/2,6/3” in Figure ~\ref{fig:two-period spaceships}, each with a distinct tagalong. For simplicity, they will be referred to as “two-period spaceship A, B, C, D, and E” in the rest of the report. Furthermore, we have also observed some two-period spaceships that have the exact same tagalongs as the five basic forms. For example, in Figure ~\ref{fig:almost same two-period spaceship} is another spaceship that looks virtually the same as the “two-period spaceship E” and only differs in the way that its tagalong is relatively moved towards the right by one unit. We have already seen such room for diversity in the one-period members. Additionally, like the one-period members, there are also infinitely many two-period spaceships in the family. Their tagalongs can get arbitrarily large as they can have a connecting bridge consisting of any arbitrary number of supplemental blocks between the basic tagalong and the two-by-two leading block. However, all of these tagalongs are essentially extensions of one of the five most basic forms in Figure ~\ref{fig:tagalongs of two-period spaceships}. This means that their tagalongs can be reduced by stripping away one or more supplemental blocks. Figure ~\ref{fig:extended two-period spaceships} depicts some possible extensions of the basic five two-period spaceships. 
 
 \begin{figure}[H]
+	\color{blue}
 	\begin{subfigure}[t]{0.03\textwidth}
     		\textbf{A}
   	\end{subfigure}
@@ -734,8 +728,8 @@ We also found many family members with a period of two. Their structures are mor
       		{\LARGE$\xrightarrow{}$}
 	\end{subfigure}
    
-	\caption[Two-period gliders]{The five basic two-period members of the glider family that exist for rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. For simplicity, they are referred to as “two-period glider A, B, C, D, and E” respectively. Code is provided in ~\ref{subsubsection:two-period gliders(1/5)}, ~\ref{subsubsection:two-period gliders(2/5)}, ~\ref{subsubsection:two-period gliders(3/5)}, ~\ref{subsubsection:two-period gliders(4/5)}, and ~\ref{subsubsection:two-period gliders(5/5)}.}
-   	\label{fig:two-period gliders}
+	\caption[Two-period spaceships]{The five basic two-period members of the spaceship family that exist for rules “4,6/2/3”, “4,6/2,4/3”, “2,4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. For simplicity, they are referred to as “two-period spaceship A, B, C, D, and E” respectively. Code is provided in ~\ref{subsubsection:two-period spaceships(1/5)}, ~\ref{subsubsection:two-period spaceships(2/5)}, ~\ref{subsubsection:two-period spaceships(3/5)}, ~\ref{subsubsection:two-period spaceships(4/5)}, and ~\ref{subsubsection:two-period spaceships(5/5)}.}
+   	\label{fig:two-period spaceships}
    	\vspace{-1.5em}
 \end{figure}
 
@@ -766,11 +760,12 @@ We also found many family members with a period of two. Their structures are mor
      		\subcaption{}
    	\end{subfigure}
       	\newline
-   	\caption[Tagalongs of the two-period gliders]{The five basic tagalongs of two-period gliders.}
-   	\label{fig:tagalongs of two-period gliders}
+   	\caption[Tagalongs of the two-period spaceships]{The five basic tagalongs of two-period spaceships.}
+   	\label{fig:tagalongs of two-period spaceships}
 \end{figure}
 
 \begin{figure}[H]
+	\color{blue}
 	\begin{subfigure}{0.3\textwidth}
      		\centering
      		\includegraphics[angle=270,width=\linewidth]{Section4/9.0}
@@ -788,12 +783,13 @@ We also found many family members with a period of two. Their structures are mor
    	\end{subfigure}
    {\LARGE$\xrightarrow{}$}
    \setcounter{subfigure}{0}
-   \caption[Similar two-period glider]{The glider that is almost the same as “two-period glider E” except its tagalong is moved relatively towards right by one unit. Code is provided in ~\ref{subsubsection:almost same two-period glider}.}
-   \label{fig:almost same two-period glider}
+   \caption[Similar two-period spaceship]{The spaceship that is almost the same as “two-period spaceship E” except its tagalong is moved relatively towards right by one unit. Code is provided in ~\ref{subsubsection:almost same two-period spaceship}.}
+   \label{fig:almost same two-period spaceship}
    \vspace{-1.5em}
 \end{figure}
 
 \begin{figure}[H]
+	\color{blue}
 	\begin{subfigure}{0.3\textwidth}
      		\centering
      		\includegraphics[angle=270,width=\linewidth]{Section4/10.0}
@@ -883,18 +879,18 @@ We also found many family members with a period of two. Their structures are mor
    	\end{subfigure}
       	{\LARGE$\xrightarrow{}$}
    	\setcounter{subfigure}{0}
-   	\caption[Extended two-period gliders]{Examples of extended two-period members of the glider family that exist for rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. Their tagalongs are the same as the five basic forms in Figure 4.4 except there is an additional supplemental block connecting them to the leading block. The leading block is like the tractor towing something behind it and this one simply has a longer tow cable. Other extended members have more connecting supplemental blocks and thus even longer tow cables. Code is provided in ~\ref{subsubsection:extended two-period gliders(1/5)}, ~\ref{subsubsection:extended two-period gliders(2/5)}, ~\ref{subsubsection:extended two-period gliders(3/5)}, ~\ref{subsubsection:extended two-period gliders(4/5)}, and ~\ref{subsubsection:extended two-period gliders(5/5)}. }
-   	\label{fig:extended two-period gliders}
+   	\caption[Extended two-period spaceships]{Examples of extended two-period members of the spaceship family that exist for rules “4,6/2/3”, “4,6/2,4/3”, “2,4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. Their tagalongs are the same as the five basic forms in Figure 4.4 except there is an additional supplemental block connecting them to the leading block. The leading block is like the tractor towing something behind it and this one simply has a longer tow cable. Other extended members have more connecting supplemental blocks and thus even longer tow cables. Code is provided in ~\ref{subsubsection:extended two-period spaceships(1/5)}, ~\ref{subsubsection:extended two-period spaceships(2/5)}, ~\ref{subsubsection:extended two-period spaceships(3/5)}, ~\ref{subsubsection:extended two-period spaceships(4/5)}, and ~\ref{subsubsection:extended two-period spaceships(5/5)}. }
+   	\label{fig:extended two-period spaceships}
    	\vspace{-1.5em}
 \end{figure}
 
-We have also found family members with a period of four. Superficially, they do not look much different from the two-period members except their tagalongs are larger and more complicated. They emit a more noticeable and larger amount of vanishing exhaust when they move across the grid. We identified six basic four-period members shown in Figure ~\ref{fig:four-period gliders}, each with a distinct tagalong in Figure ~\ref{fig:tagalongs of four-period gliders}. For simplicity, they will be referred to as “four-period glider A, B, C, D, E and F” in the rest of the report. The longest period members we found are the ones with periods of eight in Figure ~\ref{fig:eight-period gliders}. We have discovered a total of two such gliders, which we will name as “eight-period glider A” and “eight-period glider B”. Their tagalongs are depicted in Figure ~\ref{fig:tagalongs of eight-period gliders}. Superficially, there is an uncanny resemblance between “eight-period glider A” and “four-period glider C”, and “eight-period glider B” and “four-period glider A”. The two eight-period gliders both generate a maximum of ten units’ exhaust. We believe it is highly likely that there are more with unique tagalongs that are yet undiscovered, as they are more rare and thus much harder to find than the other members in the family. With the same argument we made with the two-period gliders, there are infinitely many four and eight-period gliders in the family. 
+We have also found family members with a period of four. Superficially, they do not look much different from the two-period members except their tagalongs are larger and more complicated. They emit a more noticeable and larger amount of vanishing exhaust when they move across the grid. We identified six basic four-period members shown in Figure ~\ref{fig:four-period spaceships first half} and ~\ref{fig:four-period spaceships second half}, each with a distinct tagalong in Figure ~\ref{fig:tagalongs of four-period spaceships}. For simplicity, they will be referred to as “four-period spaceship A, B, C, D, E and F” in the rest of the report. The longest period members we found are the ones with periods of eight in Figure ~\ref{fig:eight-period spaceships}. We have discovered a total of two such spaceships, which we will name as “eight-period spaceship A” and “eight-period spaceship B”. Their tagalongs are depicted in Figure ~\ref{fig:tagalongs of eight-period spaceships}. Superficially, there is an uncanny resemblance between “eight-period spaceship A” and “four-period spaceship C”, and “eight-period spaceship B” and “four-period spaceship A”. The two eight-period spaceships both generate a maximum of ten units’ exhaust. We believe it is highly likely that there are more with unique tagalongs that are yet undiscovered, as they are more rare and thus much harder to find than the other members in the family. With the same argument we made with the two-period spaceships, there are infinitely many four and eight-period spaceships in the family. 
 
-The family members introduced so far have only one tail. However, these gliders, unlike normal species in real life, have unlimited potential to mutate, combine, and have arbitrarily complex structures. However, some members in the family have found a way to combine some of the basic tagalongs to form a larger one. Figure ~\ref{fig:Frankenstein gliders} shows two Frankenstein gliders whose tagalong is a combination of the basic forms we have introduced earlier. One combines “two-period glider C” and “four-period glider A”. The other combines “two-period glider A” and two “four-period glider B”s. Their existence proves that two or more tagalongs can be combined to form a larger tagalong. The period of the resulting Frankenstein glider is determined by the longer period of its components. The diversity of the family members is thus beyond imaginable as the tagalongs can get arbitrarily complex and it is impossible to enumerate all possible tagalongs. 
+The family members introduced so far have only one tail. However, these spaceships, unlike normal species in real life, have unlimited potential to mutate, combine, and have arbitrarily complex structures. However, some members in the family have found a way to combine a few basic tagalongs to form a larger one. Figure ~\ref{fig:Frankenstein spaceships} shows two Frankenstein spaceships whose tagalong is a combination of the basic forms we have introduced earlier. One combines “two-period spaceship C” and “four-period spaceship A”. The other combines “two-period spaceship A” and two “four-period spaceship B”s. Their existence proves that two or more tagalongs can be combined to form a larger tagalong. The period of the resulting Frankenstein spaceship is determined by the longer period of its components. The diversity of the family members is thus beyond imaginable as the tagalongs can get arbitrarily complex and it is impossible to enumerate all possibilities. 
 
-The most interesting family members we found are rakes, which are cellular automata that leave behind a trail of non-vanishing debris of a stream of gliders \cite{rake}. Their structures are much more complex than the other family members. We have observed a total of three rakes, one with a period of four and two with eight in Figure ~\ref{fig:four-period rake}, Figure ~\ref{fig:eight-period rake one}, and Figure ~\ref{fig:eight-period rake two}. For simplicity, they will be referred to as “rake A, B, and C” in the rest of the report. Their periods are equivalent to the number of steps it takes them to generate a new glider. All three rakes generate a stream of one-period gliders, whose moving directions are not the same as the rakes. Rake A generates a stream of two-by-two leading blocks, which moves in the opposite direction as the rake itself. Rake B generates a stream of one-period members with one supplemental block, which also moves in the opposite direction as the rake itself. Rake C generates a stream of one-period members with two supplemental blocks, which move perpendicular to the rake. 
+The most interesting family members we found are rakes, which are cellular automata that leave behind a trail of non-vanishing debris of a stream of spaceships \cite{rake}. Their structures are much more complex than the other family members. We have observed a total of three rakes, one with a period of four and two with eight in Figure ~\ref{fig:four-period rake}, ~\ref{fig:eight-period rake one}, and ~\ref{fig:eight-period rake two}. For simplicity, they will be referred to as “rake A, B, and C” in the rest of the report. Their periods are equivalent to the number of steps it takes them to generate a new spaceship. All three rakes generate a stream of one-period spaceships, whose moving directions are not the same as the rakes. Rake A generates a stream of two-by-two leading blocks, which moves in the opposite direction as the rake itself. Rake B generates a stream of one-period members with one supplemental block, which also moves in the opposite direction as the rake itself. Rake C generates a stream of one-period members with two supplemental blocks, which move perpendicular to the rake. 
 
-We discovered one special glider depicted in Figure ~\ref{fig:the new life} that does not contain the leading block and hence is not a member of the family. It maintains a total of three live and three sick cells in all generations. Furthermore, the gliders we have introduced so far either traverse horizontally or vertically. But just like Conway’s Game of Life glider, this glider moves diagonally across the grid with a period of four. Its speed is also $\frac{c}{4}$, since it takes four generations for a given state to be translated by one cell. We decided to call this the new Life with three states.
+We discovered one special spaceship depicted in Figure ~\ref{fig:the new life} that does not contain the leading block and hence is not a member of the family. It maintains a total of three live and three sick cells in all generations. Furthermore, the spaceships we have introduced so far either traverse horizontally or vertically. But just like Conway’s the Game of Life spaceship, this spaceship moves diagonally across the grid with a period of four. Its speed is also $\frac{c}{4}$, since it takes four generations for a given state to be translated by one cell. We decided to call this the new Life with three states.
 \begin{figure}[H]
 	\begin{subfigure}{0.16\textwidth}
      		\centering
@@ -928,11 +924,12 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
    	\end{subfigure}
       	\newline
    	\setcounter{subfigure}{0}
-	\caption[Tagalongs of four-period gliders]{The six basic tagalongs of the four-period gliders.}
-	\label{fig:tagalongs of four-period gliders}
+	\caption[Tagalongs of four-period spaceships]{The six basic tagalongs of the four-period spaceships.}
+	\label{fig:tagalongs of four-period spaceships}
 \end{figure}
 
 \begin{figure}[H]
+\color{blue}
 \begin{center}
 {\Huge$\uparrow$}
 \end{center}
@@ -1028,9 +1025,15 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
    	\end{subfigure}
       	\newline
    	\setcounter{subfigure}{0}
+	\caption[Three four-period spaceships]{Three of the six basic four-period members of the spaceship family. All these spaceships exist for rules “4,6/2/3”, “4,6/2,4/3”, “2,4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. For simplicity, they are referred to as “four-period spaceship A, B, and C” respectively. Code is provided in ~\ref{subsubsection:four-period spaceships(1/6)}, ~\ref{subsubsection:four-period spaceships(2/6)}, ~\ref{subsubsection:four-period spaceships(3/6)}.}
+	\label{fig:four-period spaceships first half}
 \end{figure}
    
-\begin{figure}[H]\ContinuedFloat
+\begin{figure}[H]
+\color{blue}
+\begin{center}
+{\Huge$\uparrow$}
+\end{center}
      	\begin{subfigure}[t]{0.03\textwidth}
     		\textbf{D}
   	\end{subfigure}	
@@ -1123,12 +1126,13 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
    	\end{subfigure}
       	\newline
    	\setcounter{subfigure}{0}
-   	\caption[Four-period gliders]{The six basic four-period members of the glider family. All these gliders exist for rules “4,6/2/3”, “3,6/2,6/3”, “5,6/2,6/3”, except the last two ones which do not exist for rules “4,6/2,4/3” and “4,6/2,4/3”. For simplicity, they are referred to as “four-period glider A, B, C, D, and E” respectively. Code is provided in ~\ref{subsubsection:four-period gliders(1/6)}, ~\ref{subsubsection:four-period gliders(2/6)}, ~\ref{subsubsection:four-period gliders(3/6)}, ~\ref{subsubsection:four-period gliders(4/6)}, ~\ref{subsubsection:four-period gliders(5/6)}, and ~\ref{subsubsection:four-period gliders(6/6)}.}
-   	\label{fig:four-period gliders}
+   	\caption[Another three four-period spaceships]{The other three of the six basic four-period members of the spaceship family. The first one exists for “4,6/2/3”, “4,6/2,4/3”, “2,4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”, the other two only exist for “4,6/2/3”, “3,6/2,6/3”, “5,6/2,6/3”. For simplicity, they are referred to as “four-period spaceship D, E, and F” respectively. Code is provided in ~\ref{subsubsection:four-period spaceships(4/6)}, ~\ref{subsubsection:four-period spaceships(5/6)}, and ~\ref{subsubsection:four-period spaceships(6/6)}.}
+   	\label{fig:four-period spaceships second half}
    	\vspace{-1.5em}
 \end{figure}
 
 \begin{figure}[H]
+\color{blue}
 	\begin{subfigure}[t]{0.03\textwidth}
 		\phantom{A}
   	\end{subfigure}	
@@ -1251,8 +1255,8 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
      		\subcaption{}
    	\end{subfigure}
    	\setcounter{subfigure}{0}
-   	\caption[Eight-period gliders]{Two eight-period members of the glider family that exists for rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. For simplicity, they will be referred to as “eight-period glider A” and “eight-period glider B”. They resemble “four-period glider C” and “four-period glider A” respectively. They both emit a maximum of ten units’ exhaust.  Code is provided in ~\ref{subsubsection:eight-period gliders (1/2)}, and ~\ref{subsubsection:eight-period gliders (2/2)}. }
-   	\label{fig:eight-period gliders}
+   	\caption[Eight-period spaceships]{Two eight-period members of the spaceship family that exists for rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. For simplicity, they will be referred to as “eight-period spaceship A” and “eight-period spaceship B”. They resemble “four-period spaceship C” and “four-period spaceship A” respectively. They both emit a maximum of ten units’ exhaust.  Code is provided in ~\ref{subsubsection:eight-period spaceships (1/2)}, and ~\ref{subsubsection:eight-period spaceships (2/2)}. }
+   	\label{fig:eight-period spaceships}
    	\vspace{-1.5em}
 \end{figure}
 
@@ -1269,12 +1273,13 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
      		\includegraphics[angle=270,width=\linewidth]{Section4/24.1}
      		\subcaption{}
 	\end{subfigure}
-	\caption[tagalongs of eight-period gliders]{The basic tagalongs of the two eight-period gliders.}
-	\label{fig:tagalongs of eight-period gliders}
+	\caption[Tagalongs of eight-period spaceships]{The basic tagalongs of the two eight-period spaceships.}
+	\label{fig:tagalongs of eight-period spaceships}
 \end{figure}
 
 \vspace{-.5cm}
 \begin{figure}[H]
+\color{blue}
 \begin{center}
 {\Large$\uparrow$}
 \end{center}
@@ -1332,12 +1337,13 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
      		\subcaption{}
    	\end{subfigure}
    	\setcounter{subfigure}{0}
-	\caption[Frankenstein gliders]{Two Frankenstein gliders with two and three tails that exists for rules “4,6/2/3”, “3,6/2,6/3”, “5,6/2,6/3”. Both have periods of four. The top combines “two-period glider C” and “four-period glider A”. The bottom combines “two-period glider A” and two “four-period glider B” s. Code is provided in ~\ref{subsubsection:Frankenstein glider one}, and ~\ref{subsubsection:Frankenstein glider two}.}
-	\label{fig:Frankenstein gliders}
+	\caption[Frankenstein spaceships]{Two Frankenstein spaceships with two and three tails that exists for rules “4,6/2/3”, “3,6/2,6/3”, “5,6/2,6/3”. Both have periods of four. The top combines “two-period spaceship C” and “four-period spaceship A”. The bottom combines “two-period spaceship A” and two “four-period spaceship B” s. Code is provided in ~\ref{subsubsection:Frankenstein spaceship one}, and ~\ref{subsubsection:Frankenstein spaceship two}.}
+	\label{fig:Frankenstein spaceships}
 \end{figure}
 
 \vspace{-1cm}
 \begin{figure}[H]
+\color{blue}
 	\begin{center}
 		{\Large$\uparrow$}
 	\end{center}
@@ -1374,6 +1380,7 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
 \end{figure}
 
 \begin{figure}[H]
+\color{blue}
 	\begin{center}
 		{\Huge$\uparrow$}
 	\end{center}
@@ -1428,6 +1435,7 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
 \end{figure}
 
 \begin{figure}[H]
+\color{blue}
 	\begin{center}
 		{\Huge$\uparrow$}
 	\end{center}
@@ -1484,6 +1492,7 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
 \end{figure}
 
 \begin{figure}[H]
+\color{blue}
       {\LARGE$\swarrow{}$}
 	\begin{subfigure}{0.18\textwidth}
      		\centering
@@ -1510,200 +1519,204 @@ We discovered one special glider depicted in Figure ~\ref{fig:the new life} that
      		\includegraphics[width=\linewidth]{Section4/30.4}
      		\subcaption{}
    	\end{subfigure}
-   	\caption[The new Life]{The new Life with three states that exists for rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”, and “3/2, 5/3”. It moves diagonally with a speed of $\frac{c}{4}$. Code is provided in ~\ref{subsubsection:the new life}.}
+   	\caption[The new Life]{The new Life with three states that exists for rules “4,6/2/3”, “4,6/2,4/3”, “2,4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”, and “3/2,5/3”. It moves diagonally with a speed of $\frac{c}{4}$. Code is provided in ~\ref{subsubsection:the new life}.}
    	\label{fig:the new life}
       	\vspace{-1.5em}
 \end{figure}
 
-\subsection{Glider Collision Behaviors in three-state cellular automata}
-Collisions between gliders are very common on a two-dimensional grid. The collisions, however, are not of physical nature. When that happens, a chemistry-like reaction will take place between them. Their internal structures become intertwined with each other and temporarily unrecognizable from their previous forms. Eventually, the patterns become clearer, and a new equilibrium has been reached. There are three most frequent cases. 
+\subsection{Spaceship collision behaviors in three-state cellular automata}
+Collisions between spaceships are very common on a two-dimensional grid. The collisions, however, are not of physical nature. When that happens, a chemistry-like reaction will take place between them. Their internal structures become intertwined with each other and temporarily unrecognizable from their previous forms. Eventually, the patterns become clearer, and a new equilibrium has been reached. There are three most frequent cases. 
 \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
-\item Shown in Figure ~\ref{fig:glider all dead}, the two gliders are simultaneously destroyed completely in the collision, leaving the grid empty. 
-\item Shown in Figure ~\ref{fig:two GOL}, the collision generates a new glider that has a different structure. 
-\item Shown in Figure ~\ref{fig:murder glider one} and ~\ref{fig:murder glider two}, one of the two gliders is “murdered” during the process, which means exactly one glider survives unscathed after the collision, while the other completely disappears.
+\item Shown in Figure ~\ref{fig:spaceship all dead}, the two spaceships are simultaneously destroyed completely in the collision, leaving the grid empty. 
+\item Shown in Figure ~\ref{fig:two GOL}, the collision generates a new spaceship that has a different structure. 
+\item Shown in Figure ~\ref{fig:murder spaceship one} and ~\ref{fig:murder spaceship two}, one of the two spaceships is “murdered” during the process, which means exactly one spaceship survives unscathed after the collision, while the other completely disappears. This is like the survival of the fittest in the animal world and the classic "who would win, a giant squid or a killer whale, a crocodile or a cheetah" questions where only one can survive. 
 \end{enumerate}
-Generally, it is very difficult to predict the outcome when two gliders collide with each other and there are edge cases that are not included. However, the three listed cases constitute the majority. 
+Generally, it is very difficult to predict the outcome when two spaceships collide with each other and there are edge cases that are not included. However, the three listed cases constitute the majority. 
 \begin{figure}[H]
+	%\begin{subfigure}[t]{0.06\textwidth}
+	%\centering
+	%	{\LARGE$\xrightarrow{}$}
+	%	\hspace{0.1cm}
+	%	{\LARGE$\xleftarrow{}$}
+  	%\end{subfigure}	
 	\centering
-	\begin{subfigure}[t]{0.06\textwidth}
-	\centering
-		{\LARGE$\xrightarrow{}$}
-		\hspace{0.1cm}
-		{\LARGE$\xleftarrow{}$}
-  	\end{subfigure}	
-	\centering
-	\begin{subfigure}{0.22\textwidth}
+	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/31.0}
      		\subcaption{}
    	\end{subfigure}
-    	\begin{subfigure}{0.22\textwidth}
+    	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/31.1}
      		\subcaption{}
    	\end{subfigure}
-     	\begin{subfigure}{0.22\textwidth}
+     	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/31.2}
      		\subcaption{}
    	\end{subfigure}
-        	\begin{subfigure}{0.22\textwidth}
+        	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/31.3}
      		\subcaption{}
    	\end{subfigure}
-   	\caption[Destroyed gliders in collision]{Two leading blocks in rule “4,6/2/3” collide with each other head on and are both destroyed in three steps, leaving the grid completely empty. Code is provided in ~\ref{subsubsection:glider all dead}. }
-   	\label{fig:glider all dead}
+   	\caption[Destroyed spaceships in collision]{Two leading blocks in rule “4,6/2/3” collide with each other head on and are both destroyed in three steps, leaving the grid completely empty. Code is provided in ~\ref{subsubsection:spaceship all dead}. }
+   	\label{fig:spaceship all dead}
 	\vspace{-1.5em}
 \end{figure}
 
 \begin{figure}[H]
-	\begin{subfigure}[t]{0.06\textwidth}
 	\centering
-		{\LARGE$\nearrow{}$}
-		{\LARGE$\swarrow{}$}
-  	\end{subfigure}	
-	\begin{subfigure}{0.22\textwidth}
+	%\begin{subfigure}[t]{0.06\textwidth}
+	%\centering
+	%\color{blue}
+	%	{\LARGE$\nearrow{}$}
+	%	{\LARGE$\swarrow{}$}
+	%\color{blue}
+  	%\end{subfigure}	
+	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/37.0}
      		\subcaption{}
    	\end{subfigure}
-    	\begin{subfigure}{0.22\textwidth}
+    	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/37.1}
      		\subcaption{}
    	\end{subfigure}
-     	\begin{subfigure}{0.22\textwidth}
+     	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/37.2}
      		\subcaption{}
    	\end{subfigure}
-        	\begin{subfigure}{0.22\textwidth}
+        	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/37.3}
      		\subcaption{}
    	\end{subfigure}
 	\newline
-	\begin{subfigure}[t]{0.06\textwidth}
-		\centering
-		\phantom{H}
-  	\end{subfigure}	
-	\begin{subfigure}{0.22\textwidth}
+	\centering
+	%\begin{subfigure}[t]{0.06\textwidth}
+	%	\centering
+	%	\phantom{H}
+  	%\end{subfigure}	
+	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/37.4}
      		\subcaption{}
    	\end{subfigure}
-    	\begin{subfigure}{0.22\textwidth}
+    	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/37.5}
      		\subcaption{}
    	\end{subfigure}
-     	\begin{subfigure}{0.22\textwidth}
+     	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/37.6}
      		\subcaption{}
    	\end{subfigure}
-        	\begin{subfigure}{0.22\textwidth}
+        	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/37.7}
      		\subcaption{}
    	\end{subfigure}
-   	\caption[Example of a "combined glider"]{Example of a “combined glider” that appears in rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. Two new life's collide and they generate a fundamental block (an interesting demonstration of simplicity coming from complexity). Code is provided in ~\ref{subsubsection:two GOL}. }
+   	\caption[Example of a “combined spaceship"]{Example of a “combined spaceship” that appears in rules “4,6/2/3”, “3,6/2,6/3”, “5,6/2,6/3”. Two new Life's collide and they generate a fundamental block (an interesting demonstration of simplicity coming from complexity). Code is provided in ~\ref{subsubsection:two GOL}. }
    	\label{fig:two GOL}
 	\vspace{-1.5em}
 \end{figure}
 
 \begin{figure}[H]
-	\begin{subfigure}[t]{0.06\textwidth}
-	\centering
-		{\LARGE$\xrightarrow{}$}
-		{\LARGE$\uparrow{}$}
-  	\end{subfigure}	
-	\begin{subfigure}{0.22\textwidth}
+	%\begin{subfigure}[t]{0.06\textwidth}
+	%\centering
+	%	{\LARGE$\xrightarrow{}$}
+	%	{\LARGE$\uparrow{}$}
+  	%\end{subfigure}	
+	\begin{subfigure}{0.24\textwidth}
      		\centering
-     		\includegraphics[width=\linewidth]{Section4/32.0}
+     		\includegraphics[width=\linewidth]{Section4/32.0.png}
      		\subcaption{}
    	\end{subfigure}
-    	\begin{subfigure}{0.22\textwidth}
+    	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/32.1}
      		\subcaption{}
    	\end{subfigure}
-     	\begin{subfigure}{0.22\textwidth}
+     	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/32.2}
      		\subcaption{}
    	\end{subfigure}
-        	\begin{subfigure}{0.22\textwidth}
+        	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/32.3}
      	\subcaption{}
    	\end{subfigure}
-   \caption[Example of a "murdered glider"]{Example of a “murdered glider” that appears in rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. Two identical one-period members of the glider family with one supplemental block collide with each other, and only the bottom one survived the clash. Code is provided in ~\ref{subsubsection:murder glider one}. }
-   \label{fig:murder glider one}
+   \caption[Example of a “murdered spaceship"]{Example of a “murdered spaceship” that appears in rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. Two identical one-period members of the spaceship family with one supplemental block collide with each other, and only the bottom one survived the clash. Code is provided in ~\ref{subsubsection:murder spaceship one}. }
+   \label{fig:murder spaceship one}
    \vspace{-1.5em}
 \end{figure}
 
 \begin{figure}[H]
-	\begin{subfigure}[t]{0.06\textwidth}
-		\centering
-		{\LARGE$\xrightarrow{}$}
-		{\LARGE$\searrow{}$}
-  	\end{subfigure}	
-	\begin{subfigure}{0.22\textwidth}
+	%\begin{subfigure}[t]{0.06\textwidth}
+	%	\centering
+	%	{\LARGE$\xrightarrow{}$}
+	%	{\LARGE$\searrow{}$}
+  	%\end{subfigure}	
+	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/33.0}
      		\subcaption{}
    	\end{subfigure}
-    	\begin{subfigure}{0.22\textwidth}
+    	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/33.1}
      		\subcaption{}
    	\end{subfigure}
-     	\begin{subfigure}{0.22\textwidth}
+     	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/33.2}
      		\subcaption{}
    	\end{subfigure}
-        	\begin{subfigure}{0.22\textwidth}
+        	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/33.3}
      		\subcaption{}
    	\end{subfigure}
 	\newline
-	\begin{subfigure}[t]{0.06\textwidth}
-		\centering
-		\phantom{H}
-  	\end{subfigure}	
-	\begin{subfigure}{0.22\textwidth}
+	%\begin{subfigure}[t]{0.06\textwidth}
+	%	\centering
+	%	\phantom{H}
+  	%\end{subfigure}	
+	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/33.4}
      		\subcaption{}
    	\end{subfigure}
-    	\begin{subfigure}{0.22\textwidth}
+    	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/33.5}
      		\subcaption{}
    	\end{subfigure}
-     	\begin{subfigure}{0.22\textwidth}
+     	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/33.6}
      		\subcaption{}
    	\end{subfigure}
-        	\begin{subfigure}{0.22\textwidth}
+        	\begin{subfigure}{0.24\textwidth}
      		\centering
      		\includegraphics[width=\linewidth]{Section4/33.7}
      		\subcaption{}
    	\end{subfigure}
-   	\caption[Another example of a "murdered glider"]{Example of a “murdered glider” that appears in rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. A fundamental block glider collides with a New Game of Life glider. The fundamental block is murdered in three steps. Code is provided in ~\ref{subsubsection:murder glider two}. }
-   	\label{fig:murder glider two}
+   	\caption[Another example of a “murdered spaceship"]{Example of a “murdered spaceship” that appears in rules “4,6/2/3”, “4,6/2,4/3”, “4,6/2,4/3”, “3,6/2,6/3”, “5,6/2,6/3”. A fundamental block spaceship collides with the new Life. The fundamental block is murdered in three steps. Code is provided in ~\ref{subsubsection:murder spaceship two}. }
+   	\label{fig:murder spaceship two}
 	\vspace{-1.5em}
 \end{figure}
 %sanity check
 \subsection{Other interesting discoveries}
-As the number of states increases, the complexity of the gliders increases correspondingly. In cellular automata with four possible states, we have found a more visually appealing rake like a spaceship emitting gas in Figure ~\ref{fig:rocket}. The rake has a period of two and a speed of $c$. It generates a constant stream of one-period gliders, one every two steps. 
+As the number of states increases, the complexity of the spaceships increases correspondingly. In cellular automata with four possible states, we have found a more visually appealing rake like a spaceship emitting gas in Figure ~\ref{fig:rocket}. The rake has a period of two and a speed of $c$. It generates a constant stream of one-period spaceships, one every two steps. 
 
 \begin{figure}[H]
+	\color{blue}
 	\begin{center}
 		{\Huge$\uparrow$}
 	\end{center}
@@ -1733,20 +1746,21 @@ As the number of states increases, the complexity of the gliders increases corre
      		\includegraphics[width=\linewidth]{Section4/34.4}
      		\subcaption{}
    	\end{subfigure}
-   	\caption[A rocket glider]{A rake that appears in rule “3,4,5/2/4”. It has a period of two and a speed of $c$. It generates a constant stream of one-period gliders, one every two steps. Code is provided in ~\ref{subsubsection:rocket}.}
+   	\caption[A rocket spaceship]{A rake that appears in rule “3,4,5/2/4”. It has a period of two and a speed of $c$. It generates a constant stream of one-period spaceships, one every two steps. Code is provided in ~\ref{subsubsection:rocket}.}
    	\label{fig:rocket}
       	\vspace{-1.5em}
 \end{figure}
-We have also identified similar interactions between gliders when they collide. There are countless cases where the two gliders are both destroyed during the process. On the other hand, the other two cases are much rarer. We recorded one case of each kind in Figure ~\ref{fig:combined glider} and Figure ~\ref{fig:murder glider}. 
+We have also identified similar interactions between spaceships when they collide. There are countless cases where the two spaceships are both destroyed during the process. On the other hand, the other two cases are much rarer. We recorded one case of each kind in Figure ~\ref{fig:combined spaceship} and Figure ~\ref{fig:murder spaceship}. 
 
 \begin{figure}[H]
-	\begin{subfigure}[t]{0.06\textwidth}
-		\centering
-		{\LARGE$\downarrow{}$}
-		{\LARGE$\xrightarrow{}$}
-  	\end{subfigure}	
+	%\begin{subfigure}[t]{0.06\textwidth}
+	%	\centering
+	%	{\LARGE$\downarrow{}$}
+	%	{\LARGE$\xrightarrow{}$}
+  	%\end{subfigure}	
 	\begin{subfigure}{0.45\textwidth}
      		\includegraphics[width=\linewidth]{Section4/35.0}
+		\put(10,10){hello}
      		\subcaption{}
    	\end{subfigure}
     	\begin{subfigure}{0.45\textwidth}
@@ -1754,10 +1768,10 @@ We have also identified similar interactions between gliders when they collide. 
      		\subcaption{}
    	\end{subfigure}
 	\newline
-	\begin{subfigure}[t]{0.06\textwidth}
-		\centering
-		\phantom{H}
-  	\end{subfigure}	
+	%\begin{subfigure}[t]{0.06\textwidth}
+	%	\centering
+	%	\phantom{H}
+  	%\end{subfigure}	
 	\begin{subfigure}{0.45\textwidth}
      		\includegraphics[width=\linewidth]{Section4/35.2}
      		\subcaption{}
@@ -1767,10 +1781,10 @@ We have also identified similar interactions between gliders when they collide. 
      		\subcaption{}
    	\end{subfigure}
 	\newline
-	\begin{subfigure}[t]{0.06\textwidth}
-		\centering
-		\phantom{H}
-  	\end{subfigure}	
+	%\begin{subfigure}[t]{0.06\textwidth}
+	%	\centering
+	%	\phantom{H}
+  	%\end{subfigure}	
 	\begin{subfigure}{0.45\textwidth}
      		\includegraphics[width=\linewidth]{Section4/35.4}
      		\subcaption{}
@@ -1780,10 +1794,10 @@ We have also identified similar interactions between gliders when they collide. 
      		\subcaption{}
    	\end{subfigure}
 	\newline
-	\begin{subfigure}[t]{0.06\textwidth}
-		\centering
-		\phantom{H}
-  	\end{subfigure}	
+	%\begin{subfigure}[t]{0.06\textwidth}
+	%	\centering
+	%	\phantom{H}
+  	%\end{subfigure}	
 	\begin{subfigure}{0.45\textwidth}
      		\includegraphics[width=\linewidth]{Section4/35.6}
      		\subcaption{}
@@ -1793,10 +1807,10 @@ We have also identified similar interactions between gliders when they collide. 
      		\subcaption{}
    	\end{subfigure}
 	\newline
-	\begin{subfigure}[t]{0.06\textwidth}
-		\centering
-		\phantom{H}
-  	\end{subfigure}	
+	%\begin{subfigure}[t]{0.06\textwidth}
+	%	\centering
+	%	\phantom{H}
+  	%\end{subfigure}	
 	\begin{subfigure}{0.45\textwidth}
      		\includegraphics[width=\linewidth]{Section4/35.8}
      		\subcaption{}
@@ -1806,10 +1820,10 @@ We have also identified similar interactions between gliders when they collide. 
      		\subcaption{}
    	\end{subfigure}
 	\newline
-	\begin{subfigure}[t]{0.06\textwidth}
-		\centering
-		\phantom{H}
-  	\end{subfigure}	
+	%\begin{subfigure}[t]{0.06\textwidth}
+	%	\centering
+	%	\phantom{H}
+  	%\end{subfigure}	
 	\begin{subfigure}{0.45\textwidth}
      		\includegraphics[width=\linewidth]{Section4/35.10}
      		\subcaption{}
@@ -1818,71 +1832,59 @@ We have also identified similar interactions between gliders when they collide. 
      		\includegraphics[width=\linewidth]{Section4/35.11}
      		\subcaption{}
    	\end{subfigure}
-   	\caption[Example of a "combined glider"]{Example of a “combined glider” that appears in rule “3/2/4”. Code is provided in ~\ref{subsubsection:combined glider}.}
-   	\label{fig:combined glider}
+   	\caption[Example of a “combined spaceship"]{Example of a “combined spaceship” that appears in rule “3/2/4”. Code is provided in ~\ref{subsubsection:combined spaceship}.}
+   	\label{fig:combined spaceship}
 \end{figure}
 
 \begin{figure}[H]
-	\begin{subfigure}[t]{0.06\textwidth}
-		\centering
-		{\LARGE$\downarrow{}$}
-		{\LARGE$\xrightarrow{}$}
-  	\end{subfigure}	
-	\begin{subfigure}{0.22\textwidth}
+	%\begin{subfigure}[t]{0.06\textwidth}
+	%	\centering
+	%	{\LARGE$\downarrow{}$}
+	%	{\LARGE$\xrightarrow{}$}
+  	%\end{subfigure}	
+	\begin{subfigure}{0.24\textwidth}
      		\includegraphics[width=\linewidth]{Section4/36.0}
      		\subcaption{}
    	\end{subfigure}
-    	\begin{subfigure}{0.22\textwidth}
+    	\begin{subfigure}{0.24\textwidth}
      		\includegraphics[width=\linewidth]{Section4/36.1}
      		\subcaption{}
    	\end{subfigure}
-	\begin{subfigure}{0.22\textwidth}
+	\begin{subfigure}{0.24\textwidth}
      		\includegraphics[width=\linewidth]{Section4/36.2}
      		\subcaption{}
    	\end{subfigure}
-    	\begin{subfigure}{0.22\textwidth}
+    	\begin{subfigure}{0.24\textwidth}
      		\includegraphics[width=\linewidth]{Section4/36.3}
      		\subcaption{}
    	\end{subfigure}
 	\newline
-	\begin{subfigure}[t]{0.06\textwidth}
-		\centering
-		\phantom{H}
-  	\end{subfigure}	
-	\begin{subfigure}{0.22\textwidth}
+	%\begin{subfigure}[t]{0.06\textwidth}
+	%	\centering
+	%	\phantom{H}
+  	%\end{subfigure}	
+	\begin{subfigure}{0.24\textwidth}
      		\includegraphics[width=\linewidth]{Section4/36.4}
      		\subcaption{}
    	\end{subfigure}
-    	\begin{subfigure}{0.22\textwidth}
+    	\begin{subfigure}{0.24\textwidth}
      		\includegraphics[width=\linewidth]{Section4/36.5}
      		\subcaption{}
    	\end{subfigure}
-	\begin{subfigure}{0.22\textwidth}
+	\begin{subfigure}{0.24\textwidth}
      		\includegraphics[width=\linewidth]{Section4/36.6}
      		\subcaption{}
    	\end{subfigure}
-   \caption[Example of a "murdered glider"]{Example of a “murdered glider” that appears in rule “3/2/4”. The bottom left glider murders the top right one in six steps. Code is provided in ~\ref{subsubsection:murder glider}.}
-   \label{fig:murder glider}
+   \caption[Example of a “murdered spaceship"]{Example of a “murdered spaceship” that appears in rule “3/2/4”. The bottom left spaceship murders the top right one in six steps. Code is provided in ~\ref{subsubsection:murder spaceship}.}
+   \label{fig:murder spaceship}
 \end{figure}
-
-\newpage
-\section{Conclusion}
-Despite the large amount of effort and study that has been put into cellular automata, there is still much that is unknown. The space of possible rules is infinite, so the task of determining the interesting ones that leads to gliders is pertinent to the continued development of cellular automata theory. Gliders have piqued the interest of many researchers since they literally represent life and prove to be beneficial to many biology and physics models. Currently, there is no systematic method to automatically detect interesting rules. Existing methods are either too inefficient and expensive due to the enormous search space, or they are relatively fast but with poor accuracy. This report explores the possibility of using neural networks to find interesting rules in the “instant birth, gradual death, no recovery” model using the Moore neighborhood. Due to their capability to automatically learn and adapt during the training phase, they have the potential to approach the task that is too expensive for human labor and normal computer programs. 
-
-We created the data generation algorithm to compute the state of each cell at every step. After collecting the known interesting and boring rules from lexicons, we applied data augmentation to create a sufficiently large training and testing set by rerunning the rules with different initial configurations. Each of the outcomes was recorded using the python package $CellPyLib$ as a sequence of grayscale frames. The first several generations were ignored because they depended highly on the initial configuration and therefore did not reflect the final stable pattern accurately. With many possible ways to explore the dataset, our final production pipeline used RNN, CNN, feature extraction, and entropy analysis. 
-
-The RNN approach resembles a video classification task. Each pattern is represented by its corresponding sequence of frames and each sequence is treated as one single instance. We performed hyperparameter tuning and eventually decided to use ConvLSTM2D, which led to the best accuracy. CNN on the other hand is the best at classifying images. Therefore, we had to stitch some of the frames together into one congregated image in advance. Each of the stitched images was considered as an instance. Different selections of frames that were included in the image have been tested. However, since this is an uncanonical approach, we wanted to find out the learnability of our dataset using Brainome.ai. To achieve this, we performed feature extraction using a pre-trained NASNet-Large CNN Model that is trained on a million images from the ImageNet database. For each of the instances, the machine learner extracts 1000 features and puts them in an organized CSV file. However, the results shown by Brainome.ai were suboptimal. Therefore, we eventually used the image pixels directly as features and this time, Brainome.ai showed us promising results. This gave us sufficient confidence to proceed with model training. 
-
-After the models are properly trained with extensive hyperparameter tuning, we used them to classify rules with three states and random survival and born rules and find gliders in those that are classified as interesting. We discovered a handful of new interesting rules and found an entire family of gliders, the new Life, and several rakes. 
-
-Based on the conclusions of this study, we think neural networks are adequate to be used to detect interesting cellular automata rules. The results that our machine learner found were undoubtedly interesting and worth further exploration. 
 
 \newpage
 \section{Future Work}
 \label{Future Work}
-So far this entire research has been performed in Google Colab using Python. However, once the pipeline has been properly set up, the entire process is highly parallelizable and thus can be run on many machines simultaneously. This can greatly increase the efficiency of the pipeline and minimize the overall time required for detecting more interesting rules. Plus we plan to migrate the code to C, which should speed up the process of simulation by at least a factor of 20. 
+So far this entire research has been performed in Google Colab using Python. However, once the pipeline has been properly set up, the entire process is highly parallelizable and thus can be run on many machines simultaneously. This can greatly increase the efficiency of the pipeline and minimize the overall time required for detecting more interesting rules. Eventually, we plan to migrate the code to C, which should speed up the process of simulation by at least a factor of 45 \cite{c}. 
 
-Furthermore, this report is only exploring cellular automata in the “instant birth, gradual death, no recovery” model, which is arguably the simplest model. This means that live (healthy) cells, once fell sick, can never recover and can only be one step closer to death at each generation. However, there are many other viable models shown in Figure ~\ref{fig:transitional diagrams} where the sick cells can have other outcomes and additional rules are required to define the achievable behavior of the sick cells. Even though we cannot engineer the behavior of the cells directly, we can artificially engineer the models to simulate various real-life scenarios and harness them for our purposes. One simple example is that if we want the cells to imitate the basic behavior of human beings, then the sick cells should be allowed to remain on the same level of sickness or recover. If we also want to include the possible scenario of a deadly virus able to kill a healthy person instantly, then any sick and healthy cells should be allowed to die at any generation. We can even construct an imaginary chaotic world where all the cells are allowed to go to any other state at any generation. This report only studied one model, but there are many other possibilities we have not even enumerated, all of which are worth exploring and might contain gliders and other "life" forms we have never dreamed of. 
+Furthermore, this report is only exploring cellular automata in the “instant birth, gradual death, no recovery” model, which is arguably the simplest model. This means that live (healthy) cells, once they fall sick, can never recover and can only be one step closer to death at each generation. However, there are many other viable models (shown in Figure ~\ref{fig:transitional diagrams}) where the sick cells can have other outcomes, and additional rules are required to define the achievable behavior of the sick cells. Even though we cannot engineer the behavior of the cells directly, we can artificially engineer the models to simulate various real-life scenarios and harness them for our purposes. One simple example is that if we want the cells to imitate the basic behavior of human beings, then the sick cells should be allowed to remain on the same level of sickness or recover. If we also want to include the possible scenario of a deadly virus able to kill a healthy person instantly, then any sick and healthy cells should be allowed to die at any generation. We can even construct an imaginary chaotic world where all the cells are allowed to go to any other state at any generation. This report only studied one model, but there are many other possibilities we have not even enumerated, all of which are worth exploring and might contain spaceships and other “life" forms we have never dreamed of. 
 
 \begin{figure}[H]
 	\centering
@@ -1937,15 +1939,27 @@ Furthermore, this report is only exploring cellular automata in the “instant b
 	\vspace{-1.5em}
 \end{figure}
 
-Even within the current “instant birth, gradual death, no recovery” model we are exploring, there is still a huge potential search space. This report mostly explores cellular automata with three states: the live (healthy) state, the dead state, and one sick state. We have identified a family of gliders and the new Life, but there could be more that have not yet been found. Besides, one barely understands what cellular automata would look like if there are more than three possible states, i.e., if two or more sick states are included. We still do not know the answer to the questions like how many interesting rules are there, or what the gliders would look like, or if there is any correlation between the rule and the structure of the gliders. It is expected that as the number of sick cells increases, so would the complexity of the patterns and gliders. The discovery of the beautiful rocket-like rake in Figure ~\ref{fig:rocket} gives us confidence that it is highly likely that there are more visually appealing gliders with more states. Furthermore, this report focuses solely on gliders and only classifies those rules that generate gliders as interesting. However, there are many other interesting patterns in cellular automata that are worth investigating. For example, we can follow the same steps to find rules that generate oscillators. 
+Even within the current “instant birth, gradual death, no recovery” model we are exploring, there is still a huge potential search space. This report mostly explores cellular automata with three states: the live (healthy) state, the dead state, and one sick state. We have identified a family of spaceships and the new Life, but there could be more that have not yet been found. Besides, one barely understands what cellular automata would look like if there are more than three possible states, i.e., if two or more sick states are included. We still do not know the answer to the questions like how many interesting rules are there, or what the spaceships would look like, or if there is any correlation between the rule and the structure of the spaceships. It is expected that as the number of sick cells increases, so would the complexity of the patterns and spaceships. The discovery of the beautiful rocket-like rake in Figure ~\ref{fig:rocket} gives us confidence that it is highly likely that there are more visually appealing spaceships with more states. Furthermore, this report focuses solely on spaceships and only classifies those rules that generate spaceships as interesting. However, there are many other interesting patterns in cellular automata that are worth investigating. For example, we can follow the same steps to find rules that generate oscillators. 
 
 An alternative future direction of this research is to perform temperature simulation with cellular automata. Namely, the closest analogy with cellular automata in real life is arguably particles and their behavior is controlled by temperature, which acts as the neighborhood rules in the space of cellular automata. For example, the particles are static in an environment of absolute zero. Hence, one possible direction of this research is to create neighborhood rules in cellular automata to simulate gradient temperature; one might find creatures huddling around "hot springs". 
 
 One other limitation of the current study is the relatively small size of the dataset. Because of the scarcity of cellular automata rules that have been classified, we had to perform data augmentation to make the dataset large enough for the machine learner. Specifically, we ran the same set of rules with random initial configurations to obtain diversified data. Ideally, this step could be skipped if we had sufficiently many classified rules available. Finding boring rules is relatively easier since they are the majority. The difficult part is finding the interesting ones, which would require much time and labor. There are only a limited few provided by the Cellular Automata Lexicon and other sources \cite{Lexicon}, and the rest is constituted of an indefinitely long process of random guessing and brute-forcing. Theoretically, a good way to quickly enlarge our dataset is to use the machine learner we just trained to detect or at least narrow down more interesting rules and include them in the dataset. With more available data, the machine learner is expected to be more robust and perform better. Another potential method to improve the performance of the machine learner is to invest more in hyperparameter tuning and include the results from entropy analysis as features. 
 
-In Wolfram's 15-year view on “A New Kind of Science" \cite{15 year view}, he claimed that with every passing year, he understood more about what the book was really about and why it was important. He originally wrote the book to contribute to the progress of science. But as the years have gone by, he has realized that the core of what was in the book actually goes far beyond science—into many areas that will be increasingly important in defining our whole future. At its core, it was about something profoundly abstract: the theory of all possible theories, or the universe of all possible universes. But for Wolfram, one of the achievements of the book is the realization that one can explore such fundamental things concretely—by doing actual experiments in the computational universe of possible programs. And in the end, we have a collection of what might at first seem like quite alien pictures made just by running very simple such programs. This report covers only a tip of an iceberg and points to the direction of doing systematic and controlled experiments in the infinite universe of theories and possibilities. There is so much left unknown, and so much potential to harness the power of the unknown for our purposes. 
-\newpage
+In Wolfram's 15-year view on “A New Kind of Science" \cite{15 year view}, he claimed that with every passing year, he understood more about what the book was really about and why it was so important. The core of the book would go far beyond science and into many areas that will be increasingly important in defining our whole future. The book was fundamentally about something profoundly abstract: the theory of all possible theories, and the universe of all possible universes. For Wolfram, one of the biggest achievements was the realization that one can explore such fundamental things concretely—by doing actual experiments in the computational universe of possible programs. And in the end, we have a collection of what might at first seem like quite alien pictures made just by running very simple such programs. This report covers only a tip of an iceberg and points to the direction of doing systematic and controlled experiments in the infinite universe of theories and possibilities. There is so much left unknown, and so much to learn. 
 
+\newpage
+\section{Conclusion}
+Despite the large amount of effort and study that has been put into cellular automata, there is still much that is unknown. The space of possible rules is infinite, so the task of determining the interesting ones that leads to spaceships is pertinent to the continued development of cellular automata theory. Spaceships have piqued the interest of many researchers since they literally represent life, and have proven to be beneficial to many biology and physics models \cite{Cellular automaton}. Currently, there is no systematic method to automatically detect interesting rules. Existing methods are either too inefficient and expensive due to the enormous search space, or they are relatively fast but with poor accuracy. This report explores the possibility of using neural networks to find interesting rules in the “instant birth, gradual death, no recovery” model using the Moore neighborhood. Due to their capability to automatically learn and adapt during the training phase, they have the potential to approach the task that is too expensive for human labor and normal computer programs. 
+
+We created the data generation algorithm to compute the state of each cell at every step. After collecting the known interesting and boring rules from lexicons, we applied data augmentation to create a sufficiently large training and testing set by rerunning the rules with different initial configurations. Each of the outcomes was recorded using the python package $CellPyLib$ as a sequence of grayscale frames. The first several generations were ignored because they depended highly on the initial configuration and therefore did not reflect the final stable pattern accurately. With many possible ways to explore the dataset, our final production pipeline used RNN, CNN, feature extraction, and entropy analysis. 
+
+The RNN approach resembles a video classification task. Each pattern is represented by its corresponding sequence of frames and each sequence is treated as one single instance. We performed hyperparameter tuning and eventually decided to use ConvLSTM2D, which led to the best accuracy. CNN on the other hand is the best at classifying images. Therefore, we had to stitch some of the frames together into one congregated image in advance. Each of the stitched images was considered as an instance. Different selections of frames that were included in the image have been tested. However, since this is an uncanonical approach, we wanted to find out the learnability of our dataset using Brainome.ai. To achieve this, we performed feature extraction using a pre-trained NASNet-Large CNN Model that is trained on a million images from the ImageNet database. For each of the instances, the machine learner extracts 1000 features and puts them in an organized CSV file. However, the results shown by Brainome.ai were suboptimal. Therefore, we eventually used the image pixels directly as features and this time, Brainome.ai showed us promising results. This gave us sufficient confidence to proceed with model training. 
+
+After the models are properly trained with extensive hyperparameter tuning, we used them to classify rules with three states and random survival and born rules and find spaceships in those that are classified as interesting. We discovered a handful of new interesting rules and found an entire family of spaceships, the new Life, and several rakes. 
+
+Based on the conclusions of this study, we think neural networks are adequate to be used to detect interesting cellular automata rules. The results that our machine learner found were undoubtedly interesting and worth further exploration. 
+
+\newpage
 %\addcontentsline{toc}{chapter}{Bibliography}
 \begin{thebibliography}{9}
 \bibitem{A new kind of Science} 
@@ -2021,6 +2035,11 @@ Martin G.
 In Scientific American 223 (October 1970): 120-123.
 \texttt{https://www.ibiblio.org/lifepatterns/october1970.html}. 
 
+\bibitem{c}
+Xie P. 
+\textit{How Slow is Python Compared to C}. 
+\texttt{https://medium.com/codex/how-slow-is-python-compared-to-c-3795071ce82a}
+
 \bibitem{MW}
 “Cellular automaton.” Merriam-Webster.com Dictionary. (2021, May 10). Merriam-Webster. 
 \\\texttt{https://www.merriam-webster.com/dictionary/cellular\%20automaton}. 
@@ -2060,7 +2079,10 @@ Gun (cellular automaton). (2021, January 31). In Wikipedia.
 \end{thebibliography}
 
 \newpage
+\renewcommand{\thesection}{A}
 \section{Appendix}
+All of the written code and generated gifs can be found at the GitHub repository:
+https://github.com/Liaoqitian/MLCA. 
 \subsection{Cellular Automata Generation Algorithm}
 \label{subsection:Cellular Automata Generation Algorithm}
 \begin{lstlisting}[language=Python]
@@ -2095,7 +2117,6 @@ generate(neighborhood, max_state, survive_arr, born_arr)
 # returns 0
 \end{lstlisting}
 \end{itemize}
-
 
 \subsection{The 35 Selected Interesting Rules}
 \label{subsection:The 35 Selected Interesting Rules}
@@ -2379,8 +2400,8 @@ function COMPUTE_MEC(data, labels)
 \item Description: computes the maximum and expected memory capacity of the machine learner.  
 \end{itemize}
 
-\subsection{Glider Image and GIF generation}
-\label{subsection:Glider Image and GIF generation}
+\subsection{Spaceship Image and GIF generation}
+\label{subsection:Spaceship Image and GIF generation}
 \begin{lstlisting}[language = Python]
 import matplotlib.pyplot as plt
 from matplotlib import colors
@@ -2471,8 +2492,8 @@ with imageio.get_writer('mygif.gif', mode='I', duration = 0.5) as writer:
 \end{itemize}
 
 \subsection{Initial configuration of the gliders}
-\label{subsection:Initial configuration of the gliders}
-This section contains a list of initial configurations and the corresponding parameters of the gliders mentioned in this report. One can pass these as parameters into the function in ~\ref{subsection:Glider Image and GIF generation} to reproduce the images and gif. 
+\label{subsection:Initial configuration of the spaceships}
+This section contains a list of initial configurations and the corresponding parameters of the spaceships mentioned in this report. One can pass these as parameters into the function in Section ~\ref{subsection:Spaceship Image and GIF generation} to reproduce the images and gif. 
 
 \subsubsection{Code for figure ~\ref{fig:GOL examples}, the Game of Life}
 \label{subsubsection:GOL}
@@ -2491,8 +2512,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Code for figure ~\ref{fig:GOL examples}, the lightweight spaceship}
-\label{subsubsection:lightweight spaceship}
+\subsubsection{Code for figure ~\ref{fig:GOL examples}, the light-weight spaceship}
+\label{subsubsection:light-weight spaceship}
 \begin{lstlisting}[language = Python]
 survival_arr = [2, 3]
 born_arr = [3]
@@ -2509,8 +2530,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Code for figure ~\ref{fig:GOL examples}, the midweight spacehip}
-\label{subsubsection:midweight spaceship}
+\subsubsection{Code for figure ~\ref{fig:GOL examples}, the mid-weight spaceship}
+\label{subsubsection:mid-weight spaceship}
 \begin{lstlisting}[language = Python]
 survival_arr = [2, 3]
 born_arr = [3]
@@ -2529,8 +2550,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Code for figure ~\ref{fig:GOL examples}, the heavyweight spaceship}
-\label{subsubsection:heavyweight spaceship}
+\subsubsection{Code for figure ~\ref{fig:GOL examples}, the heavy-weight spaceship}
+\label{subsubsection:heavy-weight spaceship}
 \begin{lstlisting}[language = Python]
 survival_arr = [2, 3]
 born_arr = [3]
@@ -2549,8 +2570,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Code for figure ~\ref{fig:one-period gliders}}
-\label{subsubsection:one-period gliders}
+\subsubsection{Code for figure ~\ref{fig:one-period spaceships}}
+\label{subsubsection:one-period spaceships}
 \begin{lstlisting}[language = Python]
 survival_arr = [6]
 born_arr = [2,4,6]
@@ -2559,59 +2580,38 @@ period = 2
 data = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0, 0, 0],
-    [0, 0, 2, 2, 0, 0, 2, 1, 1, 0, 0, 1, 1, 2, 0, 0, 0, 0],
-    [0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 0],
+    [0, 0, 2, 2, 0, 0, 2, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+    [0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 2, 2, 0],
+    [0, 2, 1, 1, 2, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 1, 1, 0],
+    [0, 1, 0, 0, 1, 0, 0, 2, 0, 0, 2, 0, 0, 2, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0],
-    [0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 2, 1, 1, 2, 0, 0, 0],
-    [0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 1, 0, 0, 1, 0, 0, 0],
-    [0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 2, 2, 0, 0],
+    [0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 2, 1, 1, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 2, 1, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 2, 2, 0, 0, 0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0],
-    [0, 0, 1, 1, 0, 0, 0, 0, 2, 1, 1, 0, 0, 1, 1, 2, 0, 0],
-    [0, 2, 0, 0, 2, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 1, 2, 0],
-    [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0],
-    [0, 0, 2, 1, 1, 0, 0, 1, 1, 2, 0, 0, 0, 0, 0, 1, 1, 0],
-    [0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0],
-    [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 2, 1, 0, 0, 0],
-    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],    
-    [0, 2, 2, 0, 0, 0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0, 0],
-    [0, 1, 1, 0, 0, 0, 0, 2, 1, 1, 0, 0, 1, 1, 2, 0, 0, 0],
-    [0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 1, 2, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0],
-    [0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  
-    [0, 0, 2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 0],
-    [0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 2, 1, 1, 0, 0, 0],
-    [0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 1, 0, 0, 2, 0, 0],
-    [0, 1, 2, 0, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  
-    [0, 0, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 2, 2, 0, 0, 0],
-    [0, 0, 1, 1, 2, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0],
-    [0, 2, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0],
-    [0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-    [0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0],
-    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] 
+    [0, 0, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 2, 2, 0],
+    [0, 0, 1, 1, 0, 0, 0, 2, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0],
+    [0, 2, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0],
+    [0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],   
+    [0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
 \end{lstlisting}
 \noindent\begin{minipage}{.45\textwidth}
@@ -2639,8 +2639,8 @@ data = [
 \end{minipage}
 \hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Code for figure ~\ref{fig:two-period gliders}}
-\label{subsubsection:two-period gliders(1/5)}
+\subsubsection{Code for figure ~\ref{fig:two-period spaceships}}
+\label{subsubsection:two-period spaceships(1/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2662,8 +2662,8 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Code for figure ~\ref{fig:two-period gliders}}
-\label{subsubsection:two-period gliders(2/5)}
+\subsubsection{Code for figure ~\ref{fig:two-period spaceships}}
+\label{subsubsection:two-period spaceships(2/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2685,8 +2685,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Code for figure ~\ref{fig:two-period gliders}}
-\label{subsubsection:two-period gliders(3/5)}
+\subsubsection{Code for figure ~\ref{fig:two-period spaceships}}
+\label{subsubsection:two-period spaceships(3/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2710,8 +2710,8 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Code for figure ~\ref{fig:two-period gliders}}
-\label{subsubsection:two-period gliders(4/5)}
+\subsubsection{Code for figure ~\ref{fig:two-period spaceships}}
+\label{subsubsection:two-period spaceships(4/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2733,8 +2733,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Code for figure ~\ref{fig:two-period gliders}}
-\label{subsubsection:two-period gliders(5/5)}
+\subsubsection{Code for figure ~\ref{fig:two-period spaceships}}
+\label{subsubsection:two-period spaceships(5/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2760,8 +2760,8 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Code for figure ~\ref{fig:almost same two-period glider}}
-\label{subsubsection:almost same two-period glider}
+\subsubsection{Code for figure ~\ref{fig:almost same two-period spaceship}}
+\label{subsubsection:almost same two-period spaceship}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2785,8 +2785,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Code for figure ~\ref{fig:extended two-period gliders} (1/5)}
-\label{subsubsection:extended two-period gliders(1/5)}
+\subsubsection{Code for figure ~\ref{fig:extended two-period spaceships} (1/5)}
+\label{subsubsection:extended two-period spaceships(1/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2811,8 +2811,8 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Code for figure ~\ref{fig:extended two-period gliders} (2/5)}
-\label{subsubsection:extended two-period gliders(2/5)}
+\subsubsection{Code for figure ~\ref{fig:extended two-period spaceships} (2/5)}
+\label{subsubsection:extended two-period spaceships(2/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2836,8 +2836,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Code for figure ~\ref{fig:extended two-period gliders} (3/5)}
-\label{subsubsection:extended two-period gliders(3/5)}
+\subsubsection{Code for figure ~\ref{fig:extended two-period spaceships} (3/5)}
+\label{subsubsection:extended two-period spaceships(3/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2863,8 +2863,8 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.5\textwidth}
-\subsubsection{Code for figure ~\ref{fig:extended two-period gliders} (4/5)}
-\label{subsubsection:extended two-period gliders(4/5)}
+\subsubsection{Code for figure ~\ref{fig:extended two-period spaceships} (4/5)}
+\label{subsubsection:extended two-period spaceships(4/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2889,8 +2889,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Code for figure ~\ref{fig:extended two-period gliders} (5/5)}
-\label{subsubsection:extended two-period gliders(5/5)}
+\subsubsection{Code for figure ~\ref{fig:extended two-period spaceships} (5/5)}
+\label{subsubsection:extended two-period spaceships(5/5)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4]
 born_arr = [2]
@@ -2919,8 +2919,8 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Code for figure ~\ref{fig:four-period gliders} (1/6)}
-\label{subsubsection:four-period gliders(1/6)}
+\subsubsection{Code for figure ~\ref{fig:four-period spaceships first half} (1/6)}
+\label{subsubsection:four-period spaceships(1/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -2946,8 +2946,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Code for figure ~\ref{fig:four-period gliders} (2/6)}
-\label{subsubsection:four-period gliders(2/6)}
+\subsubsection{Code for figure ~\ref{fig:four-period spaceships first half} (2/6)}
+\label{subsubsection:four-period spaceships(2/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -2973,8 +2973,8 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.50\textwidth}
-\subsubsection{Code for figure ~\ref{fig:four-period gliders} (3/6)}
-\label{subsubsection:four-period gliders(3/6)}
+\subsubsection{Code for figure ~\ref{fig:four-period spaceships first half} (3/6)}
+\label{subsubsection:four-period spaceships(3/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -2999,8 +2999,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.45\textwidth}
-\subsubsection{Code for figure ~\ref{fig:four-period gliders} (4/6)}
-\label{subsubsection:four-period gliders(4/6)}
+\subsubsection{Code for figure ~\ref{fig:four-period spaceships second half} (4/6)}
+\label{subsubsection:four-period spaceships(4/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -3030,8 +3030,8 @@ data = [
 \end{minipage}
 
 \noindent\begin{minipage}{.45\textwidth}
-\subsubsection{Code for figure ~\ref{fig:four-period gliders} (5/6)}
-\label{subsubsection:four-period gliders(5/6)}
+\subsubsection{Code for figure ~\ref{fig:four-period spaceships second half} (5/6)}
+\label{subsubsection:four-period spaceships(5/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -3058,8 +3058,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.5\textwidth}
-\subsubsection{Code for figure ~\ref{fig:four-period gliders} (6/6)}
-\label{subsubsection:four-period gliders(6/6)}
+\subsubsection{Code for figure ~\ref{fig:four-period spaceships second half} (6/6)}
+\label{subsubsection:four-period spaceships(6/6)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -3093,8 +3093,8 @@ data = [
 \end{lstlisting}
 \end{minipage}
 
-\subsubsection{Code for figure ~\ref{fig:eight-period gliders} (1/2)}
-\label{subsubsection:eight-period gliders (1/2)}
+\subsubsection{Code for figure ~\ref{fig:eight-period spaceships} (1/2)}
+\label{subsubsection:eight-period spaceships (1/2)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -3125,8 +3125,8 @@ data = [
 
 \end{lstlisting}
 
-\subsubsection{Code for figure ~\ref{fig:eight-period gliders} (2/2)}
-\label{subsubsection:eight-period gliders (2/2)}
+\subsubsection{Code for figure ~\ref{fig:eight-period spaceships} (2/2)}
+\label{subsubsection:eight-period spaceships (2/2)}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -3157,8 +3157,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Code for figure ~\ref{fig:Frankenstein gliders} (1/2)}
-\label{subsubsection:Frankenstein glider one}
+\subsubsection{Code for figure ~\ref{fig:Frankenstein spaceships} (1/2)}
+\label{subsubsection:Frankenstein spaceship one}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -3188,8 +3188,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Code for figure ~\ref{fig:Frankenstein gliders} (2/2)}
-\label{subsubsection:Frankenstein glider two}
+\subsubsection{Code for figure ~\ref{fig:Frankenstein spaceships} (2/2)}
+\label{subsubsection:Frankenstein spaceship two}
 \begin{lstlisting}[language = Python]
 survival_arr = [4,6]
 born_arr = [2]
@@ -3329,8 +3329,8 @@ data = [
 \end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{.5\textwidth}
-\subsubsection{Code for figure ~\ref{fig:glider all dead}}
-\label{subsubsection:glider all dead}
+\subsubsection{Code for figure ~\ref{fig:spaceship all dead}}
+\label{subsubsection:spaceship all dead}
 \begin{lstlisting}[language = Python]
 survival_arr = [4, 6]
 born_arr = [2]
@@ -3372,8 +3372,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Code for figure ~\ref{fig:murder glider one}}
-\label{subsubsection:murder glider one}
+\subsubsection{Code for figure ~\ref{fig:murder spaceship one}}
+\label{subsubsection:murder spaceship one}
 \begin{lstlisting}[language = Python]
 survival_arr = [4, 6]
 born_arr = [2]
@@ -3392,8 +3392,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Code for figure ~\ref{fig:murder glider two}}
-\label{subsubsection:murder glider two}
+\subsubsection{Code for figure ~\ref{fig:murder spaceship two}}
+\label{subsubsection:murder spaceship two}
 \begin{lstlisting}[language = Python]
 survival_arr = [4, 6]
 born_arr = [2]
@@ -3436,8 +3436,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Code for figure ~\ref{fig:combined glider}}
-\label{subsubsection:combined glider}
+\subsubsection{Code for figure ~\ref{fig:combined spaceship}}
+\label{subsubsection:combined spaceship}
 \begin{lstlisting}[language = Python]
 survival_arr = [3]
 born_arr = [2]
@@ -3456,8 +3456,8 @@ data = [
 ]
 \end{lstlisting}
 
-\subsubsection{Code for figure ~\ref{fig:murder glider}}
-\label{subsubsection:murder glider}
+\subsubsection{Code for figure ~\ref{fig:murder spaceship}}
+\label{subsubsection:murder spaceship}
 \begin{lstlisting}[language = Python]
 survival_arr = [3]
 born_arr = [2]
