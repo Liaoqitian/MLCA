@@ -1,4 +1,4 @@
-# Automatic Detection of Cellular Automata containing spaceships
+# Automatic Detection of Cellular Automata with spaceships
 
 Current work: https://docs.google.com/document/d/1OJUDrcS4e6k4R0dp6ehwz5xQAVcQ2ZfuoSWXfg6luRU/edit
 
