@@ -1,4 +1,4 @@
-# Automatic Detection of Cellular Automata
+# Automatic Detection of Interesting Cellular Automata
 
 Finished work: https://docs.google.com/document/d/1OJUDrcS4e6k4R0dp6ehwz5xQAVcQ2ZfuoSWXfg6luRU/edit
 
